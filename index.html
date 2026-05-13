@@ -834,92 +834,131 @@
 </div>
 </div>
 <manus-content-root></manus-content-root>
-
 <script>
-const STORAGE_KEY = 'biblia_editada_data_seir';
-let selectedColor = 'yellow';
+    const STORAGE_KEY = 'biblia_editada_data_seir';
+    let selectedColor = 'yellow';
 
-function toggleIndex() {
-    const idx = document.querySelector('.general-index');
-    if (idx) idx.classList.toggle('show');
-}
+    function toggleIndex() {
+        const idx = document.querySelector('.general-index');
+        idx.classList.toggle('show');
+    }
 
-function toggleTools() {
-    const panel = document.querySelector('.editing-panel');
-    if (panel) panel.classList.toggle('show');
-}
+    function toggleTools() {
+        const panel = document.querySelector('.editing-panel');
+        panel.classList.toggle('show');
+    }
 
-function selectColor(color) {
-    selectedColor = color;
-    document.querySelectorAll('.color-btn').forEach(b => b.classList.remove('active'));
-    if(event && event.target) event.target.classList.add('active');
-}
+    function selectColor(color) {
+        selectedColor = color;
+        document.querySelectorAll('.color-btn').forEach(b => b.classList.remove('active'));
+        if(event) event.target.classList.add('active');
+    }
 
-function applyHighlight() {
-    const sel = window.getSelection();
-    if (sel.rangeCount && !sel.isCollapsed) {
-        const range = sel.getRangeAt(0);
-        const span = document.createElement('span');
-        span.className = `highlight-${selectedColor}`;
-        try {
-            range.surroundContents(span);
+    function applyHighlight() {
+        const sel = window.getSelection();
+        if (sel.rangeCount && !sel.isCollapsed) {
+            const range = sel.getRangeAt(0);
+            const span = document.createElement('span');
+            span.className = `highlight-${selectedColor}`;
+            try { range.surroundContents(span); saveChanges(); } catch(e) { alert("Seleção muito complexa. Selecione trechos menores."); }
+        }
+    }
+
+    function applyBold() {
+        const sel = window.getSelection();
+        if (sel.rangeCount && !sel.isCollapsed) {
+            const range = sel.getRangeAt(0);
+            const span = document.createElement('span');
+            span.className = 'text-bold';
+            try { range.surroundContents(span); saveChanges(); } catch(e) {}
+        }
+    }
+
+    function applyItalic() {
+        const sel = window.getSelection();
+        if (sel.rangeCount && !sel.isCollapsed) {
+            const range = sel.getRangeAt(0);
+            const span = document.createElement('span');
+            span.className = 'text-italic';
+            try { range.surroundContents(span); saveChanges(); } catch(e) {}
+        }
+    }
+
+    function applyUnderline() {
+        const sel = window.getSelection();
+        if (sel.rangeCount && !sel.isCollapsed) {
+            const range = sel.getRangeAt(0);
+            const span = document.createElement('span');
+            span.className = 'text-underline';
+            try { range.surroundContents(span); saveChanges(); } catch(e) {}
+        }
+    }
+
+    function addNote() {
+        const text = prompt("Digite sua nota:");
+        if (!text) return;
+        const sel = window.getSelection();
+        if (sel.rangeCount) {
+            const range = sel.getRangeAt(0);
+            const noteDiv = document.createElement('div');
+            noteDiv.className = 'custom-note';
+            noteDiv.innerHTML = `<strong>Nota:</strong> ${text}`;
+            range.insertNode(noteDiv);
             saveChanges();
-        } catch(e) { alert("Seleção complexa. Tente um trecho menor."); }
+        }
     }
-}
 
-function applyBold() {
-    const sel = window.getSelection();
-    if (sel.rangeCount && !sel.isCollapsed) {
-        const range = sel.getRangeAt(0);
-        const span = document.createElement('span');
-        span.className = 'text-bold';
-        try { range.surroundContents(span); saveChanges(); } catch(e) {}
+    function removeFormatting() {
+        const sel = window.getSelection();
+        if (!sel.rangeCount) return;
+
+        let node = sel.anchorNode;
+        // Pega o elemento exato que está selecionado
+        if (node.nodeType === 3) {
+            node = node.parentNode;
+        }
+
+        // Se o texto selecionado tiver alguma formatação (SPAN) ou nota
+        if (node.tagName === 'SPAN' || node.className === 'custom-note') {
+            const parent = node.parentNode;
+            while (node.firstChild) {
+                parent.insertBefore(node.firstChild, node);
+            }
+            parent.removeChild(node);
+            saveChanges();
+        } else {
+            alert("Dica: Selecione exatamente o trecho que está marcado (cor/negrito/nota) para poder limpar.");
+        }
     }
-}
 
-function applyItalic() {
-    const sel = window.getSelection();
-    if (sel.rangeCount && !sel.isCollapsed) {
-        const range = sel.getRangeAt(0);
-        const span = document.createElement('span');
-        span.className = 'text-italic';
-        try { range.surroundContents(span); saveChanges(); } catch(e) {}
+    function exportChanges() {
+        const content = document.documentElement.outerHTML;
+        const blob = new Blob([content], {type: 'text/html'});
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'Novo_Testamento_Editado_Final.html';
+        a.click();
     }
-}
 
-function addNote() {
-    const text = prompt("Digite sua nota:");
-    if (!text) return;
-    const sel = window.getSelection();
-    if (sel.rangeCount) {
-        const range = sel.getRangeAt(0);
-        const noteDiv = document.createElement('div');
-        noteDiv.className = 'custom-note';
-        noteDiv.innerHTML = `<strong>Nota:</strong> ${text}`;
-        range.insertNode(noteDiv);
-        saveChanges();
+    function saveChanges() {
+        const content = document.querySelector('.content').innerHTML;
+        localStorage.setItem(STORAGE_KEY, content);
     }
-}
 
-function saveChanges() {
-    const content = document.querySelector('.content').innerHTML;
-    localStorage.setItem(STORAGE_KEY, content);
-}
-
-function loadSavedChanges() {
-    const saved = localStorage.getItem(STORAGE_KEY);
-    if (saved) { document.querySelector('.content').innerHTML = saved; }
-}
-
-function clearAllFormatting() {
-    if (confirm("Apagar todas as marcações?")) {
-        localStorage.removeItem(STORAGE_KEY);
-        location.reload();
+    function loadSavedChanges() {
+        const saved = localStorage.getItem(STORAGE_KEY);
+        if (saved) { document.querySelector('.content').innerHTML = saved; }
     }
-}
 
-window.onload = loadSavedChanges;
+    function clearAllFormatting() {
+        if (confirm("Apagar todas as marcações permanentemente?")) {
+            localStorage.removeItem(STORAGE_KEY);
+            location.reload();
+        }
+    }
+
+    window.onload = loadSavedChanges;
 </script>
-
-</body></html>
+</body>
+</html>
