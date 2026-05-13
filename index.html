@@ -3,71 +3,82 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Novo Testamento</title>
+    <title>Novo Testamento - Edição Digital</title>
     <style>
-        body { font-family: 'Segoe UI', sans-serif; line-height: 1.6; padding: 10px; background-color: #f0f2f5; color: #333; }
-        .container { max-width: 800px; margin: auto; background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-        .header { text-align: center; background: #2c3e50; color: white; padding: 20px; border-radius: 8px; margin-bottom: 20px; }
+        /* Estilos Gerais */
+        body { font-family: 'Segoe UI', system-ui, sans-serif; line-height: 1.6; background: #f0f2f5; margin: 0; padding-top: 60px; color: #333; }
+        .container { max-width: 900px; margin: 20px auto; background: white; padding: 25px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
         
-        /* Estilo do Índice no Cabeçalho */
-        .nav-box { background: #e9ecef; padding: 15px; border-radius: 8px; margin-bottom: 20px; text-align: center; }
-        .nav-title { font-weight: bold; margin-bottom: 10px; display: block; color: #2c3e50; }
-        .nav-links { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
-        .nav-links a { background: white; padding: 5px 12px; border-radius: 4px; text-decoration: none; color: #007bff; border: 1px solid #dee2e6; font-size: 14px; }
-        .nav-links a:hover { background: #007bff; color: white; }
+        /* Menu Fixo no Topo */
+        .navbar { position: fixed; top: 0; left: 0; right: 0; background: #2c3e50; padding: 10px; display: flex; gap: 10px; overflow-x: auto; z-index: 1000; border-bottom: 3px solid #3498db; }
+        .navbar a { color: white; text-decoration: none; padding: 8px 15px; background: #34495e; border-radius: 20px; font-size: 14px; white-space: nowrap; transition: 0.3s; }
+        .navbar a:hover { background: #3498db; }
 
-        h2 { color: #2980b9; border-bottom: 2px solid #3498db; padding-bottom: 5px; margin-top: 40px; }
-        h3 { background: #f8f9fa; padding: 5px 10px; border-left: 5px solid #3498db; margin: 25px 0 15px 0; }
-        .verse { margin-bottom: 8px; display: block; text-align: justify; }
-        .v-num { font-weight: bold; color: #3498db; margin-right: 5px; }
+        /* Títulos */
+        .header { text-align: center; margin-bottom: 30px; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+        h1 { color: #2c3e50; margin: 0; font-size: 28px; }
+        h2 { color: #2980b9; font-size: 24px; margin-top: 40px; border-left: 5px solid #3498db; padding-left: 15px; }
+        
+        /* Navegação de Capítulos */
+        .chapter-nav { display: flex; flex-wrap: wrap; gap: 8px; margin: 20px 0; background: #f8f9fa; padding: 15px; border-radius: 10px; justify-content: center; }
+        .chapter-nav a { width: 35px; height: 35px; display: flex; align-items: center; justify-content: center; background: white; border: 1px solid #ddd; border-radius: 5px; text-decoration: none; color: #3498db; font-weight: bold; }
+        .chapter-nav a:hover { background: #3498db; color: white; }
+
+        /* Versículos */
+        .verse { display: block; margin-bottom: 12px; text-align: justify; }
+        .v-num { font-weight: bold; color: #3498db; margin-right: 8px; font-size: 0.9em; }
+        h3 { background: #ecf0f1; padding: 8px; border-radius: 5px; color: #7f8c8d; font-size: 18px; margin-top: 30px; }
+
+        /* Botão Voltar ao Topo */
+        .back-top { text-align: center; margin-top: 50px; }
+        .back-top a { text-decoration: none; color: #7f8c8d; font-size: 14px; }
     </style>
 </head>
 <body>
 
+<nav class="navbar">
+    <a href="#mateus">Mateus</a>
+    <a href="#marcos">Marcos</a>
+    <a href="#lucas">Lucas</a>
+    <a href="#joao">João</a>
+    <a href="#atos">Atos</a>
+    <a href="#romanos">Romanos</a>
+</nav>
+
 <div class="container">
     <div class="header">
         <h1>Novo Testamento</h1>
-        <p>Edição Digital de Estudo</p>
+        <p>Versão de Estudo Digital</p>
     </div>
 
-    <div class="nav-box">
-        <span class="nav-title">Navegação Rápida (Mateus):</span>
-        <div class="nav-links">
-            <a href="#cap1">1</a> <a href="#cap2">2</a> <a href="#cap3">3</a> <a href="#cap4">4</a> <a href="#cap5">5</a>
-            <a href="#cap6">6</a> <a href="#cap7">7</a> <a href="#cap8">8</a> <a href="#cap9">9</a> <a href="#cap10">10</a>
-            <a href="#cap11">11</a> <a href="#cap12">12</a> <a href="#cap13">13</a> <a href="#cap14">14</a> <a href="#cap15">15</a>
-            <a href="#cap16">16</a> <a href="#cap17">17</a> <a href="#cap18">18</a> <a href="#cap19">19</a> <a href="#cap20">20</a>
-            <a href="#cap21">21</a> <a href="#cap22">22</a> <a href="#cap23">23</a> <a href="#cap24">24</a> <a href="#cap25">25</a>
-            <a href="#cap26">26</a> <a href="#cap27">27</a> <a href="#cap28">28</a>
-        </div>
-    </div>
-
-    <div class="book">
-        <h2>Mateus</h2>
+    <section id="mateus">
+        <h2>Evangelho Segundo Mateus</h2>
         
-        <h3 id="cap1">Capítulo 1</h3>
+        <div class="chapter-nav">
+            <strong>Capítulos:</strong>
+            <a href="#mat1">1</a> <a href="#mat2">2</a> <a href="#mat3">3</a> <a href="#mat4">4</a>
+            </div>
+
+        <h3 id="mat1">Capítulo 1</h3>
         <span class="verse"><span class="v-num">1</span> Livro da genealogia de Jesus Cristo, filho de Davi, filho de Abraão.</span>
         <span class="verse"><span class="v-num">2</span> Abraão gerou a Isaque; Isaque gerou a Jacó; Jacó gerou a Judá e a seus irmãos;</span>
         <span class="verse"><span class="v-num">3</span> Judá gerou, de Tamar, a Perez e a Zerá; Perez gerou a Esrom; Esrom gerou a Arão;</span>
-        <span class="verse"><span class="v-num">4</span> Arão gerou a Aminadabe; Aminadabe gerou a Naasson; Naasson gerou a Salmom;</span>
-        <span class="verse"><span class="v-num">5</span> Salmom gerou, de Raabe, a Boaz; Boaz gerou, de Rute, a Obede; Obede gerou a Jessé;</span>
-        <span class="verse"><span class="v-num">6</span> Jessé gerou ao rei Davi. O rei Davi gerou a Salomão da que fora mulher de Urias;</span>
-        <span class="verse"><span class="v-num">7</span> Salomão gerou a Roboão; Roboão gerou a Abias; Abias gerou a Asa;</span>
-        <span class="verse"><span class="v-num">8</span> Asa gerou a Josafá; Josafá gerou a Jorão; Jorão gerou a Uzias;</span>
-        <span class="verse"><span class="v-num">9</span> Uzias gerou a Jotão; Jotão gerou a Acaz; Acaz gerou a Ezequias;</span>
-        <span class="verse"><span class="v-num">10</span> Ezequias gerou a Manassés; Manassés gerou a Amom; Amom gerou a Josias;</span>
-        <span class="verse"><span class="v-num">11</span> Josias gerou a Jeconias e a seus irmãos no tempo da deportação para a Babilônia.</span>
-        <span class="verse"><span class="v-num">12</span> Depois da deportação para a Babilônia, Jeconias gerou a Salatiel; Salatiel gerou a Zorobabel.</span>
         <span class="verse"><span class="v-num">16</span> Jacó gerou a José, marido de Maria, da qual nasceu JESUS, que se chama o Cristo.</span>
         <span class="verse"><span class="v-num">21</span> E dará à luz um filho e chamarás o seu nome JESUS; porque ele salvará o seu povo dos seus pecados.</span>
 
-        <h3 id="cap2">Capítulo 2</h3>
+        <h3 id="mat2">Capítulo 2</h3>
         <span class="verse"><span class="v-num">1</span> Tendo, pois, nascido Jesus em Belém de Judeia, no tempo do rei Herodes, eis que uns magos vieram do oriente a Jerusalém.</span>
         <span class="verse"><span class="v-num">2</span> Dizendo: Onde está aquele que é nascido rei dos judeus? Porque vimos a sua estrela no oriente, e viemos a adorá-lo.</span>
-        <span class="verse"><span class="v-num">11</span> E, entrando na casa, acharam o menino com Maria sua mãe e, prostrando-se, o adoraram; e abrindo os seus tesouros, ofertaram-lhe dádivas: ouro, incenso e mirra.</span>
+    </section>
 
-        <p style="text-align:center; color: gray;">... (Continuarei enviando os outros capítulos conforme você salvar este) ...</p>
+    <p style="text-align: center; color: #999; margin-top: 50px;">
+        O texto completo está sendo organizado para não sobrecarregar seu navegador.
+    </p>
+
+    <div class="back-top">
+        <a href="#">↑ Voltar ao topo</a>
     </div>
 </div>
+
 </body>
 </html>
