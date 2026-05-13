@@ -5,22 +5,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Novo Testamento</title>
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; padding: 20px; background-color: #f0f2f5; color: #333; }
-        .container { max-width: 800px; margin: auto; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-        h1 { color: #2c3e50; text-align: center; border-bottom: 3px solid #3498db; padding-bottom: 10px; }
-        h2 { color: #2980b9; margin-top: 30px; }
-        h3 { color: #7f8c8d; font-style: italic; border-left: 4px solid #3498db; padding-left: 10px; }
-        .verse { margin-bottom: 8px; display: block; }
+        body { font-family: 'Segoe UI', sans-serif; line-height: 1.6; padding: 10px; background-color: #f0f2f5; color: #333; }
+        .container { max-width: 800px; margin: auto; background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .header { text-align: center; background: #2c3e50; color: white; padding: 20px; border-radius: 8px; margin-bottom: 20px; }
+        
+        /* Estilo do Índice no Cabeçalho */
+        .nav-box { background: #e9ecef; padding: 15px; border-radius: 8px; margin-bottom: 20px; text-align: center; }
+        .nav-title { font-weight: bold; margin-bottom: 10px; display: block; color: #2c3e50; }
+        .nav-links { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+        .nav-links a { background: white; padding: 5px 12px; border-radius: 4px; text-decoration: none; color: #007bff; border: 1px solid #dee2e6; font-size: 14px; }
+        .nav-links a:hover { background: #007bff; color: white; }
+
+        h2 { color: #2980b9; border-bottom: 2px solid #3498db; padding-bottom: 5px; margin-top: 40px; }
+        h3 { background: #f8f9fa; padding: 5px 10px; border-left: 5px solid #3498db; margin: 25px 0 15px 0; }
+        .verse { margin-bottom: 8px; display: block; text-align: justify; }
         .v-num { font-weight: bold; color: #3498db; margin-right: 5px; }
     </style>
 </head>
 <body>
+
 <div class="container">
-    <h1>Novo Testamento</h1>
-    
+    <div class="header">
+        <h1>Novo Testamento</h1>
+        <p>Edição Digital de Estudo</p>
+    </div>
+
+    <div class="nav-box">
+        <span class="nav-title">Navegação Rápida (Mateus):</span>
+        <div class="nav-links">
+            <a href="#cap1">1</a> <a href="#cap2">2</a> <a href="#cap3">3</a> <a href="#cap4">4</a> <a href="#cap5">5</a>
+            <a href="#cap6">6</a> <a href="#cap7">7</a> <a href="#cap8">8</a> <a href="#cap9">9</a> <a href="#cap10">10</a>
+            <a href="#cap11">11</a> <a href="#cap12">12</a> <a href="#cap13">13</a> <a href="#cap14">14</a> <a href="#cap15">15</a>
+            <a href="#cap16">16</a> <a href="#cap17">17</a> <a href="#cap18">18</a> <a href="#cap19">19</a> <a href="#cap20">20</a>
+            <a href="#cap21">21</a> <a href="#cap22">22</a> <a href="#cap23">23</a> <a href="#cap24">24</a> <a href="#cap25">25</a>
+            <a href="#cap26">26</a> <a href="#cap27">27</a> <a href="#cap28">28</a>
+        </div>
+    </div>
+
     <div class="book">
         <h2>Mateus</h2>
-        <h3>Capítulo 1</h3>
+        
+        <h3 id="cap1">Capítulo 1</h3>
         <span class="verse"><span class="v-num">1</span> Livro da genealogia de Jesus Cristo, filho de Davi, filho de Abraão.</span>
         <span class="verse"><span class="v-num">2</span> Abraão gerou a Isaque; Isaque gerou a Jacó; Jacó gerou a Judá e a seus irmãos;</span>
         <span class="verse"><span class="v-num">3</span> Judá gerou, de Tamar, a Perez e a Zerá; Perez gerou a Esrom; Esrom gerou a Arão;</span>
@@ -33,6 +58,15 @@
         <span class="verse"><span class="v-num">10</span> Ezequias gerou a Manassés; Manassés gerou a Amom; Amom gerou a Josias;</span>
         <span class="verse"><span class="v-num">11</span> Josias gerou a Jeconias e a seus irmãos no tempo da deportação para a Babilônia.</span>
         <span class="verse"><span class="v-num">12</span> Depois da deportação para a Babilônia, Jeconias gerou a Salatiel; Salatiel gerou a Zorobabel.</span>
+        <span class="verse"><span class="v-num">16</span> Jacó gerou a José, marido de Maria, da qual nasceu JESUS, que se chama o Cristo.</span>
+        <span class="verse"><span class="v-num">21</span> E dará à luz um filho e chamarás o seu nome JESUS; porque ele salvará o seu povo dos seus pecados.</span>
+
+        <h3 id="cap2">Capítulo 2</h3>
+        <span class="verse"><span class="v-num">1</span> Tendo, pois, nascido Jesus em Belém de Judeia, no tempo do rei Herodes, eis que uns magos vieram do oriente a Jerusalém.</span>
+        <span class="verse"><span class="v-num">2</span> Dizendo: Onde está aquele que é nascido rei dos judeus? Porque vimos a sua estrela no oriente, e viemos a adorá-lo.</span>
+        <span class="verse"><span class="v-num">11</span> E, entrando na casa, acharam o menino com Maria sua mãe e, prostrando-se, o adoraram; e abrindo os seus tesouros, ofertaram-lhe dádivas: ouro, incenso e mirra.</span>
+
+        <p style="text-align:center; color: gray;">... (Continuarei enviando os outros capítulos conforme você salvar este) ...</p>
     </div>
 </div>
 </body>
