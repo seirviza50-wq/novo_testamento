@@ -213,7 +213,54 @@
         img {
             loading: lazy;
         }
-    </style>
+    
+/* Estilos para o Painel Retrátil */
+.tools-toggle-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #28a745;
+    color: white;
+    border: none;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    cursor: pointer;
+    z-index: 10001;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s;
+}
+.tools-toggle-btn:active { transform: scale(0.9); }
+
+.editing-panel {
+    display: none; /* Começa escondido */
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    width: 250px;
+    max-height: 80vh;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    z-index: 10000;
+    overflow-y: auto;
+    padding: 15px;
+    border: 1px solid #ddd;
+}
+.editing-panel.show { display: block; }
+
+.selected-text { background: rgba(0, 123, 255, 0.2); border-radius: 3px; }
+.highlight-yellow { background-color: #ffeb3b !important; }
+.highlight-green { background-color: #4caf50 !important; color: white !important; }
+.text-bold { font-weight: bold !important; }
+.text-italic { font-style: italic !important; }
+.custom-note { background: #fff3cd; border-left: 4px solid #ffeaa7; padding: 8px; margin: 10px 0; font-size: 13px; border-radius: 4px; color: #856404; }
+
+</style>
 
 <style id="visual-tools-css">
         /* Painel de Ferramentas */
@@ -413,9 +460,57 @@
         .editing-mode.show {
             display: block;
         }
-    </style>
+    
+/* Estilos para o Painel Retrátil */
+.tools-toggle-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #28a745;
+    color: white;
+    border: none;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    cursor: pointer;
+    z-index: 10001;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s;
+}
+.tools-toggle-btn:active { transform: scale(0.9); }
+
+.editing-panel {
+    display: none; /* Começa escondido */
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    width: 250px;
+    max-height: 80vh;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    z-index: 10000;
+    overflow-y: auto;
+    padding: 15px;
+    border: 1px solid #ddd;
+}
+.editing-panel.show { display: block; }
+
+.selected-text { background: rgba(0, 123, 255, 0.2); border-radius: 3px; }
+.highlight-yellow { background-color: #ffeb3b !important; }
+.highlight-green { background-color: #4caf50 !important; color: white !important; }
+.text-bold { font-weight: bold !important; }
+.text-italic { font-style: italic !important; }
+.custom-note { background: #fff3cd; border-left: 4px solid #ffeaa7; padding: 8px; margin: 10px 0; font-size: 13px; border-radius: 4px; color: #856404; }
+
+</style>
 </head>
 <body>
+<button class="tools-toggle-btn" onclick="toggleTools()" title="Mostrar/Esconder Ferramentas">🛠️</button>
 <div class="container">
 <div class="header" id="topo">
 <h1>Novo Testamento</h1>
@@ -741,88 +836,90 @@
 <manus-content-root></manus-content-root>
 
 <script>
-    const STORAGE_KEY = 'biblia_editada_data_seir';
-    let selectedColor = 'yellow';
+const STORAGE_KEY = 'biblia_editada_data_seir';
+let selectedColor = 'yellow';
 
-    // FUNÇÃO QUE RESTAURA O ÍNDICE
-    function toggleIndex() {
-        const idx = document.querySelector('.general-index');
-        idx.classList.toggle('show');
-    }
+function toggleIndex() {
+    const idx = document.querySelector('.general-index');
+    if (idx) idx.classList.toggle('show');
+}
 
-    function toggleTools() {
-        const panel = document.querySelector('.editing-panel');
-        panel.classList.toggle('show');
-    }
+function toggleTools() {
+    const panel = document.querySelector('.editing-panel');
+    if (panel) panel.classList.toggle('show');
+}
 
-    function selectColor(color) {
-        selectedColor = color;
-        document.querySelectorAll('.color-btn').forEach(b => b.classList.remove('active'));
-        if(event) event.target.classList.add('active');
-    }
+function selectColor(color) {
+    selectedColor = color;
+    document.querySelectorAll('.color-btn').forEach(b => b.classList.remove('active'));
+    if(event && event.target) event.target.classList.add('active');
+}
 
-    function applyHighlight() {
-        const sel = window.getSelection();
-        if (sel.rangeCount && !sel.isCollapsed) {
-            const range = sel.getRangeAt(0);
-            const span = document.createElement('span');
-            span.className = `highlight-${selectedColor}`;
-            try { range.surroundContents(span); saveChanges(); } catch(e) { alert("Seleção muito complexa. Selecione trechos menores."); }
-        }
-    }
-
-    function applyBold() {
-        const sel = window.getSelection();
-        if (sel.rangeCount && !sel.isCollapsed) {
-            const range = sel.getRangeAt(0);
-            const span = document.createElement('span');
-            span.className = 'text-bold';
-            try { range.surroundContents(span); saveChanges(); } catch(e) {}
-        }
-    }
-
-    function applyItalic() {
-        const sel = window.getSelection();
-        if (sel.rangeCount && !sel.isCollapsed) {
-            const range = sel.getRangeAt(0);
-            const span = document.createElement('span');
-            span.className = 'text-italic';
-            try { range.surroundContents(span); saveChanges(); } catch(e) {}
-        }
-    }
-
-    function addNote() {
-        const text = prompt("Digite sua nota:");
-        if (!text) return;
-        const sel = window.getSelection();
-        if (sel.rangeCount) {
-            const range = sel.getRangeAt(0);
-            const noteDiv = document.createElement('div');
-            noteDiv.className = 'custom-note';
-            noteDiv.innerHTML = `<strong>Nota:</strong> ${text}`;
-            range.insertNode(noteDiv);
+function applyHighlight() {
+    const sel = window.getSelection();
+    if (sel.rangeCount && !sel.isCollapsed) {
+        const range = sel.getRangeAt(0);
+        const span = document.createElement('span');
+        span.className = `highlight-${selectedColor}`;
+        try {
+            range.surroundContents(span);
             saveChanges();
-        }
+        } catch(e) { alert("Seleção complexa. Tente um trecho menor."); }
     }
+}
 
-    function saveChanges() {
-        const content = document.querySelector('.content').innerHTML;
-        localStorage.setItem(STORAGE_KEY, content);
+function applyBold() {
+    const sel = window.getSelection();
+    if (sel.rangeCount && !sel.isCollapsed) {
+        const range = sel.getRangeAt(0);
+        const span = document.createElement('span');
+        span.className = 'text-bold';
+        try { range.surroundContents(span); saveChanges(); } catch(e) {}
     }
+}
 
-    function loadSavedChanges() {
-        const saved = localStorage.getItem(STORAGE_KEY);
-        if (saved) { document.querySelector('.content').innerHTML = saved; }
+function applyItalic() {
+    const sel = window.getSelection();
+    if (sel.rangeCount && !sel.isCollapsed) {
+        const range = sel.getRangeAt(0);
+        const span = document.createElement('span');
+        span.className = 'text-italic';
+        try { range.surroundContents(span); saveChanges(); } catch(e) {}
     }
+}
 
-    function clearAllFormatting() {
-        if (confirm("Apagar todas as marcações permanentemente?")) {
-            localStorage.removeItem(STORAGE_KEY);
-            location.reload();
-        }
+function addNote() {
+    const text = prompt("Digite sua nota:");
+    if (!text) return;
+    const sel = window.getSelection();
+    if (sel.rangeCount) {
+        const range = sel.getRangeAt(0);
+        const noteDiv = document.createElement('div');
+        noteDiv.className = 'custom-note';
+        noteDiv.innerHTML = `<strong>Nota:</strong> ${text}`;
+        range.insertNode(noteDiv);
+        saveChanges();
     }
+}
 
-    window.onload = loadSavedChanges;
+function saveChanges() {
+    const content = document.querySelector('.content').innerHTML;
+    localStorage.setItem(STORAGE_KEY, content);
+}
+
+function loadSavedChanges() {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) { document.querySelector('.content').innerHTML = saved; }
+}
+
+function clearAllFormatting() {
+    if (confirm("Apagar todas as marcações?")) {
+        localStorage.removeItem(STORAGE_KEY);
+        location.reload();
+    }
+}
+
+window.onload = loadSavedChanges;
 </script>
 
 </body></html>
