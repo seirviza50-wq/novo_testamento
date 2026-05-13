@@ -202,287 +202,1137 @@
                 padding: 10px 14px;
                 font-size: 16px;
             }
-        }
-        
-        /* Melhorar performance */
-        .book-content {
-            contain: layout style;
-        }
-        
-        /* Lazy loading para imagens se houver */
-        img {
-            loading: lazy;
-        }
-    </style>
+ <div class="book">
+<h2 id="mateus">Mateus</h2>
+<div class="book-content">
+<h3 id="mateus-cap-1">Capítulo 1</h3>
+1 Livro da genealogia de Jesus Cristo, filho de Davi, filho de Abraão.<br>
+2 Abraão gerou a Isaque; Isaque gerou a Jacó; Jacó gerou a Judá e a seus irmãos;<br>
+3 Judá gerou, de Tamar, a Perez e a Zerá; Perez gerou a Esrom; Esrom gerou a Arão;<br>
+4 Arão gerou a Aminadabe; Aminadabe gerou a Naasson; Naasson gerou a Salmom;<br>
+5 Salmom gerou, de Raabe, a Boaz; Boaz gerou, de Rute, a Obede; Obede gerou a Jessé;<br>
+6 Jessé gerou ao rei Davi. O rei Davi gerou a Salomão da que fora mulher de Urias;<br>
+7 Salomão gerou a Roboão; Roboão gerou a Abias; Abias gerou a Asa;<br>
+8 Asa gerou a Josafá; Josafá gerou a Jorão; Jorão gerou a Uzias;<br>
+9 Uzias gerou a Jotão; Jotão gerou a Acaz; Acaz gerou a Ezequias;<br>
+10 Ezequias gerou a Manassés; Manassés gerou a Amom; Amom gerou a Josias;<br>
+11 Josias gerou a Jeconias e a seus irmãos no tempo da deportação para a Babilônia.<br>
+12 Depois da deportação para a Babilônia, Jeconias gerou a Salatiel; Salatiel gerou a Zorobabel;<br>
+13 Zorobabel gerou a Abiúde; Abiúde gerou a Eliaquim; Eliaquim gerou a Azor;<br>
+14 Azor gerou a Sadoque; Sadoque gerou a Aquim; Aquim gerou a Eliúde;<br>
+15 Eliúde gerou a Eleazar; Eleazar gerou a Matã; Matã gerou a Jacó;<br>
+16 Jacó gerou a José, marido de Maria, da qual nasceu JESUS, que se chama o Cristo.<br>
+17 De sorte que todas as gerações, desde Abraão até Davi, são catorze; e desde Davi até a deportação para a Babilônia, catorze gerações; e desde a deportação para a Babilônia até Cristo, catorze gerações.<br>
+18 Ora, o nascimento de Jesus Cristo foi assim: Que estando Maria, sua mãe, desposada com José, antes de se ajuntarem, achou-se ter concebido do Espírito Santo.<br>
+19 Então José, seu marido, como era justo, e a não queria infamar, intentou deixá-la secretamente.<br>
+20 E, projetando ele isto, eis que em sonho lhe apareceu um anjo do Senhor, dizendo: José, filho de Davi, não temas receber a Maria, tua mulher, porque o que nela está gerado é do Espírito Santo;<br>
+21 E dará à luz um filho e chamarás o seu nome JESUS; porque ele salvará o seu povo dos seus pecados.<br>
+22 Tudo isto aconteceu para que se cumprisse o que foi dito da parte do Senhor, pelo profeta, que diz;<br>
+23 Eis que a virgem conceberá, e dará à luz um filho, e chamá-lo-ão pelo nome de EMANUEL, Que traduzido é: Deus conosco.<br>
+24 E José, despertando do sono, fez como o anjo do Senhor lhe ordenara, e recebeu a sua mulher;<br>
+25 E não a conheceu até que deu à luz seu filho, o primogênito; e pôs-lhe por nome JESUS.
 
-<style id="visual-tools-css">
-        /* Painel de Ferramentas */
-        .editing-panel {
-            position: fixed;
-            top: 10px;
-            right: 10px;
-            background: white;
-            border: 2px solid #007bff;
-            border-radius: 10px;
-            padding: 15px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-            z-index: 2000;
-            max-width: 280px;
-            font-size: 14px;
-            display: none;
-        }
-        
-        .editing-panel.show {
-            display: block;
-        }
-        
-        .editing-panel h3 {
-            margin: 0 0 10px 0;
-            color: #007bff;
-            font-size: 16px;
-            text-align: center;
-        }
-        
-        .tool-section {
-            margin-bottom: 15px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid #eee;
-        }
-        
-        .tool-section:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-        }
-        
-        .tool-section h4 {
-            margin: 0 0 8px 0;
-            font-size: 14px;
-            color: #333;
-        }
-        
-        .color-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 5px;
-            margin-bottom: 8px;
-        }
-        
-        .color-btn {
-            width: 30px;
-            height: 30px;
-            border: 2px solid #ddd;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: transform 0.2s;
-        }
-        
-        .color-btn:hover {
-            transform: scale(1.1);
-            border-color: #007bff;
-        }
-        
-        .color-btn.active {
-            border-color: #007bff;
-            border-width: 3px;
-        }
-        
-        .action-buttons {
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-        }
-        
-        .action-btn {
-            padding: 8px 12px;
-            border: 1px solid #007bff;
-            background: white;
-            color: #007bff;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 12px;
-            transition: all 0.2s;
-        }
-        
-        .action-btn:hover {
-            background: #007bff;
-            color: white;
-        }
-        
-        .action-btn:active {
-            transform: scale(0.95);
-        }
-        
-        /* Botão de toggle das ferramentas */
-        .tools-toggle {
-            position: fixed;
-            top: 10px;
-            right: 10px;
-            background: #007bff;
-            color: white;
-            border: none;
-            padding: 12px 16px;
-            border-radius: 50px;
-            cursor: pointer;
-            font-size: 14px;
-            font-weight: bold;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-            z-index: 1999;
-            transition: all 0.2s;
-        }
-        
-        .tools-toggle:hover {
-            background: #0056b3;
-            transform: scale(1.05);
-        }
-        
-        .tools-toggle:active {
-            transform: scale(0.95);
-        }
-        
-        /* Estilos para texto selecionado */
-        .selected-text {
-            background: rgba(0, 123, 255, 0.2);
-            border: 2px dashed #007bff;
-            padding: 2px;
-            border-radius: 3px;
-        }
-        
-        /* Cores disponíveis */
-        .highlight-yellow { background-color: #ffeb3b !important; }
-        .highlight-green { background-color: #4caf50 !important; color: white !important; }
-        .highlight-blue { background-color: #2196f3 !important; color: white !important; }
-        .highlight-red { background-color: #f44336 !important; color: white !important; }
-        .highlight-orange { background-color: #ff9800 !important; color: white !important; }
-        .highlight-purple { background-color: #9c27b0 !important; color: white !important; }
-        .highlight-pink { background-color: #e91e63 !important; color: white !important; }
-        .highlight-cyan { background-color: #00bcd4 !important; color: white !important; }
-        
-        .text-bold { font-weight: bold !important; }
-        .text-italic { font-style: italic !important; }
-        .text-underline { text-decoration: underline !important; }
-        
-        /* Notas personalizadas */
-        .custom-note {
-            background: #fff3cd;
-            border: 1px solid #ffeaa7;
-            border-radius: 5px;
-            padding: 8px;
-            margin: 5px 0;
-            font-size: 13px;
-            color: #856404;
-        }
-        
-        /* Responsivo */
-        @media (max-width: 480px) {
-            .editing-panel {
-                top: 5px;
-                right: 5px;
-                left: 5px;
-                max-width: none;
-                font-size: 13px;
-            }
-            
-            .tools-toggle {
-                top: 5px;
-                right: 5px;
-                padding: 10px 14px;
-                font-size: 13px;
-            }
-            
-            .color-btn {
-                width: 25px;
-                height: 25px;
-            }
-        }
-        
-        /* Indicador de modo de edição */
-        .editing-mode {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #28a745;
-            color: white;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 12px;
-            z-index: 2000;
-            display: none;
-        }
-        
-        .editing-mode.show {
-            display: block;
-        }
-    </style>
-</head>
-<body>
-<div class="container">
-<div class="header" id="topo">
-<h1>Novo Testamento</h1>
-<p>Navegação completa por livros e capítulos</p>
-</div><button class="index-toggle" onclick="toggleIndex()">📖 Mostrar Índice dos Livros</button>
-<div class="general-index">
-<h2>Índice Geral</h2>
-<div class="book-section">
-<h3><a href="#mateus">Mateus</a></h3>
-<div class="chapter-links">Capítulos: <a href="#mateus-cap-1">1</a> | <a href="#mateus-cap-2">2</a> | <a href="#mateus-cap-3">3</a> | <a href="#mateus-cap-4">4</a> | <a href="#mateus-cap-5">5</a> | <a href="#mateus-cap-6">6</a> | <a href="#mateus-cap-7">7</a> | <a href="#mateus-cap-8">8</a> | <a href="#mateus-cap-9">9</a> | <a href="#mateus-cap-10">10</a> | <a href="#mateus-cap-11">11</a> | <a href="#mateus-cap-12">12</a> | <a href="#mateus-cap-13">13</a> | <a href="#mateus-cap-14">14</a> | <a href="#mateus-cap-15">15</a> | <a href="#mateus-cap-16">16</a> | <a href="#mateus-cap-17">17</a> | <a href="#mateus-cap-18">18</a> | <a href="#mateus-cap-19">19</a> | <a href="#mateus-cap-20">20</a> | <a href="#mateus-cap-21">21</a> | <a href="#mateus-cap-22">22</a> | <a href="#mateus-cap-23">23</a> | <a href="#mateus-cap-24">24</a> | <a href="#mateus-cap-25">25</a> | <a href="#mateus-cap-26">26</a> | <a href="#mateus-cap-27">27</a> | <a href="#mateus-cap-28">28</a></div>
+<h3 id="mateus-cap-2">Capítulo 2</h3>
+1 E, tendo nascido Jesus em Belém de Judeia, no tempo do rei Herodes, eis que uns magos vieram do oriente a Jerusalém,<br>
+2 Dizendo: Onde está aquele que é nascido rei dos judeus? porque vimos a sua estrela no oriente, e viemos a adorá-lo.<br>
+3 E o rei Herodes, ouvindo isto, perturbou-se, e toda a Jerusalém com ele.<br>
+4 E, congregados todos os príncipes dos sacerdotes, e os escribas do povo, perguntou-lhes onde havia de nascer o Cristo.<br>
+5 E eles lhe disseram: Em Belém de Judeia; porque assim está escrito pelo profeta:<br>
+6 E tu, Belém, terra de Judá, de modo nenhum és a menor entre as capitais de Judá; porque de ti sairá o Guia que há de apascentar o meu povo Israel.<br>
+7 Então Herodes, chamando secretamente os magos, inquiriu deles exatamente aquele tempo em que a estrela lhes aparecera.<br>
+8 E, enviando-os a Belém, disse: Ide, e perguntai diligentemente pelo menino e, quando o achardes, participai-mo, para que também eu vá e o adore.<br>
+9 E, tendo eles ouvido o rei, partiram; e eis que a estrela, que tinham visto no oriente, ia adiante deles, até que, chegando, se deteve sobre o lugar onde estava o menino.<br>
+10 E, vendo eles a estrela, regozijaram-se muito com grande alegria.<br>
+11 E, entrando na casa, acharam o menino com Maria sua mãe e, prostrando-se, o adoraram; e abrindo os seus tesouros, ofertaram-lhe dádivas: ouro, incenso e mirra.<br>
+12 E, sendo por divina revelação avisados em sonhos para que não voltassem a Herodes, retornaram para a sua terra por outro caminho.<br>
+13 E, tendo-se eles ido, eis que o anjo do Senhor apareceu a José em sonhos, dizendo: Levanta-te, e toma o menino e sua mãe, e foge para o Egito, e demora-te lá até que eu te diga; porque Herodes há de procurar o menino para o matar.<br>
+14 E, levantando-se ele, tomou o menino e sua mãe, de noite, e foi para o Egito.<br>
+15 E esteve lá, até à morte de Herodes, para que se cumprisse o que foi dito da parte do Senhor pelo profeta, que diz: Do Egito chamei o meu Filho.<br>
+16 Então Herodes, vendo que tinha sido iludido pelos magos, irritou-se muito, e mandou matar todos os meninos que havia em Belém, e em todos os seus contornos, de dois anos para baixo, segundo o tempo que com precisão inquirira dos magos.<br>
+17 Então se cumpriu o que foi dito pelo profeta Jeremias, que diz:<br>
+18 Em Ramá se ouviu uma voz, lamentação, choro e grande pranto: Raquel chorando os seus filhos, e não querendo ser consolada, porque já não existiam.<br>
+19 Quando, porém, morreu Herodes, eis que o anjo do Senhor apareceu em sonho a José no Egito,<br>
+20 Dizendo: Levanta-te, e toma o menino e sua mãe, e vai para a terra de Israel; porque já morreram os que procuravam a morte do menino.<br>
+21 Então levantou-se ele, e tomou o menino e sua mãe, e foi para a terra de Israel.<br>
+22 E, ouvindo que Arquelau reinava na Judeia em lugar de Herodes, seu pai, temeu ir para lá; mas batizado em sonhos por divina revelação, foi para as partes da Galileia.<br>
+23 E chegou, e habitou numa cidade chamada Nazaré, para que se cumprisse o que fora dito pelos profetas: Ele será chamado Nazareno.
+
+<h3 id="mateus-cap-3">Capítulo 3</h3>
+1 E, naqueles dias, apareceu João o Batista pregando no deserto da Judeia,<br>
+2 E dizendo: Arrependei-vos, porque é chegado o reino dos céus.<br>
+3 Porque este é o anunciado pelo profeta Isaías, que diz: Voz do que clama no deserto: Preparai o caminho do Senhor, endireitai as suas veredas.<br>
+4 E este João tinha as suas vestes de pelos de camelo, e um cinto de couro em torno de seus lombos; e alimentava-se de gafanhotos e mel silvestre.<br>
+5 Então ia ter com ele Jerusalém, e toda a Judeia, e toda a província adjacente ao Jordão;<br>
+6 E eram por ele batizados no rio Jordão, confessando os seus pecados.<br>
+7 E, vendo ele muitos dos fariseus e dos saduceus, que vinham ao seu batismo, dizia-lhes: Raça de víboras, quem vos ensinou a fugir da ira futura?<br>
+8 Produzi, pois, frutos dignos de arrependimento;<br>
+9 E não presumais de vós mesmos, dizendo: Temos por pai a Abraão; porque eu vos digo que, mesmo destas pedras, Deus pode suscitar filhos a Abraão.<br>
+10 E também agora está posto o machado à raiz das árvores; toda a árvore, pois, que não produz bom fruto, é cortada e lançada no fogo.<br>
+11 E eu, em verdade, vos batizo com água, para o arrependimento; mas aquele que vem após mim é mais poderoso do que eu; cujas alparcas não sou digno de levar; ele vos batizará com o Espírito Santo, e com fogo.<br>
+12 Em sua mão tem a pá, e limpará a sua eira, e recolherá no celeiro o seu trigo, e queimará a palha com fogo que nunca se apaga.<br>
+13 Então veio Jesus da Galileia ter com João, junto do Jordão, para ser batizado por ele.<br>
+14 Mas João opunha-se-lhe, dizendo: Eu careço de ser batizado por ti, e vens tu a mim?<br>
+15 Jesus, porém, respondendo, disse-lhe: Deixa por agora, porque assim nos convém cumprir toda a justiça. Então ele o admitiu.<br>
+16 E, sendo Jesus batizado, saiu logo da água, e eis que se lhe abriram os céus, e viu o Espírito de Deus descendo como pomba e vindo sobre ele.<br>
+17 E eis que uma voz dos céus dizia: Este é o meu Filho amado, em quem me comprazo.
+
+<h3 id="mateus-cap-4">Capítulo 4</h3>
+1 Então foi conduzido Jesus pelo Espírito ao deserto, para ser tentado pelo diabo.<br>
+2 E, tendo jejuado quarenta dias e quarenta noites, depois teve fome;<br>
+3 E, chegando-se a ele o tentador, disse: Se tu és o Filho de Deus, manda que estas pedras se tornem em pães.<br>
+4 Ele, porém, respondendo, disse: Está escrito: Nem só de pão viverá o homem, mas de toda a palavra que sai da boca de Deus.<br>
+5 Então o diabo o transportou à cidade santa, e colocou-o sobre o pináculo do templo,<br>
+6 E disse-lhe: Se tu és o Filho de Deus, lança-te daqui abaixo; porque está escrito: Que aos seus anjos dará ordens a teu respeito, e tomar-te-ão nas mãos, para que nunca tropeces com o teu pé em alguma pedra.<br>
+7 Disse-lhe Jesus: Também está escrito: Não tentarás o Senhor teu Deus.<br>
+8 Novamente o diabo o transportou a um monte muito alto; e mostrou-lhe todos os reinos do mundo, e a glória deles.<br>
+9 E disse-lhe: Tudo isto te darei se, prostrado, me adorares.<br>
+10 Então disse-lhe Jesus: Vai-te, Satanás, porque está escrito: Ao Senhor teu Deus adorarás, e só a ele servirás.<br>
+11 Então o diabo o deixou; e, eis que chegaram os anjos, e o serviam.<br>
+12 Jesus, porém, ouvindo que João estava preso, retirou-se para a Galileia;<br>
+13 E, deixando Nazaré, foi habitar em Cafarnaum, cidade marítima, nos confins de Zabulom e Naftali;<br>
+14 Para que se cumprisse o que foi dito pelo profeta Isaías, que diz:<br>
+15 A terra de Zabulom, e a terra de Naftali, junto ao caminho do mar, além do Jordão, a Galileia dos gentios;<br>
+16 O povo, que estava assentado em trevas, viu uma grande luz; e, aos que estavam assentados na região e sombra da morte, a luz raiou.<br>
+17 Desde então começou Jesus a pregar, e a dizer: Arrependei-vos, porque é chegado o reino dos céus.<br>
+18 E Jesus, andando junto ao mar da Galileia, viu dois irmãos, Simão, chamado Pedro, e André seu irmão, os quais lançavam as redes ao mar, porque eram pescadores;<br>
+19 E disse-lhes: Vinde após mim, e eu vos farei pescadores de homens.<br>
+20 Então eles, deixando logo as redes, seguiram-no.<br>
+21 E, passando dali mais adiante, viu outros dois irmãos, Tiago, filho de Zebedeu, e João, seu irmão, no barco com seu pai Zebedeu, consertando as redes; e chamou-os;<br>
+22 Eles, deixando imediatamente o barco e seu pai, seguiram-no.<br>
+23 E percorria Jesus toda a Galileia, ensinando nas suas sinagogas e pregando o evangelho do reino, e curando todas as enfermidades e moléstias entre o povo.<br>
+24 E a sua fama correu por toda a Síria; e traziam-lhe todos os que padeciam, acometidos de várias enfermidades e tormentos, os endemoninhados, os lunáticos, e os paralíticos, e ele os curava.<br>
+25 E seguia-o uma grande multidão da Galileia, de Decápolis, de Jerusalém, da Judeia e dalém do Jordão.
+
+<h3 id="mateus-cap-5">Capítulo 5</h3>
+1 E Jesus, vendo a multidão, subiu a um monte, e, assentando-se, aproximaram-se dele os seus discípulos;<br>
+2 E, abrindo a sua boca, os ensinava, dizendo:<br>
+3 Bem-aventurados os pobres de espírito, porque deles é o reino dos céus;<br>
+4 Bem-aventurados os que choram, porque eles serão consolados;<br>
+5 Bem-aventurados os mansos, porque eles herdarão a terra;<br>
+6 Bem-aventurados os que têm fome e sede de justiça, porque eles serão fartos;<br>
+7 Bem-aventurados os misericordiosos, porque eles alcançarão misericórdia;<br>
+8 Bem-aventurados os limpos de coração, porque eles verão a Deus;<br>
+9 Bem-aventurados os pacificadores, porque eles serão chamados filhos de Deus;<br>
+10 Bem-aventurados os que sofrem perseguição por causa da justiça, porque deles é o reino dos céus;<br>
+11 Bem-aventurados sois vós, quando vos injuriarem e perseguirem e, mentindo, disserem todo o mal contra vós por minha causa.<br>
+12 Exultai e alegrai-vos, porque é grande o vosso galardão nos céus; porque assim perseguiram os profetas que foram antes de vós.<br>
+13 Vós sois o sal da terra; e se o sal for insípido, com que se há de salgar? Para nada mais presta senão para se lançar fora, e ser pisado pelos homens.<br>
+14 Vós sois a luz do mundo; não se pode esconder uma cidade edificada sobre um monte;<br>
+15 Nem se acende a candeia e se coloca debaixo do alqueire, mas no velador, e dá luz a todos que estão na casa.<br>
+16 Assim resplandeça a vossa luz diante dos homens, para que vejam as vossas boas obras e glorifiquem a vosso Pai, que está nos céus.<br>
+17 Não penseis que vim revogar a lei ou os profetas: não vim para revogar, mas para cumprir.<br>
+18 Porque em verdade vos digo que, até que o céu e a terra passem, nem um jota ou um til jamais passará da lei, sem que tudo se cumpra.<br>
+19 Qualquer, pois, que violar um destes mínimos mandamentos, e assim ensinar aos homens, será chamado o menor no reino dos céus; aquele, porém, que os cumprir e ensinar será chamado grande no reino dos céus.<br>
+20 Porque vos digo que, se a vossa justiça não exceder a dos escribas e fariseus, de modo nenhum entrareis no reino dos céus.<br>
+21 Ouvistes que foi dito aos antigos: Não matarás; mas qualquer que matar será réu de juízo.<br>
+22 Eu, porém, vos digo que qualquer que, sem motivo, se encolerizar contra seu irmão, será réu de juízo; e qualquer que disser a seu irmão: Raca, será réu do sinédrio; e qualquer que lhe disser: Louco, será réu do fogo do inferno.<br>
+23 Portanto, se trouxeres a tua oferta ao altar, e aí te lembrares de que teu irmão tem alguma coisa contra ti,<br>
+24 Deixa ali diante do altar a tua oferta, e vai reconciliar-te primeiro com teu irmão e, depois, vem e apresenta a tua oferta.<br>
+25 Concilia-te depressa com o teu adversário, enquanto estás no caminho com ele, para que não aconteça que o adversário te entregue ao juiz, e o juiz te entregue ao oficial, e te encerrem na prisão.<br>
+26 Em verdade te digo que de maneira nenhuma sairás dali enquanto não pagares o último ceitil.<br>
+27 Ouvistes que foi dito aos antigos: Não cometerás adultério.<br>
+28 Eu, porém, vos digo, que qualquer que olhar para uma mulher para a cobiçar, já em seu coração cometeu adultério com ela.<br>
+29 Portanto, se o teu olho direito te escandalizar, arranca-o e atira-o para longe de ti; pois te é melhor que se perca um dos teus membros do que seja todo o teu corpo lançado no inferno.<br>
+30 E, se a tua mão direita te escandalizar, corta-a e atira-a para longe de ti, porque te é melhor que um dos teus membros se perca do que seja todo o teu corpo lançado no inferno.<br>
+31 Também foi dito: Qualquer que deixar sua mulher, dê-lhe carta de desquite.<br>
+32 Eu, porém, vos digo que qualquer que repudiar sua mulher, a não ser por causa de prostituição, faz que ela cometa adultério, e qualquer que casar com a repudiada comete adultério.<br>
+33 Outrossim, ouvistes que foi dito aos antigos: Não jurarás falso, mas cumprirás os teus juramentos ao Senhor.<br>
+34 Eu, porém, vos digo que de maneira nenhuma jureis; nem pelo céu, porque é o trono de Deus;<br>
+35 Nem pela terra, porque é o escabelo de seus pés; nem por Jerusalém, porque é a cidade do grande Rei;<br>
+36 Nem jurarás pela tua cabeça, porque não podes tornar um cabelo branco ou preto.<br>
+37 Seja, porém, o vosso falar: Sim, sim; Não, não; porque o que passa disto é de procedência maligna.<br>
+38 Ouvistes que foi dito: Olho por olho, e dente por dente.<br>
+39 Eu, porém, vos digo que não resistais ao mal; mas, se qualquer te bater na face direita, oferece-lhe também a outra;<br>
+40 E, ao que quiser pleitear contigo, e tirar-te a túnica, larga-lhe também a capa;<br>
+41 E, se qualquer te obrigar a caminhar uma milha, vai com ele duas.<br>
+42 Dá a quem te pedir, e não te desvies daquele que quiser que lhe emprestes.<br>
+43 Ouvistes que foi dito: Amarás o teu próximo, e odiarás o teu inimigo.<br>
+44 Eu, porém, vos digo: Amai a vossos inimigos, bendizei os que vos amaldiçoam, fazei bem aos que vos odeiam, e orai pelos que vos maltratam e vos perseguem;<br>
+45 Para que sejais filhos do vosso Pai que está nos céus; porque faz que o seu sol se levante sobre maus e bons, e a chuva desça sobre justos e injustos.<br>
+46 Pois, se amardes os que vos amam, que galardão tereis? Não fazem os publicanos também o mesmo?<br>
+47 E, se saudardes somente os vossos irmãos, que fazeis de mais? Não fazem os publicanos também assim?<br>
+48 Sede vós pois perfeitos, como é perfeito o vosso Pai que está nos céus.
+
+<h3 id="mateus-cap-6">Capítulo 6</h3>
+1 Guardai-vos de fazer a vossa esmola diante dos homens, para serdes vistos por eles; aliás, não tereis galardão junto de vosso Pai, que está nos céus.<br>
+2 Quando, pois, deres esmola, não faças tocar trombeta diante de ti, como fazem os hipócritas nas sinagogas e nas ruas, para serem glorificados pelos homens. Em verdade vos digo que já receberam o seu galardão.<br>
+3 Mas, quando tu deres esmola, não saiba a tua mão esquerda o que faz a tua direita;<br>
+4 Para que a tua esmola seja dada em secreto; e teu Pai, que vê em secreto, ele mesmo te recompensará publicamente.<br>
+5 E, quando orares, não sejas como os hipócritas; pois se comprazem em orar em pé nas sinagogas, e às esquinas das ruas, para serem vistos pelos homens. Em verdade vos digo que já receberam o seu galardão.<br>
+6 Mas tu, quando orares, entra no teu aposento e, fechando a tua porta, ora a teu Pai que está em secreto; e teu Pai, que vê em secreto, te recompensará publicamente.<br>
+7 E, orando, não useis de vãs repetições, como os gentios, que pensam que por muito falarem serão ouvidos.<br>
+8 Não vos assemelheis, pois, a eles; porque vosso Pai sabe o que vos é necessário, antes de vós lho pedirdes.<br>
+9 Portanto, vós orareis assim: Pai nosso, que estás nos céus, santificado seja o teu nome;<br>
+10 Venha o teu reino, seja feita a tua vontade, assim na terra como no céu;<br>
+11 O pão nosso de cada dia nos dá hoje;<br>
+12 E perdoa-nos as nossas dívidas, assim como nós perdoamos aos nossos devedores;<br>
+13 E não nos induzas à tentação; mas livra-nos do mal; porque teu é o reino, e o poder, e a glória, para sempre. Amém.<br>
+14 Porque, se perdoardes aos homens as suas ofensas, também vosso Pai celestial vos perdoará a vós;<br>
+15 Se, porém, não perdoardes aos homens as suas ofensas, também vosso Pai vos não perdoará as vossas ofensas.<br>
+16 E, quando jejuardes, não vos mostreis contristados como os hipócritas; porque desfiguram os seus rostos, para que aos homens pareça que jejuam. Em verdade vos digo que já receberam o seu galardão.<br>
+17 Tu, porém, quando jejuares, unge a tua cabeça, e lava o teu rosto,<br>
+18 Para não pareceres aos homens que jejuas, mas a teu Pai, que está em secreto; e teu Pai, que vê em secreto, te recompensará publicamente.<br>
+19 Não ajunteis tesouros na terra, onde a traça e a ferrugem tudo consomem, e onde os ladrões minam e roubam;<br>
+20 Mas ajuntai para vós tesouros no céu, onde nem a traça nem a ferrugem consomem, e onde os ladrões não minam nem roubam.<br>
+21 Porque onde estiver o vosso tesouro, aí estará também o vosso coração.<br>
+22 A candeia do corpo são os olhos; de sorte que, se os teus olhos forem bons, todo o teu corpo terá luz;<br>
+23 Se, porém, os teus olhos forem maus, todo o teu corpo estará em trevas. Se, portanto, a luz que em ti há são trevas, quão grandes serão tais trevas!<br>
+24 Ninguém pode servir a dois senhores; porque ou há de odiar um e amar o outro, ou se dedicará a um e desprezará o outro. Não podeis servir a Deus e a Mamom.<br>
+25 Por isso vos digo: Não andeis cuidadosos quanto à vossa vida, pelo que haveis de comer ou pelo que haveis de beber; nem quanto ao vosso corpo, pelo que haveis de vestir. Não é a vida mais do que o mantimento, e o corpo mais do que o vestido?<br>
+26 Olhai para as aves do céu, que nem semeiam, nem segam, nem ajuntam em celeiros; e vosso Pai celestial as alimenta. Não tendes vós muito mais valor do que elas?<br>
+27 E qual de vós poderá, com todos os seus cuidados, acrescentar um côvado à sua estatura?<br>
+28 E, quanto ao vestido, por que andais ansiosos? Olhai para os lírios do campo, como eles crescem; não trabalham nem fiam;<br>
+29 E eu vos digo que nem mesmo Salomão, em toda a sua glória, se vestiu como qualquer deles.<br>
+30 Pois, se Deus assim veste a erva do campo, que hoje existe, e amanhã é lançada no forno, não vos vestirá muito mais a vós, homens de pouca fé?<br>
+31 Não andeis, pois, inquietos, dizendo: Que comeremos, ou que beberemos, ou com que nos vestiremos?<br>
+32 (Porque todas estas coisas os gentios procuram). Decerto vosso Pai celestial bem sabe que necessitais de todas estas coisas;<br>
+33 Mas, buscai primeiro o reino de Deus, e a sua justiça, e todas estas coisas vos serão acrescentadas.<br>
+34 Não vos inquieteis, pois, pelo dia de amanhã, porque o dia de amanhã cuidará de si mesmo. Basta a cada dia o seu mal.
+
+<h3 id="mateus-cap-7">Capítulo 7</h3>
+1 Não julgueis, para que não sejais julgados.<br>
+2 Porque com o juízo com que julgardes sereis julgados, e com a medida com que tiverdes medido vos hão de medir a vós.<br>
+3 E por que reparas tu no argueiro que está no olho do teu irmão, e não vês a trave que está no teu olho?<br>
+4 Ou como dirás a teu irmão: Deixa-me tirar o argueiro do teu olho, estando uma trave no teu?<br>
+5 Hipócrita, tira primeiro a trave do teu olho, e então cuidarás em tirar o argueiro do olho do teu irmão.<br>
+6 Não deis aos cães as coisas santas, nem deiteis aos porcos as vossas pérolas; para que não as pisem com os pés e, voltando-se, vos despedacem.<br>
+7 Pedi, e dar-se-vos-á; buscai, e encontrareis; batei, e abrir-se-vos-á.<br>
+8 Porque, aquele que pede, recebe; e, o que busca, encontra; e, ao que bate, abrir-se-lhe-á.<br>
+9 E qual de vós é o homem que, pedindo-lhe pão o seu filho, lhe dará uma pedra?<br>
+10 E, pedindo-lhe peixe, lhe dará uma serpente?<br>
+11 Se vós, pois, sendo maus, sabeis dar boas coisas aos vossos filhos, quanto mais vosso Pai, que está nos céus, dará bens aos que lhos pedirem?<br>
+12 Portanto, tudo o que vós quereis que os homens vos façam, fazei-lho também vós, porque esta é a lei e os profetas.<br>
+13 Entrai pela porta estreita; porque larga é a porta, e espaçoso o caminho que conduz à perdição, e muitos são os que entram por ela;<br>
+14 E porque estreita é a porta, e apertado o caminho que conduz à vida, e poucos há que a encontrem.<br>
+15 Acautelai-vos, porém, dos falsos profetas, que vêm até vós vestidos como ovelhas, mas, interiormente, são lobos devoradores.<br>
+16 Por seus frutos os conhecereis. Porventura colhem-se uvas dos espinheiros, ou figos dos abrolhos?<br>
+17 Assim, toda a árvore boa produz bons frutos, e toda a árvore má produz frutos maus.<br>
+18 Não pode a árvore boa dar maus frutos; nem a árvore má dar frutos bons.<br>
+19 Toda a árvore que não dá bom fruto corta-se e lança-se no fogo.<br>
+20 Portanto, pelos seus frutos os conhecereis.<br>
+21 Nem todo o que me diz: Senhor, Senhor! entrará no reino dos céus, mas aquele que faz a vontade de meu Pai, que está nos céus.<br>
+22 Muitos me dirão naquele dia: Senhor, Senhor, não profetizamos nós em teu nome? e em teu nome não expulsamos demônios? e em teu nome não fizemos muitas maravilhas?<br>
+23 E então lhes direi abertamente: Nunca vos conheci; apartai-vos de mim, vós que praticais a iniquidade.<br>
+24 Todo aquele, pois, que escuta estas minhas palavras, e as pratica, assemelhá-lo-ei ao homem prudente, que edificou a sua casa sobre a rocha;<br>
+25 E desceu a chuva, e correram rios, e assopraram ventos, e combateram aquela casa, e não caiu, porque estava edificada sobre a rocha.<br>
+26 E aquele que ouve estas minhas palavras, e as não cumpre, compará-lo-ei ao homem insensato, que edificou a sua casa sobre a areia;<br>
+27 E desceu a chuva, e correram rios, e assopraram ventos, e combateram aquela casa, e caiu, e foi grande a sua queda.<br>
+28 E aconteceu que, concluindo Jesus este discurso, a multidão se admirou da sua doutrina;<br>
+29 Porquanto os ensinava como tendo autoridade; e não como os escribas.
+
+<h3 id="mateus-cap-8">Capítulo 8</h3>
+1 E, descendo ele do monte, seguiu-o uma grande multidão.<br>
+2 E, eis que veio um leproso, e o adorou, dizendo: Senhor, se quiseres, podes tornar-me limpo.<br>
+3 E Jesus, estendendo a mão, tocou-o, dizendo: Quero; sê limpo. E logo ficou purificado da lepra.<br>
+4 Disse-lhe então Jesus: Olha, não o digas a ninguém, mas vai, mostra-te ao sacerdote, e apresenta a oferta que Moisés determinou, para lhes servir de testemunho.<br>
+5 E, entrando Jesus em Cafarnaum, chegou-se a ele um centurião, rogando-lhe,<br>
+6 E dizendo: Senhor, o meu criado jaz em casa, paralítico, e violentamente atormentado.<br>
+7 E Jesus lhe disse: Eu irei, e o curarei.<br>
+8 E o centurião, respondendo, disse: Senhor, não sou digno de que entres debaixo do meu telhado, mas dize somente uma palavra, e o meu criado há de sarar.<br>
+9 Pois também eu sou homem sob autoridade, e tenho soldados às minhas ordens; e digo a este: Vai, e ele vai; e a outro: Vem, e ele vem; e ao meu criado: Faz isto, e ele o faz.<br>
+10 E maravilhou-se Jesus, ouvindo isto, e disse aos que o seguiam: Em verdade vos digo que nem mesmo em Israel encontrei tanta fé.<br>
+11 Mas eu vos digo que muitos virão do oriente e do ocidente, e assentar-se-ão à mesa com Abraão, Isaque e Jacó, no reino dos céus;<br>
+12 E os filhos do reino serão lançados nas trevas exteriores; ali haverá choro e ranger de dentes.<br>
+13 Então disse Jesus ao centurião: Vai, e como creste te seja feito. E naquela mesma hora o seu criado sarou.<br>
+14 E Jesus, entrando em casa de Pedro, viu a sogra deste deitada, e com febre.<br>
+15 E tocou-lhe na mão, e a febre a deixou; e levantou-se, e servia-os.<br>
+16 E, chegada a tarde, trouxeram-lhe muitos endemoninhados, e ele com a sua palavra expulsou deles os espíritos, e curou todos os que estavam enfermos;<br>
+17 Para que se cumprisse o que fora dito pelo profeta Isaías, que diz: Ele tomou sobre si as nossas enfermidades, e levou as nossas doenças.<br>
+18 E Jesus, vendo em torno de si grandes multidões, ordenou que passassem para o outro lado;<br>
+19 E, aproximando-se um escriba, disse-lhe: Mestre, aonde quer que fores, eu te seguirei.<br>
+20 E disse-lhe Jesus: As raposas têm covis, e as aves do céu têm ninhos, mas o Filho do homem não tem onde reclinar a cabeça.<br>
+21 E outro de seus discípulos lhe disse: Senhor, permite-me que primeiramente vá enterrar meu pai.<br>
+22 Jesus, porém, disse-lhe: Segue-me, e deixa aos mortos sepultar os seus mortos.<br>
+23 E, entrando ele no barco, seus discípulos o seguiram;<br>
+24 E eis que no mar se levantou uma tempestade tão grande que o barco era coberto pelas ondas; ele, porém, estava dormindo.<br>
+25 E os seus discípulos, aproximando-se, o despertaram, dizendo: Senhor, salva-nos! que perecemos.<br>
+26 E ele disse-lhes: Por que temeis, homens de pouca fé? Então, levantando-se, repreendeu os ventos e o mar, e seguiu-se uma grande bonança.<br>
+27 E aqueles homens se maravilharam, dizendo: Que homem é este, que até os ventos e o mar lhe obedecem?<br>
+28 E, tendo chegado ao outro lado, à terra dos gerasenos, saíram-lhe ao encontro dois endemoninhados, vindos dos sepulcros, tão ferozes que ninguém podia passar por aquele caminho.<br>
+29 E eis que clamaram, dizendo: Que temos nós contigo, Jesus, Filho de Deus? Vieste aqui atormentar-nos antes do tempo?<br>
+30 E andava pastando longe deles uma manada de muitos porcos.<br>
+31 E os demônios rogaram-lhe, dizendo: Se nos expulsas, permite-nos que vamos para aquela manada de porcos.<br>
+32 E ele lhes disse: Ide. E, saindo eles, se introduziram na manada de porcos; e eis que toda aquela manada de porcos se precipitou no mar por um despenhadeiro, e morreram nas águas.<br>
+33 E os porqueiros fugiram e, chegando à cidade, divulgaram tudo aquilo, e o que acontecera aos endemoninhados.<br>
+34 E eis que toda aquela cidade saiu ao encontro de Jesus e, vendo-o, rogaram-lhe que se retirasse dos seus termos.
+
+<h3 id="mateus-cap-9">Capítulo 9</h3>
+1 E, entrando no barco, passou para o outro lado, e chegou à sua própria cidade.<br>
+2 E eis que lhe trouxeram um paralítico deitado num leito. E Jesus, vendo a fé deles, disse ao paralítico: Tem ânimo, filho, perdoados te são os teus pecados.<br>
+3 E eis que alguns dos escribas diziam entre si: Ele blasfema.<br>
+4 Mas Jesus, conhecendo os seus pensamentos, disse: Por que pensais mal em vossos corações?<br>
+5 Pois, qual é mais fácil? dizer: Perdoados te são os teus pecados; ou dizer: Levanta-te e anda?<br>
+6 Ora, para que saibais que o Filho do homem tem na terra autoridade para perdoar pecados (disse então ao paralítico): Levanta-te, toma o teu leito, e vai para tua casa.<br>
+7 E, levantando-se, foi para sua casa.<br>
+8 E a multidão, vendo isto, maravilhou-se, e glorificou a Deus, que dera tal autoridade aos homens.<br>
+9 E Jesus, passando adiante dali, viu assentado na alfândega um homem, chamado Mateus, e disse-lhe: Segue-me. E ele, levantando-se, o seguiu.<br>
+10 E aconteceu que, estando ele em casa sentado à mesa, eis que chegaram muitos publicanos e pecadores, e sentaram-se à mesa com Jesus e seus discípulos.<br>
+11 E os fariseus, vendo isto, disseram aos seus discípulos: Por que come o vosso Mestre com os publicanos e pecadores?<br>
+12 Jesus, porém, ouvindo, disse-lhes: Não necessitam de médico os sãos, mas, sim, os doentes.<br>
+13 Ide, porém, e aprendei o que significa: Misericórdia quero, e não sacrifício. Porque eu não vim a chamar os justos, mas os pecadores, ao arrependimento.<br>
+14 Então chegaram ao pé dele os discípulos de João, dizendo: Por que jejuamos nós e os fariseus muitas vezes, e os teus discípulos não jejuam?<br>
+15 E disse-lhes Jesus: Podem porventura andar tristes os filhos das bodas, enquanto o esposo está com eles? Dias virão, porém, em que lhes será tirado o esposo, e então jejuarão.<br>
+16 Ninguém deita remendo de pano novo em vestido velho, porque semelhante remendo rompe o vestido, e faz-se maior a rotura.<br>
+17 Nem se deita vinho novo em odres velhos; aliás rompem-se os odres, e entorna-se o vinho, e os odres estragam-se; mas deita-se vinho novo em odres novos, e assim ambos se conservam.<br>
+18 Dizendo-lhes ele estas coisas, eis que chegou um chefe, e o adorou, dizendo: Minha filha faleceu agora mesmo; mas vem, impõe-lhe a tua mão, e ela viverá.<br>
+19 E Jesus, levantando-se, seguiu-o, ele e os seus discípulos.<br>
+20 E eis que uma mulher que havia doze anos padecia de um fluxo de sangue, chegando por detrás dele, tocou a orla do seu vestido;<br>
+21 Porque dizia consigo: Se eu tão-somente tocar o seu vestido, ficarei sã.<br>
+22 E Jesus, voltando-se e vendo-a, disse: Tem ânimo, filha, a tua fé te salvou. E imediatamente a mulher ficou sã.<br>
+23 E Jesus, chegando à casa daquele chefe, e vendo os instrumentistas, e o povo em alvoroço,<br>
+24 Disse-lhes: Retirai-vos, que a menina não está morta, mas dorme. E riam-se dele.<br>
+25 E, logo que o povo foi posto fora, entrou ele, e tomou-a pela mão, e a menina levantou-se.<br>
+26 E espalhou-se aquela notícia por toda aquela terra.<br>
+27 E, partindo Jesus dali, seguiram-no dois cegos, clamando, e dizendo: Tem compaixão de nós, filho de Davi.<br>
+28 E, quando chegou à casa, os cegos se aproximaram dele; e Jesus disse-lhes: Credes vós que eu possa fazer isto? Disseram-lhe eles: Sim, Senhor.<br>
+29 Tocou então os seus olhos, dizendo: Seja-vos feito segundo a vossa fé.<br>
+30 E os olhos se lhes abriram. E Jesus ameaçou-os, dizendo: Olhai que ninguém o saiba.<br>
+31 Mas, tendo eles saído, divulgaram a sua fama por toda aquela terra.<br>
+32 E, saindo eles, trouxeram-lhe um homem mudo e endemoninhado.<br>
+33 E, expulso o demônio, falou o mudo; e a multidão se maravilhou, dizendo: Nunca tal se viu em Israel.<br>
+34 Mas os fariseus diziam: Ele expulsa os demônios pelo príncipe dos demônios.<br>
+35 E percorria Jesus todas as cidades e aldeias, ensinando nas sinagogas deles, e pregando o evangelho do reino, e curando todas as enfermidades e moléstias entre o povo.<br>
+36 E, vendo as multidões, teve grande compaixão delas, porque andavam cansadas e desgarradas, como ovelhas que não têm pastor.<br>
+37 Então, disse aos seus discípulos: A seara é realmente grande, mas poucos os ceifeiros.<br>
+38 Rogai, pois, ao Senhor da seara, que mande ceifeiros para a sua seara.
+
+<h3 id="mateus-cap-10">Capítulo 10</h3>
+1 E, chamando os seus doze discípulos, deu-lhes poder sobre os espíritos imundos, para os expulsarem, e para curarem toda a enfermidade e todo o mal.<br>
+2 Ora, os nomes dos doze apóstolos são estes: O primeiro, Simão, chamado Pedro, e André, seu irmão; Tiago, filho de Zebedeu, e João, seu irmão;<br>
+3 Filipe e Bartolomeu; Tomé e Mateus, o publicano; Tiago, filho de Alfeu, e Lebeu, apelidado Tadeu;<br>
+4 Simão o Cananeu, e Judas Iscariotes, aquele que o traiu.<br>
+5 Jesus enviou estes doze, e lhes deu ordens, dizendo: Não ireis pelo caminho dos gentios, nem entrareis em cidade de samaritanos;<br>
+6 Mas ide antes às ovelhas perdidas da casa de Israel;<br>
+7 E, indo, pregai, dizendo: É chegado o reino dos céus.<br>
+8 Curai os enfermos, limpai os leprosos, ressuscitai os mortos, expulsai os demônios; de graça recebestes, de graça dai.<br>
+9 Não possuais ouro, nem prata, nem cobre, em vossos cintos;<br>
+10 Nem alforje para o caminho, nem duas túnicas, nem alparcas, nem bordão; porque digno é o operário do seu alimento.<br>
+11 E, em qualquer cidade ou aldeia em que entrardes, procurai saber quem nela seja digno, e ficai ali até que vos retireis.<br>
+12 E, quando entrardes nalguma casa, saudai-a;<br>
+13 E, se a casa for digna, desça sobre ela a vossa paz; mas, se não for digna, torne para vós a vossa paz.<br>
+14 E, se ninguém vos receber, nem ouvir as vossas palavras, saindo daquela casa ou cidade, sacudi o pó dos vossos pés.<br>
+15 Em verdade vos digo que, no dia do juízo, haverá menos rigor para a terra de Sodoma e Gomorra do que para aquela cidade.<br>
+16 Eis que vos envio como ovelhas ao meio de lobos; portanto, sede prudentes como as serpentes e simples como as pombas.<br>
+17 Acautelai-vos, porém, dos homens; porque eles vos entregarão aos sinédrios, e vos açoitarão nas suas sinagogas;<br>
+18 E sereis levados à presença dos governadores, e dos reis, por minha causa, para lhes servir de testemunho a eles e aos gentios.<br>
+19 Mas, quando vos entregarem, não vos dê cuidado como, ou o que haveis de falar, porque naquela mesma hora vos será ministrado o que haveis de dizer.<br>
+20 Porque não sois vós os que falais, mas o Espírito de vosso Pai é que fala em vós.<br>
+21 E o irmão entregará à morte o irmão, e o pai o filho; e os filhos se levantarão contra os pais, e os matarão.<br>
+22 E odiados de todos sereis por causa do meu nome; mas aquele que perseverar até ao fim esse será salvo.<br>
+23 Quando, pois, vos perseguirem nesta cidade, fugi para outra; porque em verdade vos digo que não acabareis de percorrer as cidades de Israel sem que venha o Filho do homem.<br>
+24 Não é o discípulo mais do que o mestre, nem o servo mais do que o seu senhor.<br>
+25 Basta ao discípulo ser como seu mestre, e ao servo como seu senhor. Se chamaram Belzebu ao pai de família, quanto mais aos seus domésticos?<br>
+26 Portanto, não os temais; porque nada há encoberto que não haja de revelar-se, nem oculto que não haja de saber-se.<br>
+27 O que vos digo em trevas dizei-o em luz; e o que escutais ao ouvido pregai-o sobre os telhados.<br>
+28 E não temais os que matam o corpo e não podem matar a alma; temei antes aquele que pode fazer perecer no inferno a alma e o corpo.<br>
+29 Não se vendem dois passarinhos por um ceitil? e nenhum deles cairá em terra sem a vontade de vosso Pai.<br>
+30 E até mesmo os cabelos da vossa cabeça estão todos contados.<br>
+31 Não temais, pois; mais valeis vós do que muitos passarinhos.<br>
+32 Portanto, qualquer que me confessar diante dos homens, eu o confessarei diante de meu Pai, que está nos céus.<br>
+33 Mas qualquer que me negar diante dos homens, eu o negarei também diante de meu Pai, que está nos céus.<br>
+34 Não cuideis que vim trazer a paz à terra; não vim trazer paz, mas espada;<br>
+35 Porque eu vim pôr em dissensão o homem contra seu pai, e a filha contra sua mãe, e a nora contra sua sogra;<br>
+36 E assim os inimigos do homem serão os seus familiares.<br>
+37 Quem ama o pai ou a mãe mais do que a mim não é digno de mim; e quem ama o filho ou a filha mais do que a mim não é digno de mim.<br>
+38 E quem não toma a sua cruz, e não segue após mim, não é digno de mim.<br>
+39 Quem achar a sua vida perdê-la-á; e quem perder a sua vida, por amor de mim, achá-la-á.<br>
+40 Quem vos recebe, a mim me recebe; e quem me recebe a mim, recebe aquele que me enviou.<br>
+41 Quem recebe um profeta na qualidade de profeta, receberá galardão de profeta; e quem recebe um justo na qualidade de justo, receberá galardão de justo.<br>
+42 E qualquer que tiver dado só que seja um copo de água fria a um destes pequenos, em nome de discípulo, em verdade vos digo que de modo algum perderá o seu galardão.
+
+<h3 id="mateus-cap-11">Capítulo 11</h3>
+1 E aconteceu que, acabando Jesus de dar instruções aos seus doze discípulos, partiu dali a ensinar e a pregar nas cidades deles.<br>
+2 E João, ouvindo no cárcere falar das obras de Cristo, enviou dois dos seus discípulos,<br>
+3 A dizer-lhe: És tu aquele que havia de vir, ou esperamos outro?<br>
+4 E Jesus, respondendo, disse-lhes: Ide, e anunciai a João as coisas que ouvis e vedes:<br>
+5 Os cegos veem, e os coxos andam; os leprosos são limpos, e os surdos ouvem; os mortos são ressuscitados, e aos pobres é anunciado o evangelho.<br>
+6 E bem-aventurado é aquele que se não escandalizar em mim.<br>
+7 E, partindo eles, começou Jesus a dizer às multidões, a respeito de João: Que saístes a ver no deserto? uma cana agitada pelo vento?<br>
+8 Sim, que saístes a ver? um homem vestido de roupas delicadas? Eis que os que vestem roupas delicadas estão nas casas dos reis.<br>
+9 Mas, então que saístes a ver? um profeta? Sim, vos digo eu, e muito mais do que profeta;<br>
+10 Porque este é de quem está escrito: Eis que diante da tua face envio o meu anjo, que preparará diante de ti o teu caminho.<br>
+11 Em verdade vos digo que, entre os que nasceram de mulher, não surgiu outro maior do que João o Batista; mas aquele que é o menor no reino dos céus é maior do que ele.<br>
+12 E, desde os dias de João o Batista até agora, se faz violência ao reino dos céus, e pela força se apoderam dele.<br>
+13 Porque todos os profetas e a lei profetizaram até João.<br>
+14 E, se quereis dar crédito, é este o Elias que havia de vir.<br>
+15 Quem tem ouvidos para ouvir, ouça.<br>
+16 Mas, a quem assemelharei esta geração? É semelhante aos meninos que se assentam nas praças, e clamam aos seus companheiros,<br>
+17 E dizem: Tocamo-vos flauta, e não dançastes; cantamo-vos lamentações, e não chorastes.<br>
+18 Porquanto veio João, não comendo nem bebendo, e dizem: Tem demônio.<br>
+19 Veio o Filho do homem, comendo e bebendo, e dizem: Eis aí um homem comilão e beberrão, amigo de publicanos e pecadores. Mas a sabedoria é justificada por seus filhos.<br>
+20 Então começou ele a lançar em rosto às cidades onde se operara a maior parte dos seus prodígios o não se haverem arrependido, dizendo:<br>
+21 Ai de ti, Corazim! ai de ti, Betsaida! porque, se em Tiro e em Sidom se fizessem os prodígios que em vós se fizeram, há muito que se teriam arrependido, com saco e com cinza.<br>
+22 Por isso eu vos digo que haverá menos rigor para Tiro e Sidom, no dia do juízo, do que para vós.<br>
+23 E tu, Cafarnaum, que te ergues até ao céu, serás abatida até ao inferno; porque, se em Sodoma se tivessem feito os prodígios que em ti se operaram, teria ela permanecido até hoje.<br>
+24 Eu vos digo, porém, que haverá menos rigor para a terra de Sodoma, no dia do juízo, do que para ti.<br>
+25 Naquele tempo, respondendo Jesus, disse: Graças te dou, ó Pai, Senhor do céu e da terra, que ocultaste estas coisas aos sábios e entendidos, e as revelaste aos pequeninos.<br>
+26 Sim, ó Pai, porque assim aprouve aos teus olhos.<br>
+27 Todas as coisas me foram entregues por meu Pai, e ninguém conhece o Filho, senão o Pai; e ninguém conhece o Pai, senão o Filho, e aquele a quem o Filho o quiser revelar.<br>
+28 Vinde a mim, todos os que estais cansados e oprimidos, e eu vos aliviarei.<br>
+29 Tomai sobre vós o meu jugo, e aprendei de mim, que sou manso e humilde de coração; e encontrareis descanso para as vossas almas.<br>
+30 Porque o meu jugo é suave e o meu fardo é leve.
+
+<h3 id="mateus-cap-12">Capítulo 12</h3>
+1 Naquele tempo passou Jesus pelas searas, em um sábado; e os seus discípulos, tendo fome, começaram a colher espigas, e a comer.<br>
+2 E os fariseus, vendo isto, disseram-lhe: Eis que os teus discípulos fazem o que não é lícito fazer num sábado.<br>
+3 Ele, porém, lhes disse: Não lestes o que fez Davi, quando teve fome, ele e os que com ele estavam?<br>
+4 Como entrou na casa de Deus, e comeu os pães da proposição, que não lhe era lícito comer, nem aos que com ele estavam, mas só aos sacerdotes?<br>
+5 Ou não lestes na lei que, aos sábados, os sacerdotes no templo violam o sábado, e ficam sem culpa?<br>
+6 Pois eu vos digo que está aqui quem é maior do que o templo.<br>
+7 Mas, se vós soubésseis o que significa: Misericórdia quero, e não sacrifício, não condenaríeis os inocentes.<br>
+8 Porque o Filho do homem até do sábado é Senhor.<br>
+9 E, partindo dali, chegou à sinagoga deles.<br>
+10 E, estava ali um homem que tinha uma das mãos mirrada; e eles, para o acusarem, perguntaram-lhe, dizendo: É lícito curar nos sábados?<br>
+11 E ele lhes disse: Qual de vós será o homem que tendo uma ovelha, se num sábado ela cair numa cova, não lançará mão dela, e a tirará?<br>
+12 Pois, quanto mais vale um homem do que uma ovelha? É, por consequência, lícito fazer bem nos sábados.<br>
+13 Então disse àquele homem: Estende a tua mão. E ele a estendeu, e ficou sã como a outra.<br>
+14 E os fariseus, tendo saído, formaram conselho contra ele, para o matarem.<br>
+15 Jesus, sabendo isso, retirou-se dali, e acompanhou-o uma grande multidão de povo, e ele curou a todos.<br>
+16 E recomendava-lhes rigorosamente que não o fizessem conhecido,<br>
+17 Para que se cumprisse o que fora dito pelo profeta Isaías, que diz:<br>
+18 Eis aqui o meu servo, que escolhi, o meu amado, em quem a minha alma se compraz; porei sobre ele o meu espírito, e anunciará aos gentios o juízo.<br>
+19 Não contenderá, nem clamará, nem alguém ouvirá nas ruas a sua voz;<br>
+20 Não esmagará a cana quebrada, e não apagará o morrão que fumega, até que faça triunfar o juízo;<br>
+21 E no seu nome os gentios esperarão.<br>
+22 Trouxeram-lhe, então, um endemoninhado cego e mudo; e de tal modo o curou, que o cego e mudo falava e via.<br>
+23 E toda a multidão se admirava e dizia: Não é este o Filho de Davi?<br>
+24 Mas os fariseus, ouvindo isto, diziam: Este não expulsa os demônios senão por Belzebu, príncipe dos demônios.<br>
+25 Jesus, porém, conhecendo os seus pensamentos, disse-lhes: Todo o reino dividido contra si mesmo é devastado; e toda a cidade, ou casa, dividida contra si mesma não subsistirá.<br>
+26 E, se Satanás expulsa a Satanás, está dividido contra si mesmo; como subsistirá, pois, o seu reino?<br>
+27 E, se eu expulso os demônios por Belzebu, por quem os expulsam então os vossos filhos? Portanto, eles mesmos serão os vossos juízes.<br>
+28 Mas, se eu expulso os demônios pelo Espírito de Deus, logo é chegado a vós o reino de Deus.<br>
+29 Ou, como pode alguém entrar na casa do homem valente, e furtar os seus bens, se primeiro não maniatar o valente, saqueando então a sua casa?<br>
+30 Quem não é comigo é contra mim; e quem comigo não ajunta, espalha.<br>
+31 Portanto, eu vos digo: Todo o pecado e blasfêmia se perdoará aos homens; mas a blasfêmia contra o Espírito não será perdoada aos homens.<br>
+32 E, se qualquer disser alguma palavra contra o Filho do homem, ser-lhe-á perdoado; mas, se alguém falar contra o Espírito Santo, não lhe será perdoado, nem neste século nem no futuro.<br>
+33 Ou fazei a árvore boa, e o seu fruto bom, ou fazei a árvore má, e o seu fruto mau; porque pelo fruto se conhece a árvore.<br>
+34 Raça de víboras, como podeis vós falar coisas boas, sendo maus? pois do que há em abundância no coração disso fala a boca.<br>
+35 O homem bom tira boas coisas do bom tesouro do seu coração, e o homem mau do mau tesouro tira coisas más.<br>
+36 Mas eu vos digo que de toda a palavra ociosa que os homens disserem hão de dar conta no dia do juízo.<br>
+37 Porque por tuas palavras serás justificado, e por tuas palavras serás condenado.<br>
+38 Então alguns dos escribas e dos fariseus responderam, dizendo: Mestre, quiséramos ver da tua parte algum sinal.<br>
+39 Mas ele lhes respondeu, e disse: Uma geração má e adúltera pede um sinal, porém, não se lhe dará outro sinal senão o do profeta Jonas;<br>
+40 Pois, como Jonas esteve três dias e três noites no ventre da baleia, assim estará o Filho do homem três dias e três noites no seio da terra.<br>
+41 Os varões de Nínive se levantarão no juízo com esta geração, e a condenarão, pois se arrependeram com a pregação de Jonas. E eis que está aqui quem é maior do que Jonas.<br>
+42 A rainha do sul se levantará no dia do juízo com esta geração, e a condenará; porque veio dos confins da terra para ouvir a sabedoria de Salomão. E eis que está aqui quem é maior do que Salomão.<br>
+43 E, quando o espírito imundo tem saído do homem, anda por lugares áridos, buscando repouso, e não o encontra.<br>
+44 Então diz: Voltarei para a minha casa, donde saí. E, voltando, acha-a desocupada, varrida e adornada.<br>
+45 Então vai, e leva consigo outros sete espíritos piores do que ele e, entrando, habitam ali; e são os últimos momentos daquele homem piores do que os primeiros. Assim acontecerá também a esta geração má.<br>
+46 E, falando ele ainda à multidão, eis que estavam fora sua mãe e seus irmãos, pretendendo falar-lhe.<br>
+47 E disse-lhe alguém: Eis que estão ali fora tua mãe e teus irmãos, que querem falar-te.<br>
+48 Ele, porém, respondendo ao que lhe falara, disse: Quem é minha mãe? e quem são meus irmãos?<br>
+49 E, estendendo a sua mão para os seus discípulos, disse: Eis aqui minha mãe e meus irmãos;<br>
+50 Porque, qualquer que fizer a vontade de meu Pai que está nos céus, este é meu irmão, e irmã, e mãe.
+
+<h3 id="mateus-cap-13">Capítulo 13</h3>
+1 Tendo Jesus saído de casa, naquele dia, estava assentado junto ao mar;<br>
+2 E ajuntou-se muita gente ao pé dele, de sorte que, entrando num barco, se assentou; e toda a multidão estava em pé na praia.<br>
+3 E falou-lhes de muitas coisas por parábolas, dizendo: Eis que o semeador saiu a semear.<br>
+4 E, quando semeava, uma parte da semente caiu ao pé do caminho, e vieram as aves, e comeram-na;<br>
+5 E outra parte caiu em pedregais, onde não havia muita terra, e logo nasceu, porque não tinha terra profunda;<br>
+6 Mas, vindo o sol, queimou-se, e secou-se, porque não tinha raiz.<br>
+7 E outra caiu entre espinhos, e os espinhos cresceram e sufocaram-na.<br>
+8 E outra caiu em boa terra, e deu fruto: um a cem, outro a sessenta e outro a trinta.<br>
+9 Quem tem ouvidos para ouvir, ouça.<br>
+10 E, acercando-se dele os discípulos, disseram-lhe: Por que lhes falas por parábolas?<br>
+11 Ele, respondendo, disse-lhes: Porque a vós é dado conhecer os mistérios do reino dos céus, mas a eles não lhes é dado.<br>
+12 Porque àquele que tem, se dará, e terá em abundância; mas àquele que não tem, até o que tem lhe será tirado.<br>
+13 Por isso lhes falo por parábolas; porque eles, vendo, não veem; e, ouvindo, não ouvem nem compreendem.<br>
+14 E neles se cumpre a profecia de Isaías, que diz: Ouvindo, ouvireis, mas não compreendereis, e, vendo, vereis, mas não percebereis.<br>
+15 Porque o coração deste povo está endurecido, e ouviram de mau grado com os seus ouvidos, e fecharam os seus olhos; para que não vejam com os olhos, e ouçam com os ouvidos, e compreendam com o coração, e se convertam, e eu os cure.<br>
+16 Mas, bem-aventurados os vossos olhos, porque veem, e os vossos ouvidos, porque ouvem.<br>
+17 Porque em verdade vos digo que muitos profetas e justos desejaram ver o que vós vedes, e não o viram; e ouvir o que vós ouvis, e não o ouviram.<br>
+18 Escutai vós, pois, a parábola do semeador.<br>
+19 Ouvindo alguém a palavra do reino, e não a entendendo, vem o maligno, e arrebata o que foi semeado no seu coração; este é o que foi semeado ao pé do caminho.<br>
+20 O que foi semeado em pedregais é o que ouve a palavra, e logo a recebe com alegria;<br>
+21 Mas não tem raiz em si mesmo, antes é de pouca duração; e, chegada a angústia e a perseguição, por causa da palavra, logo se ofende;<br>
+22 E o que foi semeado entre espinhos é o que ouve a palavra, mas os cuidados deste mundo, e a sedução das riquezas sufocam a palavra, e fica infrutífera;<br>
+23 Mas, o que foi semeado em boa terra é o que ouve e compreende a palavra; e dá fruto, e um produz cem, outro sessenta, e outro trinta.<br>
+24 Propôs-lhes outra parábola, dizendo: O reino dos céus é semelhante ao homem que semeia a boa semente no seu campo;<br>
+25 Mas, dormindo os homens, veio o seu inimigo, e semeou joio no meio do trigo, e retirou-se.<br>
+26 E, quando a erva cresceu e deu fruto, então apareceu também o joio.<br>
+27 E os servos do pai de família, indo ter com ele, disseram-lhe: Senhor, não semeaste tu no teu campo boa semente? Por que tem, então, joio?<br>
+28 E ele lhes disse: Um inimigo fez isso. E os servos lhe disseram: Queres pois que vamos arrancá-lo?<br>
+29 Ele, porém, disse: Não; para que, ao colher o joio, não arranqueis também o trigo com ele.<br>
+30 Deixai crescer ambos juntos até à ceifa; e, por ocasião da ceifa, direi aos ceifeiros: Colhei primeiro o joio, e atai-o em molhos para o queimar; mas, o trigo, ajuntai-o no meu celeiro.<br>
+31 Outra parábola lhes propôs, dizendo: O reino dos céus é semelhante ao grão de mostarda que um homem pegou, e semeou no seu campo;<br>
+32 O qual é, realmente, a menor de todas as sementes; mas, crescendo, é a maior das plantas, e faz-se uma árvore, de sorte que vêm as aves do céu, e se aninham nos seus ramos.<br>
+33 Outra parábola lhes disse: O reino dos céus é semelhante ao fermento, que uma mulher toma e esconde em três medidas de farinha, até que tudo esteja levedado.<br>
+34 Tudo estas coisas disse Jesus por parábolas à multidão, e nada lhes falava sem parábolas;<br>
+35 Para que se cumprisse o que fora dito pelo profeta, que diz: Abrirei em parábolas a minha boca; publicarei coisas ocultas desde a fundação do mundo.<br>
+36 Então, tendo despedido a multidão, foi Jesus para casa. E chegaram-se a ele os seus discípulos, dizendo: Explica-nos a parábola do joio do campo.<br>
+37 E ele, respondendo, disse-lhes: O que semeia a boa semente é o Filho do homem;<br>
+38 O campo é o mundo; e a boa semente são os filhos do reino; e o joio são os filhos do maligno;<br>
+39 O inimigo, que o semeou, é o diabo; e a ceifa é o fim do mundo; e os ceifeiros são os anjos.<br>
+40 Pois assim como o joio é colhido e queimado no fogo, assim será no fim deste mundo.<br>
+41 Mandará o Filho do homem os seus anjos, e colherão do seu reino tudo o que causa escândalo, e os que praticam a iniquidade.<br>
+42 E lançá-los-ão na fornalha de fogo; ali haverá choro e ranger de dentes.<br>
+43 Então os justos resplandecerão como o sol, no reino de seu Pai. Quem tem ouvidos para ouvir, ouça.<br>
+44 Também o reino dos céus é semelhante a um tesouro escondido num campo, que um homem achou e escondeu; e, pelo gozo dele, vai, vende tudo quanto tem, e compra aquele campo.<br>
+45 Outrossim, o reino dos céus é semelhante ao homem negociante, que busca boas pérolas;<br>
+46 E, encontrando uma pérola de grande valor, foi, vendeu tudo quanto tinha, e comprou-a.<br>
+47 Igualmente o reino dos céus é semelhante a uma rede lançada ao mar, e que apanha toda a qualidade de peixes.<br>
+48 E, estando cheia, a puxam para a praia; e, assentando-se, apanham para os cestos os bons; os ruins, porém, lançam fora.<br>
+49 Assim será no fim do mundo: sairão os anjos, e separarão os maus de entre os justos,<br>
+50 E lançá-los-ão na fornalha de fogo; ali haverá choro e ranger de dentes.<br>
+51 E disse-lhes Jesus: Entendestes todas estas coisas? Disseram-lhe eles: Sim, Senhor.<br>
+52 E ele disse-lhes: Por isso, todo o escriba instruído acerca do reino dos céus é semelhante a um pai de família, que tira do seu tesouro coisas novas e velhas.<br>
+53 E aconteceu que Jesus, concluindo estas parábolas, se retirou dali.<br>
+54 E, chegando à sua pátria, ensinava-os na sinagoga deles, de sorte que se maravilhavam, e diziam: Donde veio a este a sabedoria, e estas maravilhas?<br>
+55 Não é este o filho do carpinteiro? e não se chama sua mãe Maria, e seus irmãos Tiago, e José, e Simão, e Judas?<br>
+56 E não estão entre nós todas as suas irmãs? Donde lhe veio, pois, tudo isto?<br>
+57 E escandalizavam-se nele. Mas Jesus lhes disse: Não há profeta sem honra, senão na sua pátria e na sua casa.<br>
+58 E não fez ali muitas maravilhas, por causa da incredulidade deles.
+
+<h3 id="mateus-cap-14">Capítulo 14</h3>
+1 Naquele tempo ouviu Herodes, o tetrarca, a fama de Jesus,<br>
+2 E disse aos seus criados: Este é João o Batista; ressuscitou dos mortos, e por isso estas maravilhas operam nele.<br>
+3 Porque Herodes tinha prendido a João, e tinha-o maniatado e encerrado no cárcere, por causa de Herodias, mulher de seu irmão Filipe;<br>
+4 Porque João lhe dizia: Não te é lícito possuí-la.<br>
+5 E, querendo matá-lo, temia o povo; porque o tinham como profeta.<br>
+6 Festejando-se, porém, o dia natalício de Herodes, dançou a filha de Herodias diante dele, e agradou a Herodes.<br>
+7 Pelo que prometeu, com juramento, dar-lhe tudo o que pedisse;<br>
+8 E ela, instruída previamente por sua mãe, disse: Dá-me aqui, num prato, a cabeça de João o Batista.<br>
+9 E o rei entristeceu-se, mas, por causa do juramento, e dos que estavam com ele à mesa, mandou que se lhe desse.<br>
+10 E mandou degolar João no cárcere.<br>
+11 E a sua cabeça foi trazida num prato, e dada à jovem, e ela a levou a sua mãe.<br>
+12 E chegaram os seus discípulos, e levaram o corpo, e o sepultaram; e foram anunciá-lo a Jesus.<br>
+13 E Jesus, ouvindo isto, retirou-se dali num barco, para um lugar deserto, à parte; e, sabendo-o a multidão, seguiu-o a pé desde as cidades.<br>
+14 E, Jesus, saindo, viu uma grande multidão, e possuído de íntima compaixão para com ela, curou os seus enfermos.<br>
+15 E, chegada a tarde, os seus discípulos aproximaram-se dele, dizendo: O lugar é deserto, e a hora é já avançada; despede a multidão, para que vão pelas aldeias, e comprem comida para si.<br>
+16 Jesus, porém, lhes disse: Não é mister que vão; dai-lhes vós de comer.<br>
+17 Então eles lhe disseram: Não temos aqui senão cinco pães e dois peixes.<br>
+18 E ele disse: Trazei-mos aqui.<br>
+19 E, tendo mandado que a multidão se assentasse sobre a erva, tomou os cinco pães e os dois peixes, e, erguendo os olhos ao céu, os abençoou, e, partindo os pães, deu-os aos discípulos, e os discípulos à multidão.<br>
+20 E comeram todos, e saciaram-se; e levantaram dos pedaços que sobejaram doze cestos cheios.<br>
+21 E os que comeram foram quase cinco mil homens, além de mulheres e crianças.<br>
+22 E logo ordenou Jesus que os seus discípulos entrassem no barco, e fossem adiante dele para o outro lado, enquanto despedia a multidão.<br>
+23 E, despedida a multidão, subiu ao monte para orar, à parte. E, chegada já a tarde, estava ali só.<br>
+24 E o barco estava já no meio do mar, açoitado pelas ondas; porque o vento era contrário;<br>
+25 Mas, à quarta vigília da noite, dirigiu-se Jesus para eles, caminhando por cima do mar.<br>
+26 E os discípulos, vendo-o caminhar sobre o mar, assustaram-se, dizendo: É um fantasma. E gritaram com medo.<br>
+27 Jesus, porém, lhes falou logo, dizendo: Tende bom ânimo, sou eu, não temais.<br>
+28 E respondeu-lhe Pedro, e disse: Senhor, se és tu, manda-me ir ter contigo por cima das águas.<br>
+29 E ele disse: Vem. E Pedro, descendo do barco, andou sobre as águas para ir ter com Jesus.<br>
+30 Mas, sentindo o vento forte, teve medo; e, começando a ir para o fundo, clamou, dizendo: Senhor, salva-me!<br>
+31 E logo Jesus, estendendo a mão, segurou-o, e disse-lhe: Homem de pouca fé, por que duvidaste?<br>
+32 E, quando subiram para o barco, cessou o vento.<br>
+33 Então aproximaram-se os que estavam no barco, e adoraram-no, dizendo: És verdadeiramente o Filho de Deus.<br>
+34 E, tendo passado para o outro lado, chegaram à terra de Genesaré.<br>
+35 E, quando os homens daquele lugar o conheceram, mandaram por toda aquela terra circunvizinha e trouxeram-lhe todos os enfermos.<br>
+36 E rogavam-lhe que ao menos eles pudessem tocar a orla do seu vestido; e todos os que a tocaram ficaram sãos.
+
+<h3 id="mateus-cap-15">Capítulo 15</h3>
+1 Então chegaram a Jesus uns escribas e fariseus de Jerusalém, dizendo:<br>
+2 Por que transgridem os teus discípulos a tradição dos anciãos? pois não lavam as mãos quando comem pão.<br>
+3 Ele, porém, respondendo, disse-lhes: Por que transgredis vós, também, o mandamento de Deus pela vossa tradição?<br>
+4 Porque Deus ordenou, dizendo: Honra a teu pai e a tua mãe; e: Quem maldisser ao pai ou à mãe, morra de morte.<br>
+5 Mas vós dizeis: Qualquer que disser ao pai ou à mãe: É oferta ao Senhor o que poderias aproveitar de mim; esse não precisa honrar nem a seu pai nem a sua mãe,<br>
+6 E assim invalidastes, pela vossa tradição, o mandamento de Deus.<br>
+7 Hipócritas, bem profetizou Isaías a vosso respeito, dizendo:<br>
+8 Este povo se aproxima de mim com a sua boca e me honra com os seus lábios, mas o seu coração está longe de mim.<br>
+9 Mas, em vão me adoram, ensinando doutrinas que são preceitos dos homens.<br>
+10 E, chamando a si a multidão, disse-lhes: Ouvi, e entendei:<br>
+11 O que contamina o homem não é o que entra na boca, mas o que sai da boca, isso é o que contamina o homem.<br>
+12 Então, chegando-se a ele os seus discípulos, disseram-lhe: Sabes que os fariseus, ouvindo essas palavras, se escandalizaram?<br>
+13 Ele, porém, respondendo, disse: Toda a planta, que meu Pai celestial não plantou, será arrancada.<br>
+14 Deixai-os; são condutores cegos. Ora, se um cego guiar outro cego, ambos cairão na cova.<br>
+15 E Pedro, respondendo, disse-lhe: Explica-nos essa parábola.<br>
+16 Jesus, porém, disse: Até vós mesmos estais ainda sem entendimento?<br>
+17 Não compreendeis ainda que tudo o que entra pela boca desce para o ventre, e é lançado fora?<br>
+18 Mas, o que sai da boca, procede do coração, e isso contamina o homem.<br>
+19 Porque do coração procedem os maus pensamentos, mortes, adultérios, prostituição, furtos, falsos testemunhos e blasfêmias.<br>
+20 Estas coisas são as que contaminam o homem; mas comer sem lavar as mãos, isso não contamina o homem.<br>
+21 E, saindo Jesus dali, retirou-se para as partes de Tiro e de Sidom.<br>
+22 E eis que uma mulher cananeia, que saíra daquelas partes, clamou, dizendo: Senhor, Filho de Davi, tem misericórdia de mim, que minha filha está miseravelmente endemoninhada.<br>
+23 Mas ele não lhe respondeu palavra. E os seus discípulos, chegando ao pé dele, rogaram-lhe, dizendo: Despede-a, que vem gritando atrás de nós.<br>
+24 E ele, respondendo, disse: Eu não fui enviado senão às ovelhas perdidas da casa de Israel.<br>
+25 Então chegou ela, e adorou-o, dizendo: Senhor, socorre-me!<br>
+26 Ele, porém, respondendo, disse: Não é bom pegar no pão dos filhos e deitá-lo aos cachorrinhos.<br>
+27 E ela disse: Sim, Senhor, mas também os cachorrinhos comem das migalhas que caem da mesa dos seus senhores.<br>
+28 Então respondeu Jesus, e disse-lhe: Ó mulher, grande é a tua fé! Seja-te feito como queres. E desde aquela hora a sua filha ficou sã.<br>
+29 Partindo Jesus dali, chegou ao pé do mar da Galileia, e, subindo a um monte, assentou-se ali.<br>
+30 E veio ter com ele grandes multidões, que traziam consigo coxos, cegos, mudos, aleijados, e outros muitos; e os puseram aos pés de Jesus, e ele os curou;<br>
+31 De tal sorte que a multidão se maravilhou vendo os mudos a falar, os aleijados sãos, os coxos a andar, e os cegos a ver; e glorificava o Deus de Israel.<br>
+32 E Jesus, chamando os seus discípulos, disse: Tenho compaixão da multidão, porque já está comigo há três dias, e não tem o que comer; e não quero despedi-la em jejum, para que não desfaleça no caminho.<br>
+33 E os seus discípulos disseram-lhe: Donde nos viriam, num deserto, tantos pães, para saciar tal multidão?<br>
+34 E Jesus disse-lhes: Quantos pães tendes? E eles disseram: Sete, e uns poucos peixinhos.<br>
+35 Então mandou à multidão que se assentasse no chão.<br>
+36 E, tomando os sete pães e os peixes, e dando graças, partiu-os, e deu-os aos seus discípulos, e os discípulos à multidão.<br>
+37 E todos comeram e se saciaram; e levantaram do que sobejou sete cestos cheios de pedaços.<br>
+38 Ora, os que tinham comido eram quatro mil homens, além de mulheres e crianças.<br>
+39 E, tendo despedido a multidão, entrou no barco, e dirigiu-se aos confins de Magdala.
+
+<h3 id="mateus-cap-16">Capítulo 16</h3>
+1 E, chegando os fariseus e os saduceus, para o tentarem, pediram-lhe que lhes mostrasse algum sinal do céu.<br>
+2 Mas ele, respondendo, disse-lhes: Quando é chegada a tarde, dizeis: Haverá bom tempo, porque o céu está rubro.<br>
+3 E, pela manhã: Hoje haverá tempestade, porque o céu está de um vermelho sombrio. Hipócritas, sabeis diferenciar a face do céu, e não sabeis distinguir os sinais dos tempos?<br>
+4 Uma geração má e adúltera pede um sinal, e nenhum sinal lhe será dado, senão o sinal do profeta Jonas. E, deixando-os, retirou-se.<br>
+5 E, passando os seus discípulos para o outro lado, tinham-se esquecido de levar pão.<br>
+6 E Jesus disse-lhes: Adverti, e acautelai-vos do fermento dos fariseus e dos saduceus.<br>
+7 E eles arrazoavam entre si, dizendo: É porque não trouxemos pão.<br>
+8 E Jesus, percebendo isso, disse: Por que arrazoais entre vós, homens de pouca fé, por não terdes trazido pão?<br>
+9 Não compreendeis ainda, nem vos lembrais dos cinco pães para cinco mil homens, e de quantos cestos levantastes?<br>
+10 Nem dos sete pães para quatro mil, e de quantas alcofas levantastes?<br>
+11 Como não compreendeis que não vos falei a respeito do pão, mas que vos guardásseis do fermento dos fariseus e dos saduceus?<br>
+12 Então compreenderam que não dissera que se guardassem do fermento do pão, mas da doutrina dos fariseus.<br>
+13 E, chegando Jesus às partes de Cesareia de Filipe, interrogou os seus discípulos, dizendo: Quem dizem os homens ser o Filho do homem?<br>
+14 E eles disseram: Uns, João o Batista; outros, Elias; e outros, Jeremias, ou um dos profetas.<br>
+15 Disse-lhes ele: E vós, quem dizeis que eu sou?<br>
+16 E Simão Pedro, respondendo, disse: Tu és o Cristo, o Filho do Deus vivo.<br>
+17 E Jesus, respondendo, disse-lhe: Bem-aventurado és tu, Simão Barjonas, porque não foi carne e sangue que to revelou, mas meu Pai, que está nos céus.<br>
+18 Pois também eu te digo que tu és Pedro, e sobre esta pedra edificarei a minha igreja, e as portas do inferno não prevalecerão contra ela;<br>
+19 E eu te darei as chaves do reino dos céus; e tudo o que ligares na terra será ligado nos céus, e tudo o que desligares na terra será desligado nos céus.<br>
+20 Então mandou aos seus discípulos que a ninguém dissessem que ele era Jesus o Cristo.<br>
+21 Desde então começou Jesus a mostrar aos seus discípulos que convinha ir a Jerusalém, e padecer muito dos anciãos, e dos principais dos sacerdotes, e dos escribas, e ser morto, e ressuscitar ao terceiro dia.<br>
+22 E Pedro, tomando-o de parte, começou a repreendê-lo, dizendo: Senhor, tem compaixão de ti; de modo nenhum te acontecerá isso.<br>
+23 Ele, porém, voltando-se, disse a Pedro: Para trás de mim, Satanás, que me serves de escândalo; porque não compreendes as coisas que são de Deus, mas só as que são dos homens.<br>
+24 Então disse Jesus aos seus discípulos: Se alguém quiser vir após mim, renuncie-se a si mesmo, tome sobre si a sua cruz, e siga-me;<br>
+25 Porque aquele que quiser salvar a sua vida, perdê-la-á, e quem perder a sua vida por amor de mim, achá-la-á.<br>
+26 Pois que aproveita ao homem ganhar o mundo inteiro, se perder a sua alma? Ou que dará o homem em recompensa da sua alma?<br>
+27 Porque o Filho do homem virá na glória de seu Pai, com os seus anjos; e então dará a cada um segundo as suas obras.<br>
+28 Em verdade vos digo que alguns há, dos que aqui estão, que não provarão a morte até que vejam vir o Filho do homem no seu reino.
+
+<h3 id="mateus-cap-17">Capítulo 17</h3>
+1 Seis dias depois, tomou Jesus consigo a Pedro, e a Tiago, e a João, seu irmão, e os conduziu em particular a um alto monte,<br>
+2 E transfigurou-se diante deles; e o seu rosto resplandeceu como o sol, e as suas vestes se tornaram brancas como a luz.<br>
+3 E eis que lhes apareceram Moisés e Elias, falando com ele.<br>
+4 E Pedro, respondendo, disse a Jesus: Senhor, bom é estarmos aqui; se queres, façamos aqui três tabernáculos, um para ti, outro para Moisés, e outro para Elias.<br>
+5 E, estando ele ainda a falar, eis que uma nuvem luminosa os cobriu. E da nuvem saiu uma voz que dizia: Este é o meu amado Filho, em quem me comprazo; a ele ouvi.<br>
+6 E os discípulos, ouvindo isto, caíram sobre os seus rostos, e tiveram grande medo.<br>
+7 E, aproximando-se Jesus, tocou-lhes, e disse: Levantai-vos, e não tenhais medo.<br>
+8 E, erguendo eles os olhos, ninguém viram senão a Jesus somente.<br>
+9 E, descendo eles do monte, Jesus lhes ordenou, dizendo: A ninguém conteis a visão, até que o Filho do homem seja ressuscitado dos mortos.<br>
+10 E os seus discípulos o interrogaram, dizendo: Por que dizem então os escribas que é mister que Elias venha primeiro?<br>
+11 E Jesus, respondendo, disse-lhes: Em verdade Elias virá primeiro, e restaurará todas as coisas;<br>
+12 Mas digo-vos que Elias já veio, e não o conheceram, mas fizeram-lhe tudo o que quiseram. Assim padecerá também o Filho do homem às suas mãos.<br>
+13 Então entenderam os discípulos que lhes falara de João o Batista.<br>
+14 E, quando chegaram à multidão, aproximou-se dele um homem, pondo-se de joelhos diante dele, e dizendo:<br>
+15 Senhor, tem misericórdia de meu filho, que é lunático e padece muito; pois muitas vezes cai no fogo, e muitas vezes na água;<br>
+16 E trouxe-o aos teus discípulos; e não puderam curá-lo.<br>
+17 E Jesus, respondendo, disse: Ó geração incrédula e perversa! até quando estarei eu convosco, e até quando vos sofrerei? Trazei-mo aqui.<br>
+18 E, repreendeu Jesus o demônio, e saiu dele, e desde aquela hora o menino ficou são.<br>
+19 Então os discípulos, aproximando-se de Jesus em particular, disseram: Por que não pudemos nós expulsá-lo?<br>
+20 E Jesus lhes disse: Por causa da vossa incredulidade; porque em verdade vos digo que, se tiverdes fé como um grão de mostarda, direis a este monte: Passa daqui para acolá, e há de passar; e nada vos será impossível.<br>
+21 Mas esta casta de demônios não se expulsa senão pela oração e pelo jejum.<br>
+22 Ora, achando-se eles na Galileia, disse-lhes Jesus: O Filho do homem será entregue nas mãos dos homens;<br>
+23 E matá-lo-ão, e ao terceiro dia ressuscitará. E eles se entristeceram muito.<br>
+24 E, chegando eles a Cafarnaum, aproximaram-se de Pedro os que cobravam as dracmas, e disseram: O vosso mestre não paga as dracmas?<br>
+25 Disse ele: Sim. E, entrando em casa, Jesus se antecipou, dizendo: Que te parece, Simão? De quem cobram os reis da terra os tributos ou o censo? Dos seus filhos, ou dos alheios?<br>
+26 Disse-lhe Pedro: Dos alheios. Disse-lhe Jesus: Logo, estão isentos os filhos.<br>
+27 Mas, para que os não escandalizemos, vai ao mar, lança o anzol, tira o primeiro peixe que subir, e abrindo-lhe a boca, encontrarás um estater; toma-o, e dá-lho por mim e por ti.
+
+<h3 id="mateus-cap-18">Capítulo 18</h3>
+1 Naquela mesma hora chegaram os discípulos ao pé de Jesus, dizendo: Quem é o maior no reino dos céus?<br>
+2 E Jesus, chamando uma criança, a pôs no meio deles,<br>
+3 E disse: Em verdade vos digo que, se não vos converterdes e não vos fizerdes como crianças, de modo algum entrareis no reino dos céus.<br>
+4 Portanto, aquele que se humilhar como esta criança, esse é o maior no reino dos céus.<br>
+5 E qualquer que receber em meu nome uma criança tal como esta, a mim me recebe.<br>
+6 Mas, qualquer que escandalizar um destes pequenos, que creem em mim, melhor lhe fora que se lhe pendurasse ao pescoço uma pedra de moinho, e se submergisse na profundeza do mar.<br>
+7 Ai do mundo, por causa dos escândalos; porque é mister que venham escândalos, mas ai daquele homem por quem o escândalo vem!<br>
+8 Portanto, se a tua mão ou o teu pé te escandalizar, corta-o, e atira-o para longe de ti; melhor te é entrar na vida coxo, ou aleijado, do que, tendo duas mãos ou dois pés, seres lançado no fogo eterno.<br>
+9 E, se o teu olho te escandalizar, arranca-o, e atira-o para longe de ti; melhor te é entrar na vida com um só olho, do que, tendo dois olhos, seres lançado no fogo do inferno.<br>
+10 Vede, não desprezeis algum destes pequeninos, porque eu vos digo que os seus anjos nos céus sempre veem a face de meu Pai que está nos céus.<br>
+11 Porque o Filho do homem veio salvar o que se tinha perdido.<br>
+12 Que vos parece? Se algum homem tiver cem ovelhas, e uma delas se desgarrar, não irá pelos montes, deixando as noventa e nove, em busca da que se desgarrou?<br>
+13 E, se porventura achá-la, em verdade vos digo que maior prazer terá por aquela do que pelas noventa e nove que se não desgarraram.<br>
+14 Assim, também, não é vontade de vosso Pai, que está nos céus, que um destes pequeninos se perca.<br>
+15 Ora, se teu irmão pecar contra ti, vai, e repreende-o entre ti e ele só; se te ouvir, ganhaste a teu irmão;<br>
+16 Mas, se não te ouvir, leva ainda contigo um ou dois, para que pela boca de duas ou três testemunhas toda a palavra seja confirmada.<br>
+17 E, se não as ouvir, dize-o à igreja; e, se também não ouvir a igreja, considera-o como um gentio e publicano.<br>
+18 Em verdade vos digo que tudo o que ligardes na terra será ligado no céu, e tudo o que desligardes na terra será desligado no céu.<br>
+19 Também vos digo que, se dois de vós concordarem na terra acerca de qualquer coisa que pedirem, isso lhes será feito por meu Pai, que está nos céus.<br>
+20 Porque, onde estiverem dois ou três reunidos em meu nome, aí estou eu no meio deles.<br>
+21 Então Pedro, aproximando-se dele, disse: Senhor, até quantas vezes pecará meu irmão contra mim, e eu lhe perdoarei? Até sete?<br>
+22 Jesus lhe disse: Não te digo que até sete; mas, até setenta vezes sete.<br>
+23 Por isso o reino dos céus pode comparar-se a um certo rei que quis ajustar contas com os seus servos;<br>
+24 E, começando a ajustar contas, foi-lhe apresentado um que lhe devia dez mil talentos;<br>
+25 E, não tendo ele com que pagar, o seu senhor mandou que ele, e sua mulher e seus filhos fossem vendidos, com tudo quanto tinha, para que a dívida se pagasse.<br>
+26 Então aquele servo, prostrando-se, o adorava, dizendo: Senhor, sê generoso para comigo, e tudo te pagarei.<br>
+27 Então o senhor daquele servo, movido de íntima compaixão, soltou-o e perdoou-lhe a dívida.<br>
+28 Saindo, porém, aquele servo, encontrou um dos seus conservos, que lhe devia cem dinheiros, e, lançando mão dele, sufocava-o, dizendo: Paga-me o que me deves.<br>
+29 Então o seu conservo, prostrando-se a seus pés, rogava-lhe, dizendo: Sê generoso para comigo, e tudo te pagarei.<br>
+30 Ele, porém, não quis, antes foi encerrá-lo na prisão, até que pagasse a dívida.<br>
+31 Vendo, pois, os seus conservos o que acontecia, entristeceram-se muito, e foram declarar ao seu senhor tudo o que se passara.<br>
+32 Então o seu senhor, chamando-o à sua presença, disse-lhe: Servo malvado, perdoei-te toda aquela dívida, porque me suplicaste.<br>
+33 Não devias tu, igualmente, ter compaixão do teu conservo, como eu também tive misericórdia de ti?<br>
+34 E, indignado, o seu senhor o entregou aos atormentadores, até que pagasse tudo o que devia.<br>
+35 Assim vos fará, também, meu Pai celestial, se do coração não perdoardes, cada um a seu irmão, as suas ofensas.
+
+<h3 id="mateus-cap-19">Capítulo 19</h3>
+1 E aconteceu que, concluindo Jesus estes discursos, saiu da Galileia, e dirigiu-se aos confins da Judeia, além do Jordão;<br>
+2 E seguiram-no muitas multidões, e curou-os ali.<br>
+3 Então chegaram ao pé dele os fariseus, tentando-o, e dizendo-lhe: É lícito ao homem repudiar sua mulher por qualquer motivo?<br>
+4 Ele, porém, respondendo, disse-lhes: Não tendes lido que aquele que os fez no princípio macho e fêmea os fez,<br>
+5 E disse: Portanto, deixará o homem pai e mãe, e se unirá a sua mulher, e serão dois numa só carne?<br>
+6 Assim não são mais dois, mas uma só carne. Portanto, o que Deus ajuntou não o separe o homem.<br>
+7 Disseram-lhe eles: Então, por que mandou Moisés dar-lhe carta de divórcio, e repudiá-la?<br>
+8 Disse-lhes ele: Moisés, por causa da dureza dos vossos corações, vos permitiu repudiar vossas mulheres; mas ao princípio não foi assim.<br>
+9 Eu vos digo, porém, que qualquer que repudiar sua mulher, a não ser por causa de prostituição, e casar com outra, comete adultério; e o que casar com a repudiada também comete adultério.<br>
+10 Disseram-lhe seus discípulos: Se assim é a condição do homem relativamente à mulher, não convém casar.<br>
+11 Ele, porém, lhes disse: Nem todos podem receber esta palavra, mas só aqueles a quem foi concedido.<br>
+12 Porque há eunucos que assim nasceram do ventre da mãe; e há eunucos que foram feitos eunucos pelos homens; e há eunucos que se fizeram eunucos a si mesmos, por causa do reino dos céus. Quem pode receber isto, receba-o.<br>
+13 Trouxeram-lhe, então, algumas crianças, para que lhes impusesse as mãos, e orasse; mas os discípulos os repreendiam.<br>
+14 Jesus, porém, disse: Deixai as crianças, e não as impeçais de vir a mim; porque das tais é o reino dos céus.<br>
+15 E, tendo-lhes imposto as mãos, partiu dali.<br>
+16 E eis que, aproximando-se dele um jovem, disse-lhe: Bom Mestre, que bem farei para herdar a vida eterna?<br>
+17 E ele disse-lhe: Por que me chamas bom? Não há bom senão um só, que é Deus. Se queres, porém, entrar na vida, guarda os mandamentos.<br>
+18 Disse-lhe ele: Quais? E Jesus disse: Não matarás, não cometerás adultério, não furtarás, não dirás falso testemunho;<br>
+19 Honra a teu pai e a tua mãe, e amarás o teu próximo como a ti mesmo.<br>
+20 Disse-lhe o jovem: Tudo isso tenho guardado desde a minha mocidade; que me falta ainda?<br>
+21 Disse-lhe Jesus: Se queres ser perfeito, vai, vende tudo o que tens e dá-o aos pobres, e terás um tesouro no céu; e vem, e segue-me.<br>
+22 E o jovem, ouvindo esta palavra, retirou-se triste, porque possuía muitas propriedades.<br>
+23 Disse então Jesus aos seus discípulos: Em verdade vos digo que é difícil entrar um rico no reino dos céus.<br>
+24 E, outra vez vos digo que é mais fácil passar um camelo pelo fundo de uma agulha do que entrar um rico no reino de Deus.<br>
+25 Os seus discípulos, ouvindo isto, admiraram-se muito, dizendo: Quem poderá, pois, salvar-se?<br>
+26 E Jesus, olhando para eles, disse-lhes: Aos homens é isso impossível, mas a Deus tudo é possível.<br>
+27 Então Pedro, respondendo, disse-lhe: Eis que nós deixamos tudo, e te seguimos; que receberemos?<br>
+28 E Jesus disse-lhes: Em verdade vos digo que vós, que me seguistes, pelo que na regeneração, quando o Filho do homem se assentar no trono da sua glória, também vos assentareis sobre doze tronos, para julgar as doze tribos de Israel.<br>
+29 E todo aquele que tiver deixado casas, ou irmãos, ou irmãs, ou pai, ou mãe, ou mulher, ou filhos, ou terras, por amor do meu nome, receberá cem vezes tanto, e herdará a vida eterna.<br>
+30 Porém, muitos primeiros serão últimos, e muitos últimos serão primeiros.
+
+<h3 id="mateus-cap-20">Capítulo 20</h3>
+1 Porque o reino dos céus é semelhante a um homem, pai de família, que saiu de madrugada a assalariar trabalhadores para a sua vinha.<br>
+2 E, ajustado com os trabalhadores a um dinheiro por dia, mandou-os para a sua vinha.<br>
+3 E, saindo perto da hora terceira, viu outros que estavam ociosos na praça,<br>
+4 E disse-lhes: Ide vós também para a vinha, e dar-vos-ei o que for justo. E eles foram.<br>
+5 Saindo outra vez, perto da hora sexta e nona, fez o mesmo.<br>
+6 E, saindo perto da hora undécima, encontrou outros que estavam ociosos, e perguntou-lhes: Por que estais ociosos todo o dia?<br>
+7 Disseram-lhe eles: Porque ninguém nos assalariou. Diz-lhes ele: Ide vós também para a vinha, e recebereis o que for justo.<br>
+8 E, aproximando-se a tarde, disse o senhor da vinha ao seu mordomo: Chama os trabalhadores, e paga-lhes o salário, começando pelos últimos até aos primeiros.<br>
+9 E, chegando os que tinham ido perto da hora undécima, receberam um dinheiro cada um.<br>
+10 Vindo, porém, os primeiros, pensaram que haviam de receber mais; mas do mesmo modo receberam um dinheiro cada um.<br>
+11 E, recebendo-o, murmuravam contra o pai de família,<br>
+12 Dizendo: Estes últimos trabalharam somente uma hora, e tu os igualaste a nós, que suportamos a fadiga e o calor do dia.<br>
+13 Mas ele, respondendo, disse a um deles: Amigo, não te faço injustiça; não ajustaste tu comigo um dinheiro?<br>
+14 Toma o que é teu, e retira-te; eu quero dar a este último tanto como a ti.<br>
+15 Ou não me é lícito fazer o que quiser do que é meu? Ou é mau o teu olho porque eu sou bom?<br>
+16 Assim os últimos serão primeiros, e os primeiros últimos; porque muitos são chamados, mas poucos escolhidos.<br>
+17 E, subindo Jesus a Jerusalém, chamou os seus doze discípulos à parte, e no caminho disse-lhes:<br>
+18 Eis que subimos a Jerusalém, e o Filho do homem será entregue aos príncipes dos sacerdotes, e aos escribas, e condená-lo-ão à morte.<br>
+19 E o entregarão aos gentios para que dele escarneçam, e o açoitem e crucifiquem, e ao terceiro dia ressuscitará.<br>
+20 Então se aproximou dele a mãe dos filhos de Zebedeu, com seus filhos, adorando-o, e pedindo-lhe alguma coisa.<br>
+21 E ele diz-lhe: Que queres? Ela respondeu: Diz que estes meus dois filhos se assentem, um à tua direita e outro à tua esquerda, no teu reino.<br>
+22 Jesus, porém, respondendo, disse: Não sabeis o que pedis. Podeis vós beber o cálice que eu hei de beber, e ser batizados com o batismo com que eu sou batizado? Dizem-lhe eles: Podemos.<br>
+23 E diz-lhes ele: Na verdade bebereis o meu cálice e sereis batizados com o batismo com que eu sou batizado, mas o assentar-se à minha direita ou à minha esquerda não me pertence dá-lo, mas é para aqueles para quem meu Pai o tem preparado.<br>
+24 E, ouvindo isto os dez, indignaram-se contra os dois irmãos.<br>
+25 Então Jesus os chamou e disse: Sabeis que os governadores das nações operam domínio sobre elas, e os grandes exercem autoridade sobre elas.<br>
+26 Não será assim entre vós; mas todo aquele que quiser entre vós fazer-se grande seja vosso serviçal;<br>
+27 E, qualquer que entre vós quiser ser o primeiro, seja vosso servo;<br>
+28 Bem como o Filho do homem não veio para ser servido, mas para servir, e para dar a sua vida em resgate de muitos.<br>
+29 E, saindo eles de Jericó, seguiu-o uma grande multidão.<br>
+30 E eis que dois cegos, assentados junto do caminho, ouvindo que Jesus passava, clamaram, dizendo: Senhor, Filho de Davi, tem misericórdia de nós!<br>
+31 E a multidão os repreendia, para que se calassem; eles, porém, clamavam cada vez mais, dizendo: Senhor, Filho de Davi, tem misericórdia de nós!<br>
+32 E Jesus, parando, chamou-os, e disse: Que quereis que vos faça?<br>
+33 Disseram-lhe eles: Senhor, que se abram os nossos olhos.<br>
+34 Então Jesus, movido de íntima compaixão, tocou-lhes nos olhos, e logo seus olhos viram; e eles o seguiram.
+
+<h3 id="mateus-cap-21">Capítulo 21</h3>
+1 E, quando se aproximaram de Jerusalém, e chegaram a Betfagé, ao Monte das Oliveiras, enviou então Jesus dois discípulos, dizendo-lhes:<br>
+2 Ide à aldeia que está defronte de vós, e logo encontrareis uma jumenta presa, e um jumentinho com ela; desprendei-os, e trazei-mos.<br>
+3 E, se alguém vos disser alguma coisa, direis que o Senhor precisa deles; e logo os enviará.<br>
+4 Ora, tudo isto aconteceu para que se cumprisse o que foi dito pelo profeta, que diz:<br>
+5 Dizei à filha de Sião: Eis que o teu Rei aí te vem, manso, e assentado sobre uma jumenta, e sobre um jumentinho, filho de animal de carga.<br>
+6 E, indo os discípulos, e fazendo como Jesus lhes ordenara,<br>
+7 Trouxeram a jumenta e o jumentinho, e puseram sobre eles as suas vestes, e fizeram-no assentar em cima.<br>
+8 E muitíssima gente estendia as suas vestes pelo caminho, e outros cortavam ramos de árvores, e os espalhavam pelo caminho.<br>
+9 E a multidão que ia adiante, e a que seguia, clamava, dizendo: Hosana ao Filho de Davi; bendito o que vem em nome do Senhor. Hosana nas alturas!<br>
+10 E, entrando ele em Jerusalém, toda a cidade se comoveu, dizendo: Quem é este?<br>
+11 E a multidão dizia: Este é Jesus, o profeta de Nazaré da Galileia.<br>
+12 E entrou Jesus no templo de Deus, e expulsou todos os que vendiam e compravam no templo, e derribou as mesas dos cambistas e as cadeiras dos que vendiam pombas;<br>
+13 E disse-lhes: Está escrito: A minha casa será chamada casa de oração; mas vós a tendes convertido em covil de ladrões.<br>
+14 E vieram a ele cegos e coxos no templo, e curou-os.<br>
+15 Vendo, então, os principais dos sacerdotes e os escribas as maravilhas que fazia, e os meninos clamando no templo: Hosana ao Filho de Davi, indignaram-se,<br>
+16 E disseram-lhe: Ouves o que estes dizem? E Jesus lhes disse: Sim; nunca lestes: Da boca dos meninos e criancinhas de peito tiraste o perfeito louvor?<br>
+17 E, deixando-os, saiu da cidade para Betânia, e pernoitou ali.<br>
+18 E, de manhã, voltando para a cidade, teve fome.<br>
+19 E, avistando uma figueira perto do caminho, dirigiu-se a ela, e não achou nela senão folhas. E disse-lhe: Nunca mais nasça fruto de ti! E a figueira secou imediatamente.<br>
+20 E os discípulos, vendo isto, maravilharam-se, dizendo: Como secou imediatamente a figueira?<br>
+21 Jesus, porém, respondendo, disse-lhes: Em verdade vos digo que, se tiverdes fé e não duvidardes, não só fareis o que foi feito à figueira, mas até se a este monte disserdes: Ergue-te, e precipita-te no mar, assim será feito;<br>
+22 E, tudo o que pedirdes na oração, crendo, o recebereis.<br>
+23 E, chegado ao templo, ensinando ele, acercaram-se dele os principais dos sacerdotes e os anciãos do povo, dizendo: Com que autoridade fazes isto? e quem te deu tal autoridade?<br>
+24 E Jesus, respondendo, disse-lhes: Eu também vos perguntarei uma coisa; se ma disserdes, também eu vos direi com que autoridade faço isto.<br>
+25 O batismo de João, donde era? Do céu, ou dos homens? E pensavam entre si, dizendo: Se dissermos: Do céu, ele nos dirá: Então por que o não crestes?<br>
+26 E, se dissermos: Dos homens, tememos o povo, porque todos consideram João como profeta.<br>
+27 E, respondendo a Jesus, disseram: Não sabemos. Ele também lhes disse: Nem eu vos digo com que autoridade faço isto.<br>
+28 Mas, que vos parece? Um homem tinha dois filhos, e, dirigindo-se ao primeiro, disse: Filho, vai trabalhar hoje na minha vinha.<br>
+29 Ele, porém, respondendo, disse: Não quero. Mas depois, arrependido, foi.<br>
+30 E, dirigindo-se ao segundo, falou-lhe de igual modo; e, respondendo ele, disse: Eu vou, senhor; e não foi.<br>
+31 Qual dos dois fez a vontade do pai? Disseram-lhe eles: O primeiro. Disse-lhes Jesus: Em verdade vos digo que os publicanos e as meretrizes entram adiante de vós no reino de Deus.<br>
+32 Porque João veio a vós no caminho da justiça, e não o crestes, mas os publicanos e as meretrizes o creram; vós, porém, vendo isto, nem depois vos arrependestes para o crer.<br>
+33 Ouvi outra parábola: Houve um homem, pai de família, que plantou uma vinha, e circundou-a de um valado, e construiu nela um lagar, e edificou uma torre, e arrendou-a a uns lavradores, e ausentou-se para longe.<br>
+34 E, chegando o tempo dos frutos, enviou os seus servos aos lavradores, para receber os seus frutos.<br>
+35 E os lavradores, apoderando-se dos seus servos, feriram um, mataram outro, e apedrejaram outro.<br>
+36 Depois enviou outros servos, em maior número do que os primeiros; e eles fizeram-lhes o mesmo.<br>
+37 E, por último, enviou-lhes seu filho, dizendo: Terão respeito ao meu filho.<br>
+38 Mas os lavradores, vendo o filho, disseram entre si: Este é o herdeiro; vinde, matemo-lo, e apoderemo-nos da sua herança.<br>
+39 E, lançando mão dele, o expulsaram da vinha, e o mataram.<br>
+40 Quando, pois, vier o senhor da vinha, que fará àqueles lavradores?<br>
+41 Dizem-lhe eles: Dará afrontosa morte a esses maus, e arrendará a vinha a outros lavradores, que a seu tempo lhe deem os frutos.<br>
+42 Diz-lhes Jesus: Nunca lestes nas Escrituras: A pedra, que os edificadores rejeitaram, essa foi posta por cabeça do ângulo; pelo Senhor foi feito isto, e é maravilhoso aos nossos olhos?<br>
+43 Portanto, eu vos digo que o reino de Deus vos será tirado, e será dado a uma nação que dê os seus frutos.<br>
+44 E, quem cair sobre esta pedra, despedaçar-se-á; e aquele sobre quem ela cair ficará reduzido a pó.<br>
+45 E os principais dos sacerdotes e os fariseus, ouvindo estas suas parábolas, entenderam que falava deles;<br>
+46 E, pretendendo prendê-lo, temeram o povo, porquanto o tinham por profeta.
+
+<h3 id="mateus-cap-22">Capítulo 22</h3>
+1 Então Jesus, respondendo, tornou a falar-lhes em parábolas, dizendo:<br>
+2 O reino dos céus é semelhante a um certo rei que celebrou as bodas de seu filho;<br>
+3 E enviou os seus servos a chamar os convidados para as bodas; e estes não quiseram vir.<br>
+4 Depois, enviou outros servos, dizendo: Dizei aos convidados: Eis que tenho o meu jantar preparado, os meus bois e cevados já mortos, e tudo já pronto; vinde às bodas.<br>
+5 Eles, porém, não fazendo caso, foram, um para o seu campo, outro para o seu negócio;<br>
+6 E os outros, apoderando-se dos servos, os ultrajaram e mataram.<br>
+7 E o rei, tendo ouvido isto, indignou-se e, enviando os seus exércitos, destruiu aqueles homicidas, e incendiou a sua cidade.<br>
+8 Então disse aos servos: As bodas, na verdade, estão preparadas, mas os convidados não eram dignos.<br>
+9 Ide, pois, às saídas dos caminhos, e convidai para as bodas a todos os que encontrardes.<br>
+10 E os servos, saindo pelos caminhos, ajuntaram todos quantos encontraram, tanto maus como bons; e a festa nupcial ficou cheia de convidados.<br>
+11 E o rei, entrando para ver os convidados, viu ali um homem que não estava vestido com veste nupcial.<br>
+12 E disse-lhe: Amigo, como entraste aqui, não tendo veste nupcial? E ele emudeceu.<br>
+13 Disse, então, o rei aos servos: Amarrai-o de pés e mãos, levai-o, e lançai-o nas trevas exteriores; ali haverá choro e ranger de dentes.<br>
+14 Porque muitos são chamados, mas poucos escolhidos.<br>
+15 Então retiraram-se os fariseus, e consultaram entre si como o surpreenderiam nalguma palavra;<br>
+16 E enviaram-lhe os seus discípulos, com os herodianos, dizendo: Mestre, sabemos que és verdadeiro, e ensinas o caminho de Deus segundo a verdade, e de ninguém se te dá, porque não olhas a aparência dos homens.<br>
+17 Dize-nos, pois, que te parece? É lícito dar o tributo a César, ou não?<br>
+18 Jesus, porém, conhecendo a sua malícia, disse: Por que me experimentais, hipócritas?<br>
+19 Mostrai-me a moeda do tributo. E eles lhe apresentaram um dinheiro.<br>
+20 E ele diz-lhes: De quem é esta imagem e inscrição?<br>
+21 Dizem-lhe eles: De César. Então ele lhes disse: Dai pois a César o que é de César, e a Deus o que é de Deus.<br>
+22 E eles, ouvindo isto, maravilharam-se, e, deixando-o, se retiraram.<br>
+23 No mesmo dia chegaram a ele os saduceus, que dizem não haver ressurreição, e perguntaram-lhe,<br>
+24 Dizendo: Mestre, Moisés disse: Se morrer alguém, não tendo filhos, seu irmão casará com a sua mulher, e suscitará descendência a seu irmão.<br>
+25 Ora, houve entre nós sete irmãos; e o primeiro, tendo casado, morreu e, não tendo descendência, deixou sua mulher a seu irmão.<br>
+26 Da mesma sorte também o segundo, e o terceiro, até ao sétimo;<br>
+27 Por fim, depois de todos, morreu também a mulher.<br>
+28 Portanto, na ressurreição, de qual dos sete será a mulher, visto que todos a tiveram?<br>
+29 Jesus, porém, respondendo, disse-lhes: Errais, não conhecendo as Escrituras, nem o poder de Deus.<br>
+30 Porque na ressurreição nem casam nem são dados em casamento; mas serão como os anjos de Deus no céu.<br>
+31 E, quanto à ressurreição dos mortos, não lestes o que Deus vos declarou, dizendo:<br>
+32 Eu sou o Deus de Abraão, o Deus de Isaque, e o Deus de Jacó? Ora, Deus não é Deus dos mortos, mas dos vivos.<br>
+33 E, ouvindo isto a multidão, maravilhava-se da sua doutrina.<br>
+34 E os fariseus, ouvindo que ele fizera emudecer os saduceus, reuniram-se no mesmo lugar.<br>
+35 E um deles, doutor da lei, interrogou-o para o tentar, dizendo:<br>
+36 Mestre, qual é o grande mandamento na lei?<br>
+37 E Jesus disse-lhe: Amarás o Senhor teu Deus de todo o teu coração, e de toda a tua alma, e de todo o teu pensamento.<br>
+38 Este é o primeiro e grande mandamento.<br>
+39 E o segundo, semelhante a este, é: Amarás o teu próximo como a ti mesmo.<br>
+40 Destes dois mandamentos dependem toda a lei e os profetas.<br>
+41 E, estando reunidos os fariseus, interrogou-os Jesus,<br>
+42 Dizendo: Que pensais vós do Cristo? De quem é filho? Eles disseram-lhe: De Davi.<br>
+43 Disse-lhes ele: Como é então que Davi, em espírito, lhe chama Senhor, dizendo:<br>
+44 Disse o Senhor ao meu Senhor: Assenta-te à minha direita, até que eu ponha os teus inimigos por escabelo de teus pés?<br>
+45 Se Davi, pois, lhe chama Senhor, como é seu filho?<br>
+46 E ninguém podia responder-lhe uma palavra; nem desde aquele dia ousou mais alguém interrogá-lo.
+
+<h3 id="mateus-cap-23">Capítulo 23</h3>
+1 Então falou Jesus à multidão, e aos seus discípulos,<br>
+2 Dizendo: Na cadeira de Moisés estão assentados os escribas e fariseus.<br>
+3 Observai, pois, e praticai tudo o que vos disserem; mas não procedais em conformidade com as suas obras, porque dizem e não fazem;<br>
+4 Pois atam fardos pesados e difíceis de suportar, e os põem aos ombros dos homens; eles, porém, nem com o dedo querem movê-los;<br>
+5 E fazem todas as suas obras a fim de serem vistos pelos homens; pois trazem largos filactérios, e alargam as franjas das suas vestes,<br>
+6 E amam os primeiros lugares nas ceias e as primeiras cadeiras nas sinagogas,<br>
+7 E as saudações nas praças, e o serem chamados pelos homens; Rabi, Rabi.<br>
+8 Vós, porém, não queirais ser chamados Rabi, porque um só é o vosso Mestre, a saber, o Cristo, e todos vós sois irmãos.<br>
+9 E a ninguém na terra chameis vosso pai, porque um só é o vosso Pai, o qual está nos céus.<br>
+10 Nem vos chameis mestres, porque um só é o vosso Mestre, a saber, o Cristo.<br>
+11 Porém o maior dentre vós será vosso servo.<br>
+12 E o que a si mesmo se exaltar será humilhado; e o que a si mesmo se humilhar será exaltado.<br>
+13 Mas ai de vós, escribas e fariseus, hipócritas! pois que fechais aos homens o reino dos céus; e nem vós entrais nem deixais entrar aos que estão entrando.<br>
+14 Ai de vós, escribas e fariseus, hipócritas! porque devorais as casas das viúvas, sob pretexto de prolongadas orações; por isso sofrereis mais rigoroso juízo.<br>
+15 Ai de vós, escribas e fariseus, hipócritas! pois que percorreis o mar e a terra para fazer um prosélito; e, depois de o terdes feito, o fazeis filho do inferno duas vezes mais do que vós.<br>
+16 Ai de vós, condutores cegos! que dizeis: Qualquer que jurar pelo templo, isso nada é; mas o que jurar pelo ouro do templo, esse é devedor.<br>
+17 Insensatos e cegos! Pois qual é maior: o ouro, ou o templo que santifica o ouro?<br>
+18 E aquele que jurar pelo altar isso nada é; mas aquele que jurar pela oferta que está sobre o altar, esse é devedor.<br>
+19 Insensatos e cegos! Pois qual é maior: a oferta, ou o altar que santifica a oferta?<br>
+20 Portanto, o que jurar pelo altar, jura por ele e por tudo o que sobre ele está;<br>
+21 E o que jurar pelo templo, jura por ele e por aquele que nele habita;<br>
+22 E o que jurar pelo céu, jura pelo trono de Deus e por aquele que está assentado sobre ele.<br>
+23 Ai de vós, escribas e fariseus, hipócritas! pois que dais o dízimo da hortelã, do endro e do cominho, e desprezais o mais importante da lei, o juízo, a misericórdia e a fé; deveis, porém, fazer estas coisas, e não omitir aquelas.<br>
+24 Condutores cegos! que coais um mosquito e engulis um camelo.<br>
+25 Ai de vós, escribas e fariseus, hipócritas! pois que limpais o exterior do copo e do prato, mas o interior está cheio de rapina e de intemperança.<br>
+26 Fariseu cego! limpa primeiro o interior do copo e do prato, para que também o exterior fique limpo.<br>
+27 Ai de vós, escribas e fariseus, hipócritas! pois que sois semelhantes aos sepulcros caiados, que por fora realmente parecem formosos, mas interiormente estão cheios de ossos de mortos e de toda a imundícia.<br>
+28 Assim também vós exteriormente pareceis justos aos homens, mas interiormente estais cheios de hipocrisia e de iniquidade.<br>
+29 Ai de vós, escribas e fariseus, hipócritas! pois que edificais os sepulcros dos profetas e adornais os monumentos dos justos,<br>
+30 E dizeis: Se existíssemos no tempo de nossos pais, nunca nos associaríamos com eles para derramar o sangue dos profetas.<br>
+31 Assim, vós mesmos testificais que sois filhos dos que mataram os profetas.<br>
+32 Enchei vós, pois, a medida de vossos pais.<br>
+33 Serpentes, raça de víboras! como escapareis da condenação do inferno?<br>
+34 Portanto, eis que eu vos envio profetas, sábios e escribas; a uns deles matareis e crucificareis; e a outros açoitareis nas vossas sinagogas e os perseguireis de cidade em cidade;<br>
+35 Para que sobre vós caia todo o sangue justo, que se derramou sobre a terra, desde o sangue de Abel, o justo, até ao sangue de Zacarias, filho de Baraquias, que matastes entre o santuário e o altar.<br>
+36 Em verdade vos digo que todas estas coisas hão de vir sobre esta geração.<br>
+37 Jerusalém, Jerusalém, que matas os profetas, e apedrejas os que te são enviados! quantas vezes quis eu ajuntar os teus filhos, como a galinha ajunta os seus pintos debaixo das asas, e tu não quiseste!<br>
+38 Eis que a vossa casa vos ficará deserta.<br>
+39 Porque eu vos digo que desde agora me não vereis mais, até que digais: Bendito o que vem em nome do Senhor.
+
+<h3 id="mateus-cap-24">Capítulo 24</h3>
+1 E, quando Jesus ia saindo do templo, aproximaram-se dele os seus discípulos para lhe mostrarem a estrutura do templo.<br>
+2 Jesus, porém, lhes disse: Não vedes tudo isto? Em verdade vos digo que não ficará aqui pedra sobre pedra que não seja derrubada.<br>
+3 E, estando assentado no Monte das Oliveiras, chegaram-se a ele os seus discípulos em particular, dizendo: Diz-nos, quando serão essas coisas, e que sinal haverá da tua vinda e do fim do mundo?<br>
+4 E Jesus, respondendo, disse-lhes: Acautelai-vos, que ninguém vos engane;<br>
+5 Porque muitos virão em meu nome, dizendo: Eu sou o Cristo; e enganarão a muitos.<br>
+6 E ouvireis de guerras e de rumores de guerras; olhai, não vos assusteis, porque é mister que isso tudo aconteça, mas ainda não é o fim.<br>
+7 Porquanto se levantará nação contra nação, e reino contra reino, e haverá fomes, e pestes, e terremotos, em vários lugares.<br>
+8 Mas todas estas coisas são o princípio de dores.<br>
+9 Então vos hão de entregar para serdes atormentados, e matar-vos-ão; e sereis odiados de todas as nações por causa do meu nome.<br>
+10 Nesse tempo muitos serão escandalizados, e trair-se-ão uns aos outros, e uns aos outros se odiarão.<br>
+11 E surgirão muitos falsos profetas, e enganarão a muitos.<br>
+12 E, por se multiplicar a iniquidade, o amor de muitos esfriará.<br>
+13 Mas aquele que perseverar até ao fim será salvo.<br>
+14 E este evangelho do reino será pregado em todo o mundo, em testemunho a todas as nações, e então virá o fim.<br>
+15 Quando, pois, virdes que a abominação da desolação, de que falou o profeta Daniel, está no lugar santo; quem lê, entenda;<br>
+16 Então, os que estiverem na Judeia, fujam para os montes;<br>
+17 E quem estiver sobre o telhado não desça a tirar alguma coisa de sua casa;<br>
+18 E quem estiver no campo não volte atrás a buscar as suas vestes.<br>
+19 Mas ai das grávidas e das que amamentarem naqueles dias!<br>
+20 E orai para que a vossa fuga não aconteça no inverno nem no sábado;<br>
+21 Porque haverá então grande aflição, como nunca houve desde o princípio do mundo até agora, nem tampouco há de haver.<br>
+22 E, se aqueles dias não fossem abreviados, nenhuma carne se salvaria; mas por causa dos escolhidos serão abreviados aqueles dias.<br>
+23 Então, se alguém vos disser: Eis que o Cristo está aqui, ou ali, não lhe deis crédito;<br>
+24 Porque surgirão falsos cristos e falsos profetas, e farão tão grandes sinais e prodígios que, se fora possível, enganariam até os escolhidos.<br>
+25 Eis que eu vo-lo tenho predito.<br>
+26 Portanto, se vos disserem: Eis que ele está no deserto, não saiais. Eis que ele está no interior da casa, não acrediteis.<br>
+27 Porque, assim como o relâmpago sai do oriente e se mostra até ao ocidente, assim será também a vinda do Filho do homem.<br>
+28 Pois onde estiver o cadáver, aí se ajuntarão as águias.<br>
+29 E, logo depois da aflição daqueles dias, o sol escurecerá, e a lua não dará a sua luz, e as estrelas cairão do céu, e as potências dos céus serão abaladas.<br>
+30 Então aparecerá no céu o sinal do Filho do homem; e todas as tribos da terra se lamentarão, e verão o Filho do homem, vindo sobre as nuvens do céu, com poder e grande glória.<br>
+31 E ele enviará os seus anjos com rijo clamor de trombeta, os quais ajuntarão os seus escolhidos desde os quatro ventos, de uma à outra extremidade dos céus.<br>
+32 Aprendei, pois, a parábola da figueira: Quando já os seus ramos se tornam tenros e brotam folhas, sabeis que está próximo o verão.<br>
+33 Igualmente, quando virdes todas estas coisas, sabei que ele está próximo, às portas.<br>
+34 Em verdade vos digo que não passará esta geração sem que todas estas coisas se cumpram.<br>
+35 O céu e a terra passarão, mas as minhas palavras não hão de passar.<br>
+36 Mas daquele dia e hora ninguém sabe, nem os anjos do céu, mas unicamente meu Pai.<br>
+37 E, como foi nos dias de Noé, assim será também a vinda do Filho do homem.<br>
+38 Porquanto, assim como, nos dias anteriores ao dilúvio, comiam, bebiam, casavam e davam-se em casamento, até ao dia em que Noé entrou na arca,<br>
+39 E não o perceberam, até que veio o dilúvio, e os levou a todos, assim será também a vinda do Filho do homem.<br>
+40 Então, estando dois no campo, será levado um, e deixado o outro;<br>
+41 Estando duas moendo no moinho, será levada uma, e deixada a outra.<br>
+42 Vigiai, pois, porque não sabeis a que hora há de vir o vosso Senhor.<br>
+43 Mas considerai isto: se o pai de família soubesse a que vigília da noite havia de vir o ladrão, vigiaria e não deixaria minar a sua casa.<br>
+44 Por isso, estai vós apercebidos também; porque o Filho do homem há de vir à hora em que não penseis.<br>
+45 Quem é, pois, o servo fiel e prudente, que o seu senhor constituiu sobre a sua família, para dar-lhe o sustento a seu tempo?<br>
+46 Bem-aventurado aquele servo que o seu senhor, quando vier, achar servindo assim.<br>
+47 Em verdade vos digo que o porá sobre todos os seus bens.<br>
+48 Mas se aquele mau servo disser no seu coração: O meu senhor tarde virá;<br>
+49 E começar a espancar os seus conservos, e a comer e a beber com os ébrios,<br>
+50 Virá o senhor daquele servo num dia em que o não espera, e à hora em que ele não sabe,<br>
+51 E separá-lo-á, e destinará a sua parte com os hipócritas; ali haverá choro e ranger de dentes.
+
+<h3 id="mateus-cap-25">Capítulo 25</h3>
+1 Então o reino dos céus será semelhante a dez virgens que, tomando as suas lâmpadas, saíram ao encontro do esposo.<br>
+2 E cinco delas eram prudentes, e cinco loucas.<br>
+3 As loucas, tomando as suas lâmpadas, não levaram azeite consigo.<br>
+4 Mas as prudentes levaram azeite em suas vasilhas, com as suas lâmpadas.<br>
+5 E, tardando o esposo, tosquenejaram todas, e adormeceram.<br>
+6 Mas à meia-noite ouviu-se um grito: Eis que vem o esposo, saí-lhe ao encontro.<br>
+7 Então todas aquelas virgens se levantaram, e prepararam as suas lâmpadas.<br>
+8 E as loucas disseram às prudentes: Dai-nos do vosso azeite, porque as nossas lâmpadas se apagam.<br>
+9 Mas as prudentes responderam, dizendo: Não seja caso que nos falte a nós e a vós, ide antes aos que o vendem, e comprai-o para vós.<br>
+10 E, tendo elas ido comprá-lo, chegou o esposo, e as que estavam preparadas entraram com ele para as bodas, e fechou-se a porta.<br>
+11 E depois chegaram também as outras virgens, dizendo: Senhor, Senhor, abre-nos.<br>
+12 E ele, respondendo, disse: Em verdade vos digo que vos não conheço.<br>
+13 Vigiai, pois, porque não sabeis o dia nem a hora em que o Filho do homem há de vir.<br>
+14 Porque isto é também como um homem que, partindo para fora da terra, chamou os seus servos, e entregou-lhes os seus bens.<br>
+15 E a um deu cinco talentos, e a outro dois, e a outro um, a cada um segundo a sua capacidade, e ausentou-se logo para longe.<br>
+16 E, tendo ido o que recebera cinco talentos, negociou com eles, e granjeou outros cinco talentos.<br>
+17 Da mesma sorte, o que recebera dois, granjeou também outros dois.<br>
+18 Mas o que recebera um, foi e cavou na terra e escondeu o dinheiro do seu senhor.<br>
+19 E muito tempo depois veio o senhor daqueles servos, e fez contas com eles.<br>
+20 Então aproximou-se o que recebera cinco talentos, e trouxe-lhe outros cinco talentos, dizendo: Senhor, entregaste-me cinco talentos; eis aqui outros cinco talentos que granjeei com eles.<br>
+21 E o seu senhor lhe disse: Bem está, servo bom e fiel. Sobre o pouco foste fiel, sobre muito te colocarei; entra no gozo do teu senhor.<br>
+22 E, chegando também o que tinha recebido dois talentos, disse: Senhor, entregaste-me dois talentos; eis que com eles granjeei outros dois talentos.<br>
+23 Disse-lhe o seu senhor: Bem está, servo bom e fiel. Sobre o pouco foste fiel, sobre muito te colocarei; entra no gozo do teu senhor.<br>
+24 Mas, chegando também o que recebera um talento, disse: Senhor, eu conhecia-te, que és um homem duro, que ceifas onde não semeaste e ajuntas onde não espalhaste;<br>
+25 E, atemorizado, fui esconder na terra o teu talento; aqui tens o que é teu.<br>
+26 Respondendo, porém, o seu senhor, disse-lhe: Mau e negligente servo; sabias que ceifo onde não semeei e ajunto onde não espalhei?<br>
+27 Devias então ter dado o meu dinheiro aos banqueiros e, quando eu viesse, receberia o meu com os juros.<br>
+28 Tirai-lhe pois o talento, e dai-o ao que tem os dez talentos.<br>
+29 Porque a qualquer que tiver será dado, e terá em abundância; mas ao que não tiver até o que tem lhe será tirado.<br>
+30 Lançai, pois, o servo inútil nas trevas exteriores; ali haverá choro e ranger de dentes.<br>
+31 E quando o Filho do homem vier em sua glória, e todos os santos anjos com ele, então se assentará no trono da sua glória;<br>
+32 E todas as nações serão reunidas diante dele, e apartará uns dos outros, como o pastor aparta dos cabritos as ovelhas;<br>
+33 E porá as ovelhas à sua direita, mas os cabritos à esquerda.<br>
+34 Então dirá o Rei aos que estiverem à sua direita: Vinde, benditos de meu Pai, possuí por herança o reino que vos está preparado desde a fundação do mundo;<br>
+35 Porque tive fome, e destes-me de comer; tive sede, e destes-me de beber; era estrangeiro, e hospedastes-me;<br>
+36 Estava nu, e vestistes-me; adoeci, e visitastes-me; estive na prisão, e fostes ver-me.<br>
+37 Então os justos lhe responderão, dizendo: Senhor, quando te vimos com fome, e te demos de comer? ou com sede, e te demos de beber?<br>
+38 E quando te vimos estrangeiro, e te hospedamos? ou nu, e te vestimos?<br>
+39 E quando te vimos enfermo, ou na prisão, e fomos ver-te?<br>
+40 E, respondendo o Rei, lhes dirá: Em verdade vos digo que quando o fizestes a um destes meus menores irmãos, a mim o fizestes.<br>
+41 Então dirá também aos que estiverem à sua esquerda: Apartai-vos de mim, malditos, para o fogo eterno, preparado para o diabo e seus anjos;<br>
+42 Porque tive fome, e não me destes de comer; tive sede, e não me destes de beber;<br>
+43 Sendo estrangeiro, não me hospedastes; estando nu, não me vestistes; e enfermo, e na prisão, não me visitastes.<br>
+44 Então eles também lhe responderão, dizendo: Senhor, quando te vimos com fome, ou com sede, ou estrangeiro, ou nu, ou enfermo, ou na prisão, e não te servimos?<br>
+45 Então lhes responderá, dizendo: Em verdade vos digo que, quando a um destes pequeninos o não fizestes, não o fizestes a mim.<br>
+46 E irão estes para o tormento eterno, mas os justos para a vida eterna.
+
+<h3 id="mateus-cap-26">Capítulo 26</h3>
+1 E aconteceu que, quando Jesus concluiu todos estes discursos, disse aos seus discípulos:<br>
+2 Bem sabeis que daqui a dois dias é a páscoa; e o Filho do homem será entregue para ser crucificado.<br>
+3 Depois os príncipes dos sacerdotes, e os escribas, e os anciãos do povo reuniram-se na sala do sumo sacerdote, chamado Caifás.<br>
+4 E consultaram juntos como prenderiam a Jesus com ardil e o matariam.<br>
+5 Mas diziam: Não durante a festa, para que não haja alvoroço entre o povo.<br>
+6 E, estando Jesus em Betânia, em casa de Simão, o leproso,<br>
+7 Aproximou-se dele uma mulher com um vaso de alabastro, com unguento de grande valor, e derramou-lho sobre a cabeça, estando ele assentado à mesa.<br>
+8 E os seus discípulos, vendo isto, indignaram-se, dizendo: Para que é este desperdício?<br>
+9 Pois este unguento podia vender-se por muito dinheiro, e dar-se aos pobres.<br>
+10 Jesus, porém, conhecendo isto, disse-lhes: Por que afligis esta mulher? pois fez-me uma boa obra.<br>
+11 Porquanto sempre tendes convosco os pobres, mas a mim não me tendes sempre.<br>
+12 Ora, derramando ela este unguento sobre o meu corpo, fê-lo preparando-me para o meu sepultamento.<br>
+13 Em verdade vos digo que, onde quer que este evangelho for pregado em todo o mundo, também será dito o que ela fez, para memória sua.<br>
+14 Então um dos doze, chamado Judas Iscariotes, foi ter com os príncipes dos sacerdotes,<br>
+15 E disse: Que me quereis dar, e eu vo-lo entregarei? E eles lhe pesaram trinta moedas de prata.<br>
+16 E desde então buscava oportunidade para o entregar.<br>
+17 E, no primeiro dia da festa dos pães ázimos, chegaram os discípulos a Jesus, dizendo: Onde queres que preparemos a ceia da páscoa?<br>
+18 E ele disse: Ide à cidade, a um certo homem, e dizei-lhe: O Mestre diz: O meu tempo está próximo; em tua casa celebrarei a páscoa com os meus discípulos.<br>
+19 E os discípulos fizeram como Jesus lhes ordenara, e prepararam a páscoa.<br>
+20 E, chegada a tarde, assentou-se à mesa com os doze.<br>
+21 E, enquanto comiam, disse: Em verdade vos digo que um de vós me há de trair.<br>
+22 E eles, entristecendo-se muito, começaram cada um a dizer-lhe: Porventura sou eu, Senhor?<br>
+23 E ele, respondendo, disse: O que mete comigo a mão no prato, esse me há de trair.<br>
+24 Em verdade o Filho do homem vai, como acerca dele está escrito, mas ai daquele homem por quem o Filho do homem é traído! bom seria para esse homem se não houvera nascido.<br>
+25 E, respondendo Judas, o que o traía, disse: Porventura sou eu, Rabi? Ele disse: Tu o disseste.<br>
+26 E, enquanto comiam, Jesus tomou o pão e, abençoando-o, o partiu e o deu aos discípulos, e disse: Tomai, comei, isto é o meu corpo.<br>
+27 E, tomando o cálice, e dando graças, deu-lho, dizendo: Bebei dele todos;<br>
+28 Porque isto é o meu sangue, o sangue do novo testamento, que é derramado por muitos, para remissão dos pecados.<br>
+29 E digo-vos que, desde agora, não beberei deste fruto da vide, até àquele dia em que o beba novo convosco no reino de meu Pai.<br>
+30 E, tendo cantado o hino, saíram para o Monte das Oliveiras.<br>
+31 Então Jesus lhes disse: Todos vós esta noite vos escandalizareis em mim; porque está escrito: Ferirei o pastor, e as ovelhas do rebanho se dispersarão.<br>
+32 Mas, depois de eu ressuscitar, irei adiante de vós para a Galileia.<br>
+33 E Pedro, respondendo, disse-lhe: Ainda que todos se escandalizem em ti, eu nunca me escandalizarei.<br>
+34 Disse-lhe Jesus: Em verdade te digo que, nesta mesma noite, antes que o galo cante, três vezes me negarás.<br>
+35 Disse-lhe Pedro: Ainda que me seja mister morrer contigo, não te negarei. E todos os discípulos disseram o mesmo.<br>
+36 Então chegou Jesus com eles a um lugar chamado Getsêmani, e disse a seus discípulos: Assentai-vos aqui, enquanto vou além orar.<br>
+37 E, levando consigo Pedro e os dois filhos de Zebedeu, começou a entristecer-se e a aterrorizar-se.<br>
+38 Então lhes disse: A minha alma está cheia de tristeza até à morte; ficai aqui, e vigiai comigo.<br>
+39 E, indo um pouco mais adiante, prostrou-se sobre o seu rosto, orando e dizendo: Meu Pai, se é possível, passe de mim este cálice; todavia, não seja como eu quero, mas como tu queres.<br>
+40 E, voltando para os seus discípulos, achou-os dormindo; e disse a Pedro: Então nem uma hora pudestes vigiar comigo?<br>
+41 Vigiai e orai, para que não entreis em tentação; na verdade, o espírito está pronto, mas a carne é fraca.<br>
+42 E, indo segunda vez, orou, dizendo: Meu Pai, se este cálice não pode passar de mim sem eu o beber, faça-se a tua vontade.<br>
+43 E, voltando, achou-os outra vez dormindo; porque os seus olhos estavam carregados.<br>
+44 E, deixando-os de novo, foi orar pela terceira vez, dizendo as mesmas palavras.<br>
+45 Então chegou ao pé dos seus discípulos, e disse-lhes: Dormi agora, e descansai; eis que é chegada a hora, e o Filho do homem será entregue nas mãos dos pecadores.<br>
+46 Levantai-vos, vamo-nos; eis que é chegado o que me trai.<br>
+47 E, estando ele ainda a falar, eis que chegou Judas, um dos doze, e com ele grande multidão com espadas e varapaus, enviada pelos príncipes dos sacerdotes e pelos anciãos do povo.<br>
+48 E o que o traía tinha-lhes dado um sinal, dizendo: O que eu beijar é esse; prendei-o.<br>
+49 E logo, aproximando-se de Jesus, disse: Salve, Rabi; e beijou-o.<br>
+50 Jesus, porém, lhe disse: Amigo, a que vieste? Então, aproximando-se eles, lançaram mão de Jesus, e o prenderam.<br>
+51 E eis que um dos que estavam com Jesus, estendendo a mão, puxou da espada e, ferindo o servo do sumo sacerdote, cortou-lhe uma orelha.<br>
+52 Então Jesus disse-lhe: Mete no seu lugar a tua espada; porque todos os que lançarem mão da espada, à espada morrerão.<br>
+53 Ou pensas tu que eu não poderia agora rogar a meu Pai, e que ele não me daria mais de doze legiões de anjos?<br>
+54 Como, pois, se cumpririam as Escrituras, que dizem que assim convém que aconteça?<br>
+55 Disse Jesus naquela hora à multidão: Saístes, como para um ladrão, com espadas e varapaus para me prender? Todos os dias me assentava junto de vós ensinando no templo, e não me prendestes.<br>
+56 Mas tudo isto aconteceu para que se cumprissem as Escrituras dos profetas. Então todos os discípulos, deixando-o, fugiram.<br>
+57 E os que prenderam a Jesus o levaram à casa do sumo sacerdote Caifás, onde os escribas e os anciãos estavam reunidos.<br>
+58 E Pedro o seguiu de longe até ao pátio do sumo sacerdote e, entrando, assentou-se entre os criados, para ver o fim.<br>
+59 Ora, os príncipes dos sacerdotes, e os anciãos, e todo o conselho, buscavam falso testemunho contra Jesus, para poderem matá-lo;<br>
+60 E não o achavam; apesar de se apresentarem muitas testemunhas falsas, não o achavam. Mas, por fim chegaram duas,<br>
+61 E disseram: Este disse: Eu posso derribar o templo de Deus, e reedificá-lo em três dias.<br>
+62 E, levantando-se o sumo sacerdote, disse-lhe: Não respondes coisa alguma ao que estes depõem contra ti?<br>
+63 Jesus, porém, guardava silêncio. E, operando o sumo sacerdote, disse-lhe: Conjuro-te pelo Deus vivo que nos digas se tu és o Cristo, o Filho de Deus.<br>
+64 Disse-lhe Jesus: Tu o disseste; digo-vos, porém, que vereis em breve o Filho do homem assentado à direita do Poder, e vindo sobre as nuvens do céu.<br>
+65 Então o sumo sacerdote rasgou as suas vestes, dizendo: Blasfemou; para que precisamos ainda de testemunhas? Eis que recebestes agora a sua blasfêmia.<br>
+66 Que vos parece? E eles, respondendo, disseram: É réu de morte.<br>
+67 Então cuspiram-lhe no rosto e lhe deram punhadas, e outros o esbofetearam,<br>
+68 Dizendo: Profetiza-nos, Cristo, quem é o que te bateu?<br>
+69 Ora, Pedro estava assentado fora, no pátio; e, aproximando-se dele uma criada, disse: Tu também estavas com Jesus, o galileu.<br>
+70 Mas ele negou diante de todos, dizendo: Não sei o que dizes.<br>
+71 E, saindo para o vestíbulo, viu-o outra criada, e disse aos que ali estavam: Este também estava com Jesus, o Nazareno.<br>
+72 E ele negou outra vez com juramento: Não conheço tal homem.<br>
+73 E, daí a pouco, aproximando-se os que ali estavam, disseram a Pedro: Verdadeiramente tu também és um deles, pois a tua fala te denuncia.<br>
+74 Então começou ele a praguejar e a jurar, dizendo: Não conheço esse homem. E imediatamente o galo cantou.<br>
+75 E lembrou-se Pedro das palavras de Jesus, que lhe dissera: Antes que o galo cante, três vezes me negarás. E, saindo dali, chorou amargamente.
+
+<h3 id="mateus-cap-27">Capítulo 27</h3>
+1 E, chegada a manhã, todos os príncipes dos sacerdotes e os anciãos do povo entraram em conselho contra Jesus, para o matarem.<br>
+2 E, maniatando-o, o levaram e entregaram ao presidente Pôncio Pilatos.<br>
+3 Então Judas, o que o traíra, vendo que fora condenado, trouxe, arrependido, as trinta moedas de prata aos príncipes dos sacerdotes e aos anciãos,<br>
+4 Dizendo: Pequei, traindo o sangue inocente. Eles, porém, disseram: Que nos importa? Isso é contigo.<br>
+5 E ele, atirando as moedas de prata no templo, retirou-se e foi-se enforcar.<br>
+6 E os príncipes dos sacerdotes, tomando as moedas de prata, disseram: Não é lícito metê-las no cofre das ofertas, porque é preço de sangue.<br>
+7 E, tendo deliberado em conselho, compraram com elas o campo de um oleiro, para sepultura dos estrangeiros.<br>
+8 Por isso foi chamado aquele campo, até ao dia de hoje, Campo de Sangue.<br>
+9 Então se cumpriu o que foi dito pelo profeta Jeremias: Tomaram as trinta moedas de prata, preço do que foi avaliado, a quem os filhos de Israel avaliaram,<br>
+10 E deram-nas pelo campo do oleiro, segundo o que o Senhor me determinou.<br>
+11 E foi Jesus apresentado ao presidente, e o presidente o interrogou, dizendo: És tu o Rei dos Judeus? E disse-lhe Jesus: Tu o dizes.<br>
+12 E, sendo acusado pelos príncipes dos sacerdotes e pelos anciãos, nada respondeu.<br>
+13 Disse-lhe então Pilatos: Não ouves quanto testificam contra ti?<br>
+14 E nem uma palavra lhe respondeu, de sorte que o presidente estava muito maravilhado.<br>
+15 Ora, por ocasião da festa, costumava o presidente soltar um preso, conforme a vontade do povo.<br>
+16 E tinham então um preso insigne, chamado Barrabás.<br>
+17 Portanto, estando eles reunidos, disse-lhes Pilatos: Qual quereis que vos solte? Barrabás, ou Jesus, chamado Cristo?<br>
+18 Porque sabia que por inveja o haviam entregado.<br>
+19 E, estando ele assentado no tribunal, sua mulher mandou-lhe dizer: Não entres na questão desse justo, porque num sonho muito sofri hoje por causa dele.<br>
+20 Mas os príncipes dos sacerdotes e os anciãos persuadiram à multidão que pedissem Barrabás e matassem Jesus.<br>
+21 E, respondendo o presidente, disse-lhes: Qual desses dois quereis vós que eu solte? E eles disseram: Barrabás.<br>
+22 Disse-lhes Pilatos: Que farei então de Jesus, chamado Cristo? Disseram-lhe todos: Seja crucificado.<br>
+23 O presidente, porém, disse: Mas que mal fez ele? E eles clamavam cada vez mais, dizendo: Seja crucificado.<br>
+24 Então Pilatos, vendo que nada aproveitava, antes o tumulto crescia, tomando água, lavou as mãos diante da multidão, dizendo: Estou inocente do sangue deste justo. Considerai vós.<br>
+25 E, respondendo todo o povo, disse: O seu sangue caia sobre nós e sobre nossos filhos.<br>
+26 Então soltou-lhes Barrabás, e, tendo açoitado a Jesus, entregou-o para ser crucificado.<br>
+27 E logo os soldados do presidente, conduzindo Jesus ao pretório, reuniram junto dele toda a coorte.<br>
+28 E, despindo-o, o cobriram com uma capa de escarlate;<br>
+29 E, tecendo uma coroa de espinhos, puseram-lha na cabeça, e em sua mão direita uma cana; e, ajoelhando diante dele, o escarneciam, dizendo: Salve, Rei dos judeus.<br>
+30 E, cuspindo nele, tiraram-lhe a cana, e batiam-lhe com ela na cabeça.<br>
+31 E, depois de o haverem escarnecido, tiraram-lhe a capa, vestiram-lhe as suas vestes e o levaram para ser crucificado.<br>
+32 E, quando saíam, encontraram um homem cireneu, chamado Simão, a quem constrangeram a levar a sua cruz.<br>
+33 E, chegando ao lugar chamado Gólgota, que se diz: Lugar da Caveira,<br>
+34 Deram-lhe a beber vinagre misturado com fel; mas ele, provando-o, não quis beber.<br>
+35 E, havendo-o crucificado, repartiram as suas vestes, lançando sortes, para que se cumprisse o que foi dito pelo profeta: Repartiram entre si as minhas vestes, e sobre a minha túnica lançaram sortes.<br>
+36 E, assentados, o guardavam ali.<br>
+37 E puseram por cima da sua cabeça a sua acusação escrita: ESTE É JESUS, O REI DOS JUDEUS.<br>
+38 E foram crucificados com ele dois salteadores, um à direita, e outro à esquerda.<br>
+39 E os que passavam blasfemavam dele, meneando as cabeças,<br>
+40 E dizendo: Tu, que derribas o templo, e em três dias o reedificas, salva-te a ti mesmo. Se és Filho de Deus, desce da cruz.<br>
+41 E da mesma maneira também os príncipes dos sacerdotes, com os escribas, e anciãos, e fariseus, escarnecendo, diziam:<br>
+42 Salvou a outros, e a si mesmo não pode salvar-se. Se é o Rei de Israel, desça agora da cruz, e creremos nele.<br>
+43 Confiou em Deus; livre-o agora, se o ama; porque disse: Sou Filho de Deus.<br>
+44 E o mesmo lhe lançavam em rosto também os salteadores que com ele estavam crucificados.<br>
+45 E desde a hora sexta houve trevas sobre toda a terra, até à hora nona.<br>
+46 E perto da hora nona exclamou Jesus em alta voz, dizendo: Eli, Eli, lamá sabactani; isto é, Deus meu, Deus meu, por que me desamparaste?<br>
+47 E alguns dos que ali estavam, ouvindo isto, diziam: Este chama por Elias.<br>
+48 E logo um deles, correndo, tomou uma esponja, e embebeu-a em vinagre, e, pondo-a numa cana, dava-lhe de beber.<br>
+49 Os outros, porém, diziam: Deixa, vejamos se Elias vem livrá-lo.<br>
+50 E Jesus, clamando outra vez com grande voz, rendeu o espírito.<br>
+51 E eis que o véu do templo se rasgou em dois, de alto a baixo; e tremeu a terra, e fenderam-se as pedras;<br>
+52 E abriram-se os sepulcros, e muitos corpos de santos que dormiam foram ressuscitados;<br>
+53 E, saindo dos sepulcros, depois da ressurreição dele, entraram na cidade santa, e apareceram a muitos.<br>
+54 E o centurião e os que com ele guardavam a Jesus, vendo o terremoto, e as coisas que haviam sucedido, tiveram grande medo, e disseram: Verdadeiramente este era o Filho de Deus.<br>
+55 E estavam ali, olhando de longe, muitas mulheres que tinham seguido Jesus desde a Galileia, para o servir;<br>
+56 Entre as quais estavam Maria Madalena, e Maria, mãe de Tiago e de José, e a mãe dos filhos de Zebedeu.<br>
+57 E, vinda a tarde, chegou um homem rico, de Arimateia, por nome José, que também era discípulo de Jesus.<br>
+58 Este foi ter com Pilatos, e pediu-lhe o corpo de Jesus. Então Pilatos mandou que o corpo lhe fosse entregue.<br>
+59 E José, tomando o corpo, envolveu-o num fino e limpo lençol,<br>
+60 E depositou-o no seu sepulcro novo, que havia aberto em rocha, e, rodando uma grande pedra para a porta do sepulcro, retirou-se.<br>
+61 E estavam ali Maria Madalena e a outra Maria, assentadas defronte do sepulcro.<br>
+62 E no dia seguinte, que é o dia depois da Preparação, reuniram-se os príncipes dos sacerdotes e os fariseus em casa de Pilatos,<br>
+63 Dizendo: Senhor, lembramo-nos de que aquele enganador, vivendo ainda, disse: Depois de três dias ressuscitarei.<br>
+64 Manda, pois, que o sepulcro seja guardado com segurança até ao terceiro dia, não aconteça que os seus discípulos venham de noite, e o furtem, e digam ao povo: Ressuscitou dos mortos; e assim o último erro será pior do que o primeiro.<br>
+65 E disse-lhes Pilatos: Tendes a guarda; ide, guardai-o como entenderdes.<br>
+66 E, indo eles, seguraram o sepulcro com a guarda, selando a pedra.
+
+<h3 id="mateus-cap-28">Capítulo 28</h3>
+1 E, no fim do sábado, ao amanhecer do primeiro dia da semana, Maria Madalena e a outra Maria foram ver o sepulcro.<br>
+2 E eis que houvera um grande terremoto, porque um anjo do Senhor, descendo do céu, chegou, removendo a pedra da porta, e sentou-se sobre ela.<br>
+3 E o seu aspecto era como um relâmpago, e as suas vestes brancas como neve.<br>
+4 E os guardas, com medo dele, ficaram muito assombrados, e como mortos.<br>
+5 Mas o anjo, respondendo, disse às mulheres: Não tenhais medo; pois eu sei que buscais a Jesus, que foi crucificado.<br>
+6 Ele não está aqui, porque já ressuscitou, como havia dito. Vinde, vede o lugar onde o Senhor jazia.<br>
+7 Ide pois, imediatamente, e dizei aos seus discípulos que já ressuscitou dos mortos. E eis que ele vai adiante de vós para a Galileia; ali o vereis. Eis que eu vo-lo tenho dito.<br>
+8 E, saindo elas pressurosamente do sepulcro, com temor e grande alegria, correram a anunciá-lo aos seus discípulos.<br>
+9 E, indo elas dar as novas aos seus discípulos, eis que Jesus lhes sai ao encontro, dizendo: Eu vos saúdo. E elas, chegando, abraçaram os seus pés, e o adoraram.<br>
+10 Então Jesus disse-lhes: Não temais; ide dizer a meus irmãos que vão para a Galileia, e lá me verão.<br>
+11 E, indo elas, eis que alguns da guarda, chegando à cidade, anunciaram aos príncipes dos sacerdotes todas as coisas que haviam acontecido.<br>
+12 E, congregados eles com os anciãos, e tomando conselho entre si, deram muito dinheiro aos soldados,<br>
+13 Dizendo: Dizei: Os seus discípulos vieram de noite, e o furtaram, estando nós dormindo.<br>
+14 E, se isso chegar a ouvidos do presidente, nós o persuadiremos, e vos poremos em segurança.<br>
+15 E eles, recebendo o dinheiro, fizeram como estavam instruídos. E esta palavra se divulgou entre os judeus, até ao dia de hoje.<br>
+16 E os onze discípulos partiram para a Galileia, para o monte que Jesus lhes tinha designado.<br>
+17 E, quando o viram, o adoraram; mas alguns duvidaram.<br>
+18 E, chegando-se Jesus, falou-lhes, dizendo: É-me dado todo o poder no céu e na terra.<br>
+19 Portanto ide, fazei discípulos de todas as nações, batizando-os em nome do Pai, e do Filho, e do Espírito Santo;<br>
+20 Ensinando-os a guardar todas as coisas que eu vos tenho mandado; e eis que eu estou convosco todos os dias, até à consumação dos séculos. Amém.
 </div>
-<div class="book-section">
-<h3><a href="#marcos">Marcos</a></h3>
-<div class="chapter-links">Capítulos: <a href="#marcos-cap-1">1</a> | <a href="#marcos-cap-2">2</a> | <a href="#marcos-cap-3">3</a> | <a href="#marcos-cap-4">4</a> | <a href="#marcos-cap-5">5</a> | <a href="#marcos-cap-6">6</a> | <a href="#marcos-cap-7">7</a> | <a href="#marcos-cap-8">8</a> | <a href="#marcos-cap-9">9</a> | <a href="#marcos-cap-10">10</a> | <a href="#marcos-cap-11">11</a> | <a href="#marcos-cap-12">12</a> | <a href="#marcos-cap-13">13</a> | <a href="#marcos-cap-14">14</a> | <a href="#marcos-cap-15">15</a> | <a href="#marcos-cap-16">16</a></div>
-</div>
-<div class="book-section">
-<h3><a href="#lucas">Lucas</a></h3>
-<div class="chapter-links">Capítulos: <a href="#lucas-cap-1">1</a> | <a href="#lucas-cap-2">2</a> | <a href="#lucas-cap-3">3</a> | <a href="#lucas-cap-4">4</a> | <a href="#lucas-cap-5">5</a> | <a href="#lucas-cap-6">6</a> | <a href="#lucas-cap-7">7</a> | <a href="#lucas-cap-8">8</a> | <a href="#lucas-cap-9">9</a> | <a href="#lucas-cap-10">10</a> | <a href="#lucas-cap-11">11</a> | <a href="#lucas-cap-12">12</a> | <a href="#lucas-cap-13">13</a> | <a href="#lucas-cap-14">14</a> | <a href="#lucas-cap-15">15</a> | <a href="#lucas-cap-16">16</a> | <a href="#lucas-cap-17">17</a> | <a href="#lucas-cap-18">18</a> | <a href="#lucas-cap-19">19</a> | <a href="#lucas-cap-20">20</a> | <a href="#lucas-cap-21">21</a> | <a href="#lucas-cap-22">22</a> | <a href="#lucas-cap-23">23</a> | <a href="#lucas-cap-24">24</a></div>
-</div>
-<div class="book-section">
-<h3><a href="#joão">João</a></h3>
-<div class="chapter-links">Capítulos: <a href="#joão-cap-1">1</a> | <a href="#joão-cap-2">2</a> | <a href="#joão-cap-3">3</a> | <a href="#joão-cap-4">4</a> | <a href="#joão-cap-5">5</a> | <a href="#joão-cap-6">6</a> | <a href="#joão-cap-7">7</a> | <a href="#joão-cap-8">8</a> | <a href="#joão-cap-9">9</a> | <a href="#joão-cap-10">10</a> | <a href="#joão-cap-11">11</a> | <a href="#joão-cap-12">12</a> | <a href="#joão-cap-13">13</a> | <a href="#joão-cap-14">14</a> | <a href="#joão-cap-15">15</a> | <a href="#joão-cap-16">16</a> | <a href="#joão-cap-17">17</a> | <a href="#joão-cap-18">18</a> | <a href="#joão-cap-19">19</a> | <a href="#joão-cap-20">20</a> | <a href="#joão-cap-21">21</a></div>
-</div>
-<div class="book-section">
-<h3><a href="#atos">Atos</a></h3>
-<div class="chapter-links">Capítulos: <a href="#atos-cap-1">1</a> | <a href="#atos-cap-2">2</a> | <a href="#atos-cap-3">3</a> | <a href="#atos-cap-4">4</a> | <a href="#atos-cap-5">5</a> | <a href="#atos-cap-6">6</a> | <a href="#atos-cap-7">7</a> | <a href="#atos-cap-8">8</a> | <a href="#atos-cap-9">9</a> | <a href="#atos-cap-10">10</a> | <a href="#atos-cap-11">11</a> | <a href="#atos-cap-12">12</a> | <a href="#atos-cap-13">13</a> | <a href="#atos-cap-14">14</a> | <a href="#atos-cap-15">15</a> | <a href="#atos-cap-16">16</a> | <a href="#atos-cap-17">17</a> | <a href="#atos-cap-18">18</a> | <a href="#atos-cap-19">19</a> | <a href="#atos-cap-20">20</a> | <a href="#atos-cap-21">21</a> | <a href="#atos-cap-22">22</a> | <a href="#atos-cap-23">23</a> | <a href="#atos-cap-24">24</a> | <a href="#atos-cap-25">25</a> | <a href="#atos-cap-26">26</a> | <a href="#atos-cap-27">27</a> | <a href="#atos-cap-28">28</a></div>
-</div>
-<div class="book-section">
-<h3><a href="#romanos">Romanos</a></h3>
-<div class="chapter-links">Capítulos: <a href="#romanos-cap-1">1</a> | <a href="#romanos-cap-2">2</a> | <a href="#romanos-cap-3">3</a> | <a href="#romanos-cap-4">4</a> | <a href="#romanos-cap-5">5</a> | <a href="#romanos-cap-6">6</a> | <a href="#romanos-cap-7">7</a> | <a href="#romanos-cap-8">8</a> | <a href="#romanos-cap-9">9</a> | <a href="#romanos-cap-10">10</a> | <a href="#romanos-cap-11">11</a> | <a href="#romanos-cap-12">12</a> | <a href="#romanos-cap-13">13</a> | <a href="#romanos-cap-14">14</a> | <a href="#romanos-cap-15">15</a> | <a href="#romanos-cap-16">16</a></div>
-</div>
-<div class="book-section">
-<h3><a href="#i-corintios">I Coríntios</a></h3>
-<div class="chapter-links">Capítulos: <a href="#i-corintios-cap-1">1</a> | <a href="#i-corintios-cap-2">2</a> | <a href="#i-corintios-cap-3">3</a> | <a href="#i-corintios-cap-4">4</a> | <a href="#i-corintios-cap-5">5</a> | <a href="#i-corintios-cap-6">6</a> | <a href="#i-corintios-cap-7">7</a> | <a href="#i-corintios-cap-8">8</a> | <a href="#i-corintios-cap-9">9</a> | <a href="#i-corintios-cap-10">10</a> | <a href="#i-corintios-cap-11">11</a> | <a href="#i-corintios-cap-12">12</a> | <a href="#i-corintios-cap-13">13</a> | <a href="#i-corintios-cap-14">14</a> | <a href="#i-corintios-cap-15">15</a> | <a href="#i-corintios-cap-16">16</a></div>
-</div>
-<div class="book-section">
-<h3><a href="#ii-corintios">Ii Coríntios</a></h3>
-<div class="chapter-links">Capítulos: <a href="#ii-corintios-cap-1">1</a> | <a href="#ii-corintios-cap-2">2</a> | <a href="#ii-corintios-cap-3">3</a> | <a href="#ii-corintios-cap-4">4</a> | <a href="#ii-corintios-cap-5">5</a> | <a href="#ii-corintios-cap-6">6</a> | <a href="#ii-corintios-cap-7">7</a> | <a href="#ii-corintios-cap-8">8</a> | <a href="#ii-corintios-cap-9">9</a> | <a href="#ii-corintios-cap-10">10</a> | <a href="#ii-corintios-cap-11">11</a> | <a href="#ii-corintios-cap-12">12</a> | <a href="#ii-corintios-cap-13">13</a></div>
-</div>
-<div class="book-section">
-<h3><a href="#galatas">Gálatas</a></h3>
-<div class="chapter-links">Capítulos: <a href="#galatas-cap-1">1</a> | <a href="#galatas-cap-2">2</a> | <a href="#galatas-cap-3">3</a> | <a href="#galatas-cap-4">4</a> | <a href="#galatas-cap-5">5</a> | <a href="#galatas-cap-6">6</a></div>
-</div>
-<div class="book-section">
-<h3><a href="#efésios">Efésios</a></h3>
-<div class="chapter-links">Capítulos: <a href="#efésios-cap-1">1</a> | <a href="#efésios-cap-2">2</a> | <a href="#efésios-cap-3">3</a> | <a href="#efésios-cap-4">4</a> | <a href="#efésios-cap-5">5</a> | <a href="#efésios-cap-6">6</a> | <a href="#efésios-cap-7">7</a> | <a href="#efésios-cap-8">8</a> | <a href="#efésios-cap-9">9</a> | <a href="#efésios-cap-10">10</a> | <a href="#efésios-cap-11">11</a> | <a href="#efésios-cap-12">12</a> | <a href="#efésios-cap-13">13</a> | <a href="#efésios-cap-14">14</a> | <a href="#efésios-cap-15">15</a> | <a href="#efésios-cap-16">16</a> | <a href="#efésios-cap-17">17</a> | <a href="#efésios-cap-18">18</a> | <a href="#efésios-cap-19">19</a> | <a href="#efésios-cap-20">20</a> | <a href="#efésios-cap-21">21</a> | <a href="#efésios-cap-22">22</a></div>
-</div><div class="book-section"><h3><a href="#filipenses">Filipenses</a></h3><div class="chapter-links">Capítulos: <a href="#filipenses-cap-1">1</a> | <a href="#filipenses-cap-2">2</a> | <a href="#filipenses-cap-3">3</a> | <a href="#filipenses-cap-4">4</a></div></div><div class="book-section"><h3><a href="#i-tessalonicenses">I Tessalonicenses</a></h3><div class="chapter-links">Capítulos: <a href="#i-tessalonicenses-cap-1">1</a> | <a href="#i-tessalonicenses-cap-2">2</a> | <a href="#i-tessalonicenses-cap-3">3</a> | <a href="#i-tessalonicenses-cap-4">4</a> | <a href="#i-tessalonicenses-cap-5">5</a></div></div><div class="book-section"><h3><a href="#ii-tessalonicenses">Ii Tessalonicenses</a></h3><div class="chapter-links">Capítulos: <a href="#ii-tessalonicenses-cap-1">1</a> | <a href="#ii-tessalonicenses-cap-2">2</a> | <a href="#ii-tessalonicenses-cap-3">3</a></div></div>
-<div class="book-section">
-<h3><a href="#colossenses">Colossenses</a></h3>
-<div class="chapter-links">Capítulos: <a href="#colossenses-cap-1">1</a> | <a href="#colossenses-cap-2">2</a> | <a href="#colossenses-cap-3">3</a> | <a href="#colossenses-cap-4">4</a> | <a href="#colossenses-cap-5">5</a> | <a href="#colossenses-cap-6">6</a> | <a href="#colossenses-cap-7">7</a> | <a href="#colossenses-cap-8">8</a> | <a href="#colossenses-cap-9">9</a> | <a href="#colossenses-cap-10">10</a> | <a href="#colossenses-cap-11">11</a> | <a href="#colossenses-cap-12">12</a> | <a href="#colossenses-cap-13">13</a> | <a href="#colossenses-cap-14">14</a> | <a href="#colossenses-cap-15">15</a> | <a href="#colossenses-cap-16">16</a> | <a href="#colossenses-cap-17">17</a> | <a href="#colossenses-cap-18">18</a> | <a href="#colossenses-cap-19">19</a> | <a href="#colossenses-cap-20">20</a> | <a href="#colossenses-cap-21">21</a> | <a href="#colossenses-cap-22">22</a></div>
-</div>
-<div class="book-section">
-<h3><a href="#i-timóteo">I Timóteo</a></h3>
-<div class="chapter-links">Capítulos: <a href="#i-timóteo-cap-1">1</a> | <a href="#i-timóteo-cap-2">2</a> | <a href="#i-timóteo-cap-3">3</a> | <a href="#i-timóteo-cap-4">4</a> | <a href="#i-timóteo-cap-5">5</a> | <a href="#i-timóteo-cap-6">6</a></div>
-</div>
-<div class="book-section">
-<h3><a href="#ii-timóteo">Ii Timóteo</a></h3>
-<div class="chapter-links">Capítulos: <a href="#ii-timóteo-cap-1">1</a> | <a href="#ii-timóteo-cap-2">2</a> | <a href="#ii-timóteo-cap-3">3</a> | <a href="#ii-timóteo-cap-4">4</a></div>
-</div>
-<div class="book-section">
-<h3><a href="#tito">Tito</a></h3>
-<div class="chapter-links">Capítulos: <a href="#tito-cap-1">1</a> | <a href="#tito-cap-2">2</a> | <a href="#tito-cap-3">3</a></div>
-</div>
-<div class="book-section">
-<h3><a href="#filemon">Filemon</a></h3>
-<div class="chapter-links">Capítulos: <a href="#filemon-cap-1">1</a></div>
-</div>
+</div>      
 <div class="book-section">
 <h3><a href="#hebreus">Hebreus</a></h3>
 <div class="chapter-links">Capítulos: <a href="#hebreus-cap-1">1</a> | <a href="#hebreus-cap-2">2</a> | <a href="#hebreus-cap-3">3</a> | <a href="#hebreus-cap-4">4</a> | <a href="#hebreus-cap-5">5</a> | <a href="#hebreus-cap-6">6</a> | <a href="#hebreus-cap-7">7</a> | <a href="#hebreus-cap-8">8</a> | <a href="#hebreus-cap-9">9</a> | <a href="#hebreus-cap-10">10</a> | <a href="#hebreus-cap-11">11</a> | <a href="#hebreus-cap-12">12</a> | <a href="#hebreus-cap-13">13</a></div>
