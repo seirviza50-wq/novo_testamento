@@ -967,9 +967,13 @@
     }
 
     function saveChanges() {
+    try {
         const content = document.querySelector('.content').innerHTML;
         localStorage.setItem(STORAGE_KEY, content);
+    } catch (erro) {
+        alert("ERRO: O texto ultrapassou o limite máximo de memória do navegador (5MB). Não foi possível salvar.");
     }
+
 
     function loadSavedChanges() {
         const saved = localStorage.getItem(STORAGE_KEY);
