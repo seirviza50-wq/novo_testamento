@@ -826,6 +826,7 @@
 <div class="tool-section">
 <h4>📋 Ações</h4>
 <div class="action-buttons">
+<button class="action-btn" onclick="undoAction()">↩️ Desfazer (Voltar)</button>
 <button class="action-btn" onclick="addNote()">📝 Adicionar Nota</button>
 <button class="action-btn" onclick="removeFormatting()">🧹 Limpar Seleção</button>
 <button class="action-btn" onclick="exportChanges()">💾 Exportar HTML</button>
@@ -844,7 +845,7 @@
         const content = document.querySelector('.content').innerHTML;
         historyStack.push(content);
         if (historyStack.length > 15) { historyStack.shift(); } // Guarda os últimos 15 passos
-    }
+    }X
 
     // Função de Desfazer
     function undoAction() {
@@ -855,7 +856,7 @@
         } else {
             alert("Não há ações recentes para desfazer.");
         }
-    }
+    }X
 
     function toggleIndex() {
         const idx = document.querySelector('.general-index');
