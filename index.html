@@ -835,8 +835,27 @@
 </div>
 <manus-content-root></manus-content-root>
 <script>
-    const STORAGE_KEY = 'biblia_editada_data_seir';
+       const STORAGE_KEY = 'biblia_editada_data_seir';
     let selectedColor = 'yellow';
+    let historyStack = []; // Cria a memória para o botão Desfazer
+
+    // Salva a tela antes de qualquer mudança
+    function saveStateForUndo() {
+        const content = document.querySelector('.content').innerHTML;
+        historyStack.push(content);
+        if (historyStack.length > 15) { historyStack.shift(); } // Guarda os últimos 15 passos
+    }
+
+    // Função de Desfazer
+    function undoAction() {
+        if (historyStack.length > 0) {
+            const previousState = historyStack.pop();
+            document.querySelector('.content').innerHTML = previousState;
+            saveChanges(); // Atualiza o salvamento
+        } else {
+            alert("Não há ações recentes para desfazer.");
+        }
+    }
 
     function toggleIndex() {
         const idx = document.querySelector('.general-index');
@@ -857,40 +876,44 @@
     function applyHighlight() {
         const sel = window.getSelection();
         if (sel.rangeCount && !sel.isCollapsed) {
+            saveStateForUndo(); // Salva antes de pintar
             const range = sel.getRangeAt(0);
             const span = document.createElement('span');
             span.className = `highlight-${selectedColor}`;
-            try { range.surroundContents(span); saveChanges(); } catch(e) { alert("Seleção muito complexa. Selecione trechos menores."); }
+            try { range.surroundContents(span); saveChanges(); } catch(e) { historyStack.pop(); alert("Seleção muito complexa. Selecione trechos menores."); }
         }
     }
 
     function applyBold() {
         const sel = window.getSelection();
         if (sel.rangeCount && !sel.isCollapsed) {
+            saveStateForUndo();
             const range = sel.getRangeAt(0);
             const span = document.createElement('span');
             span.className = 'text-bold';
-            try { range.surroundContents(span); saveChanges(); } catch(e) {}
+            try { range.surroundContents(span); saveChanges(); } catch(e) { historyStack.pop(); }
         }
     }
 
     function applyItalic() {
         const sel = window.getSelection();
         if (sel.rangeCount && !sel.isCollapsed) {
+            saveStateForUndo();
             const range = sel.getRangeAt(0);
             const span = document.createElement('span');
             span.className = 'text-italic';
-            try { range.surroundContents(span); saveChanges(); } catch(e) {}
+            try { range.surroundContents(span); saveChanges(); } catch(e) { historyStack.pop(); }
         }
     }
 
     function applyUnderline() {
         const sel = window.getSelection();
         if (sel.rangeCount && !sel.isCollapsed) {
+            saveStateForUndo();
             const range = sel.getRangeAt(0);
             const span = document.createElement('span');
             span.className = 'text-underline';
-            try { range.surroundContents(span); saveChanges(); } catch(e) {}
+            try { range.surroundContents(span); saveChanges(); } catch(e) { historyStack.pop(); }
         }
     }
 
@@ -899,6 +922,7 @@
         if (!text) return;
         const sel = window.getSelection();
         if (sel.rangeCount) {
+            saveStateForUndo();
             const range = sel.getRangeAt(0);
             const noteDiv = document.createElement('div');
             noteDiv.className = 'custom-note';
@@ -913,13 +937,12 @@
         if (!sel.rangeCount) return;
 
         let node = sel.anchorNode;
-        // Pega o elemento exato que está selecionado
         if (node.nodeType === 3) {
             node = node.parentNode;
         }
 
-        // Se o texto selecionado tiver alguma formatação (SPAN) ou nota
         if (node.tagName === 'SPAN' || node.className === 'custom-note') {
+            saveStateForUndo(); // Salva antes de apagar a formatação
             const parent = node.parentNode;
             while (node.firstChild) {
                 parent.insertBefore(node.firstChild, node);
