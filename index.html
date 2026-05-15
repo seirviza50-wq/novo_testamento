@@ -3,6 +3,19 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 <title>Novo Testamento Completo</title>
 <style>
+
+          /* Estilo para destacar os termos encontrados na busca */
+.search-match {
+    background-color: rgba(0, 0, 255, 0.2) !important; /* Fundo azul claro */
+    border-bottom: 2px dashed blue !important;
+    color: inherit !important;
+}
+
+/* Cor diferenciada para o termo focado no momento (Laranja) */
+.search-match.current-search-match {
+    background-color: #ff4500 !important; /* Laranja forte */
+    color: white !important;
+}
         * {
             box-sizing: border-box;
             margin: 0;
@@ -620,8 +633,8 @@
 <h2 id="mateus">Mateus</h2>
 <div class="book-content">
 <h3 id="mateus-cap-1">Capítulo 1</h3><br>
-1 Livro da genealogia de Jesus Cristo, filho de Davi, filho de Abraão.<br>
-2 A Abraão nasceu Isaque; a Isaque nasceu Jacó; a Jacó nasceram Judá e seus irmãos;<br>
+1 Livro da genealogia de Jesus Cristo, filho de Davi, filho de<div class="custom-note"><strong>Nota:</strong> 111111111111111111</div><span class="highlight-yellow"> Abraão.</span><br>
+2 A Abraão nasceu Isaque; a Isaque nasceu Jacó; a Jacó nasceram Judá e seus<span class="highlight-green"><div class="custom-note"><strong>Nota:</strong> 111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111</div> <span class="text-underline"><span class="text-italic"><span class="text-bold">irmãos</span></span></span>;</span><br>
 3 a Judá nasceram, de Tamar, Farés e Zará; a Farés nasceu Esrom; a Esrom nasceu Arão;<br>
 4 a Arão nasceu Aminadabe; a Aminadabe nasceu Nasom; a Nasom nasceu Salmom;<br>
 5 a Salmom nasceu, de Raabe, Booz; a Booz nasceu, de Rute, Obede; a Obede nasceu Jessé;<br>
@@ -801,6 +814,12 @@
 <!-- Painel de ferramentas -->
 <div class="editing-panel show">
 <h3>🛠️ Ferramentas de Edição</h3>
+<div class="search-box" style="margin: 15px 0; padding: 10px 0; border-top: 1px solid #ccc; border-bottom: 1px solid #ccc;">
+    <input type="text" id="searchInput" placeholder="Buscar palavra ou versículo..." style="padding: 6px; width: 55%; border: 1px solid #ccc; border-radius: 4px;">
+    <button onclick="executeSearch(document.getElementById('searchInput').value)" style="padding: 6px 10px; cursor: pointer;">Buscar</button>
+    <button onclick="searchPrevious()" style="padding: 6px 10px; cursor: pointer;">◀</button>
+    <button onclick="searchNext()" style="padding: 6px 10px; cursor: pointer;">▶</button>
+</div>
 <div class="tool-section">
 <h4>🎨 Cores de Destaque</h4>
 <div class="color-buttons">
@@ -837,7 +856,7 @@
 </div>
 <manus-content-root></manus-content-root>
 <script>
-        const STORAGE_KEY = 'biblia_editada_seir_v1';
+    const STORAGE_KEY = 'biblia_editada_seir_v1';
     let selectedColor = 'yellow';
     let historyStack = [];
 
@@ -983,6 +1002,61 @@
         if (confirm("Apagar todas as marcações permanentemente?")) {
             localStorage.removeItem(STORAGE_KEY);
             location.reload();
+        }
+    }
+
+    // ==========================================
+    // NOVAS FUNÇÕES DE BUSCA (COLADAS AQUI)
+    // ==========================================
+    let searchMatches = [];
+    let currentMatchIndex = -1;
+
+    function searchNext() {
+        if (searchMatches.length === 0) return;
+        if (currentMatchIndex >= 0) {
+            searchMatches[currentMatchIndex].classList.remove('current-search-match');
+        }
+        currentMatchIndex = (currentMatchIndex + 1) % searchMatches.length;
+        const activeMatch = searchMatches[currentMatchIndex];
+        activeMatch.classList.add('current-search-match');
+        activeMatch.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    function searchPrevious() {
+        if (searchMatches.length === 0) return;
+        if (currentMatchIndex >= 0) {
+            searchMatches[currentMatchIndex].classList.remove('current-search-match');
+        }
+        currentMatchIndex = (currentMatchIndex - 1 + searchMatches.length) % searchMatches.length;
+        const activeMatch = searchMatches[currentMatchIndex];
+        activeMatch.classList.add('current-search-match');
+        activeMatch.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    function executeSearch(searchTerm) {
+        // Recarrega o texto salvo para limpar termos buscados anteriormente sem perder suas marcações reais
+        const saved = localStorage.getItem(STORAGE_KEY);
+        if (saved) { 
+            document.querySelector('.content').innerHTML = saved; 
+        } else {
+            document.querySelectorAll('.search-match').forEach(el => el.replaceWith(...el.childNodes));
+        }
+
+        searchMatches = [];
+        currentMatchIndex = -1;
+
+        if (!searchTerm || searchTerm.trim() === "") return;
+
+        const contentEl = document.querySelector('.content');
+        const regex = new RegExp(`(?![^<>]*>)(${searchTerm.trim()})`, 'gi');
+        
+        contentEl.innerHTML = contentEl.innerHTML.replace(regex, '<span class="search-match">$1</span>');
+        searchMatches = Array.from(document.querySelectorAll('.search-match'));
+
+        if (searchMatches.length > 0) {
+            searchNext();
+        } else {
+            alert("Nenhum resultado encontrado.");
         }
     }
 
