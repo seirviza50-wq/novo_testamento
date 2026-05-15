@@ -837,27 +837,24 @@
 </div>
 <manus-content-root></manus-content-root>
 <script>
-       const STORAGE_KEY = 'biblia_editada_data_seir';
+        const STORAGE_KEY = 'biblia_editada_seir_v1';
     let selectedColor = 'yellow';
-    let historyStack = []; // Cria a memória para o botão Desfazer
+    let historyStack = [];
 
-    // Salva a tela antes de qualquer mudança
     function saveStateForUndo() {
         const content = document.querySelector('.content').innerHTML;
+        if (historyStack.length >= 15) historyStack.shift();
         historyStack.push(content);
-        if (historyStack.length > 15) { historyStack.shift(); } // Guarda os últimos 15 passos
-    }X
+    }
 
-    // Função de Desfazer
     function undoAction() {
         if (historyStack.length > 0) {
-            const previousState = historyStack.pop();
-            document.querySelector('.content').innerHTML = previousState;
-            saveChanges(); // Atualiza o salvamento
+            document.querySelector('.content').innerHTML = historyStack.pop();
+            saveChanges();
         } else {
             alert("Não há ações recentes para desfazer.");
         }
-    }X
+    }
 
     function toggleIndex() {
         const idx = document.querySelector('.general-index');
@@ -878,11 +875,17 @@
     function applyHighlight() {
         const sel = window.getSelection();
         if (sel.rangeCount && !sel.isCollapsed) {
-            saveStateForUndo(); // Salva antes de pintar
+            saveStateForUndo();
             const range = sel.getRangeAt(0);
             const span = document.createElement('span');
             span.className = `highlight-${selectedColor}`;
-            try { range.surroundContents(span); saveChanges(); } catch(e) { historyStack.pop(); alert("Seleção muito complexa. Selecione trechos menores."); }
+            try { 
+                range.surroundContents(span); 
+                saveChanges(); 
+            } catch(e) { 
+                historyStack.pop();
+                alert("Seleção muito complexa. Tente um trecho menor."); 
+            }
         }
     }
 
@@ -922,9 +925,9 @@
     function addNote() {
         const text = prompt("Digite sua nota:");
         if (!text) return;
+        saveStateForUndo();
         const sel = window.getSelection();
         if (sel.rangeCount) {
-            saveStateForUndo();
             const range = sel.getRangeAt(0);
             const noteDiv = document.createElement('div');
             noteDiv.className = 'custom-note';
@@ -937,26 +940,22 @@
     function removeFormatting() {
         const sel = window.getSelection();
         if (!sel.rangeCount) return;
-
         let node = sel.anchorNode;
-        if (node.nodeType === 3) {
-            node = node.parentNode;
-        }
+        if (node.nodeType === 3) node = node.parentNode;
 
         if (node.tagName === 'SPAN' || node.className === 'custom-note') {
-            saveStateForUndo(); // Salva antes de apagar a formatação
+            saveStateForUndo();
             const parent = node.parentNode;
-            while (node.firstChild) {
-                parent.insertBefore(node.firstChild, node);
-            }
+            while (node.firstChild) parent.insertBefore(node.firstChild, node);
             parent.removeChild(node);
             saveChanges();
         } else {
-            alert("Dica: Selecione exatamente o trecho que está marcado (cor/negrito/nota) para poder limpar.");
+            alert("Dica: Selecione exatamente o trecho que está marcado para limpar.");
         }
     }
 
     function exportChanges() {
+        saveChanges();
         const content = document.documentElement.outerHTML;
         const blob = new Blob([content], {type: 'text/html'});
         const url = URL.createObjectURL(blob);
@@ -967,13 +966,13 @@
     }
 
     function saveChanges() {
-    try {
-        const content = document.querySelector('.content').innerHTML;
-        localStorage.setItem(STORAGE_KEY, content);
-    } catch (erro) {
-        alert("ERRO: O texto ultrapassou o limite máximo de memória do navegador (5MB). Não foi possível salvar.");
+        try {
+            const content = document.querySelector('.content').innerHTML;
+            localStorage.setItem(STORAGE_KEY, content);
+        } catch (erro) {
+            alert("ERRO: O texto ultrapassou o limite máximo de memória do navegador (5MB). Não foi possível salvar.");
+        }
     }
-}
 
     function loadSavedChanges() {
         const saved = localStorage.getItem(STORAGE_KEY);
@@ -989,6 +988,7 @@
 
     window.onload = loadSavedChanges;
 </script>
+
 
 
 </body></html>
