@@ -1101,7 +1101,30 @@
 
     window.onload = loadSavedChanges;
 </script>
+<script>
+    // Alternar visibilidade do índice
+    function toggleIndex() {
+        const index = document.querySelector('.general-index');
+        index.classList.toggle('show');
+        
+        const btn = document.querySelector('.index-toggle');
+        if (index.classList.contains('show')) {
+            btn.innerHTML = '📖 Esconder Índice dos Livros';
+        } else {
+            btn.innerHTML = '📖 Mostrar Índice dos Livros';
+        }
+    }
 
+    // Alternar visibilidade do painel de ferramentas
+    function toggleTools() {
+        const panel = document.querySelector('.editing-panel');
+        if (panel) {
+            panel.classList.toggle('show');
+        } else {
+            alert("O HTML do painel de ferramentas (.editing-panel) ainda não foi adicionado ao código.");
+        }
+    }
+</script>
 
 
 </body></html>
