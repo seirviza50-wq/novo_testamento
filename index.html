@@ -941,7 +941,7 @@
         }
     }
 
-     function addNote() {
+    function addNote() {
         const sel = window.getSelection();
         if (!sel.rangeCount) {
             alert("Clique no local exato do texto onde deseja inserir o ícone da nota.");
@@ -956,14 +956,15 @@
         container.className = 'note-container';
         container.contentEditable = 'false';
         container.innerHTML = `
-            <span class="note-icon" onclick="toggleNote(this)">📝</span>
+            <span class="note-icon" onmousedown="toggleNote(this)">📝</span>
             <div class="note-content custom-note" contenteditable="true" onblur="saveChanges()">Escreva sua nota aqui...</div>
         `;
         
         range.insertNode(container);
         saveChanges();
     }
-        function toggleNote(element) {
+
+    function toggleNote(element) {
         const content = element.nextElementSibling;
         
         // Se a nota estiver aberta (visível), ele remove a classe e esconde
