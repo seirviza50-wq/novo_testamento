@@ -941,18 +941,34 @@
         }
     }
 
-    function addNote() {
-        const text = prompt("Digite sua nota:");
-        if (!text) return;
-        saveStateForUndo();
+     function addNote() {
         const sel = window.getSelection();
-        if (sel.rangeCount) {
-            const range = sel.getRangeAt(0);
-            const noteDiv = document.createElement('div');
-            noteDiv.className = 'custom-note';
-            noteDiv.innerHTML = `<strong>Nota:</strong> ${text}`;
-            range.insertNode(noteDiv);
-            saveChanges();
+        if (!sel.rangeCount) {
+            alert("Clique no local exato do texto onde deseja inserir o ícone da nota.");
+            return;
+        }
+        
+        saveStateForUndo();
+        const range = sel.getRangeAt(0);
+        
+        // Cria a estrutura do ícone e da caixa oculta
+        const container = document.createElement('span');
+        container.className = 'note-container';
+        container.contentEditable = 'false';
+        container.innerHTML = `
+            <span class="note-icon" onclick="toggleNote(this)">📝</span>
+            <div class="note-content custom-note" contenteditable="true" onblur="saveChanges()">Escreva sua nota aqui...</div>
+        `;
+        
+        range.insertNode(container);
+        saveChanges();
+    }
+
+    function toggleNote(element) {
+        const content = element.nextElementSibling;
+        content.classList.toggle('show');
+        if (content.classList.contains('show')) {
+            content.focus();
         }
     }
 
@@ -962,7 +978,8 @@
         let node = sel.anchorNode;
         if (node.nodeType === 3) node = node.parentNode;
 
-        if (node.tagName === 'SPAN' || node.className === 'custom-note') {
+        // Atualizado para também apagar o novo ícone de nota se for selecionado
+        if (node.tagName === 'SPAN' || node.className.includes('custom-note') || node.className.includes('note-container')) {
             saveStateForUndo();
             const parent = node.parentNode;
             while (node.firstChild) parent.insertBefore(node.firstChild, node);
@@ -1003,8 +1020,7 @@
             localStorage.removeItem(STORAGE_KEY);
             location.reload();
         }
-    }
-
+    }   
    // ==========================================
     // NOVAS FUNÇÕES DE BUSCA (COLADAS AQUI)
     // ==========================================
