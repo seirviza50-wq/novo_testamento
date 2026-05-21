@@ -806,19 +806,19 @@
 
 
 <!-- Botão de toggle das ferramentas -->
-<button class="tools-toggle" onclick="toggleEditingPanel()">❌ Fechar</button>
+<button class="tools-toggle" onclick="toggleEditingPanel()"> Fechar</button>
 <!-- Indicador de modo de edição -->
 <div class="editing-mode show">
-        ✏️ Modo de Edição Ativo - Selecione texto para editar
+       ✏️ Modo de Edição Ativo - Selecione texto para editar
     </div>
-<!-- Painel de ferramentas -->
 <div class="editing-panel show">
 <h3>🛠️ Ferramentas de Edição</h3>
 <div class="search-box" style="margin: 15px 0; padding: 10px 0; border-top: 1px solid #ccc; border-bottom: 1px solid #ccc;">
-    <input type="text" id="searchInput" placeholder="Buscar palavra ou versículo..." style="padding: 6px; width: 55%; border: 1px solid #ccc; border-radius: 4px;">
+    <input type="text" id="searchInput" placeholder="Buscar palavra ou versículo..." style="padding: 6px; width: 40%; border: 1px solid #ccc; border-radius: 4px;">
     <button onclick="executeSearch(document.getElementById('searchInput').value)" style="padding: 6px 10px; cursor: pointer;">Buscar</button>
     <button onclick="searchPrevious()" style="padding: 6px 10px; cursor: pointer;">◀</button>
     <button onclick="searchNext()" style="padding: 6px 10px; cursor: pointer;">▶</button>
+    <button onclick="clearSearch(); document.getElementById('searchInput').value='';" style="padding: 6px 10px; cursor: pointer; background-color: #ff4d4d; color: white; border: none; border-radius: 4px;">✖ Limpar</button>
 </div>
 <div class="tool-section">
 <h4>🎨 Cores de Destaque</h4>
