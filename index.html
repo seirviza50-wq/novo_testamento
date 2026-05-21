@@ -1005,11 +1005,19 @@
         }
     }
 
-    // ==========================================
+   // ==========================================
     // NOVAS FUNÇÕES DE BUSCA (COLADAS AQUI)
     // ==========================================
     let searchMatches = [];
     let currentMatchIndex = -1;
+
+    function clearSearch() {
+        document.querySelectorAll('.search-match, .current-search-match').forEach(el => {
+            el.replaceWith(...el.childNodes);
+        });
+        searchMatches = [];
+        currentMatchIndex = -1;
+    }
 
     function searchNext() {
         if (searchMatches.length === 0) return;
