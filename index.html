@@ -963,15 +963,23 @@
         range.insertNode(container);
         saveChanges();
     }
-
-    function toggleNote(element) {
+        function toggleNote(element) {
         const content = element.nextElementSibling;
-        content.classList.toggle('show');
+        
+        // Se a nota estiver aberta (visível), ele remove a classe e esconde
         if (content.classList.contains('show')) {
-            content.focus();
+            content.classList.remove('show');
+            saveChanges(); // Já salva o que você digitou
+        } else {
+            // Se estiver fechada, ele primeiro esconde qualquer outra que esteja aberta na tela
+            document.querySelectorAll('.note-content.show').forEach(n => n.classList.remove('show'));
+            
+            // E então abre a que você clicou
+            content.classList.add('show');
+            content.focus(); // Já coloca o cursor piscando dentro dela
         }
     }
-
+    
     function removeFormatting() {
         const sel = window.getSelection();
         if (!sel.rangeCount) return;
