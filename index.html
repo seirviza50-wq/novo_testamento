@@ -941,7 +941,7 @@
         }
     }
 
-    function addNote() {
+       function addNote() {
         const sel = window.getSelection();
         if (!sel.rangeCount) {
             alert("Clique no local exato do texto onde deseja inserir o ícone da nota.");
@@ -951,12 +951,18 @@
         saveStateForUndo();
         const range = sel.getRangeAt(0);
         
-        // Cria a estrutura do ícone e da caixa oculta
         const container = document.createElement('span');
         container.className = 'note-container';
         container.contentEditable = 'false';
+        
+        // Forçando a posição no container para a nota não "voar"
+        container.style.position = 'relative';
+        container.style.display = 'inline-block';
+        container.style.margin = '0 4px';
+
+        // Injetamos o 'cursor: pointer' e 'user-select: none' direto no HTML
         container.innerHTML = `
-            <span class="note-icon" onmousedown="toggleNote(this)">📝</span>
+            <span class="note-icon" style="cursor: pointer; display: inline-block; padding: 0 2px; user-select: none;" onmousedown="toggleNote(this)">📝</span>
             <div class="note-content custom-note" contenteditable="true" onblur="saveChanges()">Escreva sua nota aqui...</div>
         `;
         
