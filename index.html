@@ -1,81 +1,305 @@
 <html lang="pt-BR"><head><meta content="width=device-width, initial-scale=1.0, user-scalable=yes" name="viewport">
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
-<title>Novo Testamento Completo</titl
+<title>Novo Testamento Completo</title>
 <style>
-    /* Estilo geral */
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    
-    body { 
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        font-size: 16px; line-height: 1.5; color: #333; background: #f8f9fa; padding: 10px;
-    }
-    
-    .container { 
-        max-width: 100%; background: white; border-radius: 8px; 
-        box-shadow: 0 2px 10px rgba(0,0,0,0.1); overflow: hidden; 
-    }
-    
-    .header { background: #007bff; color: white; padding: 20px; text-align: center; }
-    .header h1 { font-size: 24px; margin-bottom: 5px; }
-    .header p { font-size: 14px; opacity: 0.9; }
-    
-    .index-toggle { 
-        background: #0056b3; color: white; border: none; padding: 15px; 
-        width: 100%; font-size: 16px; cursor: pointer; border-bottom: 1px solid #004494; 
-    }
-    .index-toggle:active { background: #004494; }
-    
-    .general-index { display: none; background: #f8f9fa; padding: 15px; border-bottom: 2px solid #dee2e6; max-height: 400px; overflow-y: auto; }
-    .general-index.show { display: block; }
-    
-    .book-section { margin-bottom: 10px; padding: 10px; background: white; border-radius: 5px; border: 1px solid #dee2e6; }
-    .book-section h3 { margin: 0 0 5px 0; font-size: 16px; }
-    .book-section h3 a { color: #007bff; text-decoration: none; font-weight: bold; }
-    
-    .content { padding: 15px; }
-    .book { margin-bottom: 30px; border-top: 2px solid #007bff; padding-top: 15px; }
-    .book h2 { color: #007bff; font-size: 20px; margin-bottom: 15px; padding-bottom: 8px; border-bottom: 1px solid #dee2e6; }
-    .book h3 { color: #495057; font-size: 18px; margin: 20px 0 10px 0; padding-bottom: 5px; border-bottom: 1px solid #e9ecef; }
-    .book-content { font-size: 15px; line-height: 1.6; text-align: justify; contain: layout style; }
-    
-    /* Ferramentas e Edição */
-    .tools-toggle-btn { 
-        position: fixed; top: 20px; right: 20px; width: 50px; height: 50px; 
-        border-radius: 50%; background: #28a745; color: white; border: none; 
-        box-shadow: 0 4px 12px rgba(0,0,0,0.3); cursor: pointer; z-index: 10001; 
-        display: flex; align-items: center; justify-content: center; 
+    /* Estilo para destacar os termos encontrados na busca */
+    .search-match {
+        background-color: rgba(0, 0, 255, 0.2) !important; /* Fundo azul claro */
+        border-bottom: 2px dashed blue !important;
+        color: inherit !important;
     }
 
-    .editing-panel { 
-        display: none; position: fixed; top: 80px; right: 20px; width: 250px; 
-        max-height: 80vh; background: white; border-radius: 12px; 
-        box-shadow: 0 8px 24px rgba(0,0,0,0.2); z-index: 10000; overflow-y: auto; 
-        padding: 15px; border: 1px solid #ddd; 
+    /* Cor diferenciada para o termo focado no momento (Laranja) */
+    .search-match.current-search-match {
+        background-color: #ff4500 !important; /* Laranja forte */
+        color: white !important;
+    }
+
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+    
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-size: 16px;
+        line-height: 1.5;
+        color: #333;
+        background: #f8f9fa;
+        padding: 10px;
+    }
+    
+    .container {
+        max-width: 100%;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        overflow: hidden;
+    }
+    
+    .header {
+        background: #007bff;
+        color: white;
+        padding: 20px;
+        text-align: center;
+    }
+    
+    .header h1 {
+        font-size: 24px;
+        margin-bottom: 5px;
+    }
+    
+    .header p {
+        font-size: 14px;
+        opacity: 0.9;
+    }
+    
+    .index-toggle {
+        background: #0056b3;
+        color: white;
+        border: none;
+        padding: 15px;
+        width: 100%;
+        font-size: 16px;
+        cursor: pointer;
+        border-bottom: 1px solid #004494;
+    }
+    
+    .index-toggle:active {
+        background: #004494;
+    }
+    
+    .general-index {
+        display: none;
+        background: #f8f9fa;
+        padding: 15px;
+        border-bottom: 2px solid #dee2e6;
+        max-height: 400px;
+        overflow-y: auto;
+    }
+    
+    .general-index.show {
+        display: block;
+    }
+    
+    .book-section {
+        margin-bottom: 10px;
+        padding: 10px;
+        background: white;
+        border-radius: 5px;
+        border: 1px solid #dee2e6;
+    }
+    
+    .book-section h3 {
+        margin: 0 0 5px 0;
+        font-size: 16px;
+    }
+    
+    .book-section h3 a {
+        color: #007bff;
+        text-decoration: none;
+        font-weight: bold;
+    }
+    
+    .chapter-links {
+        font-size: 14px;
+        color: #666;
+        line-height: 1.4;
+    }
+    
+    .chapter-links a {
+        color: #007bff;
+        text-decoration: none;
+        padding: 2px 4px;
+        margin: 1px;
+        border-radius: 3px;
+        display: inline-block;
+    }
+    
+    .chapter-links a:active {
+        background: #e3f2fd;
+    }
+    
+    .content {
+        padding: 15px;
+    }
+    
+    .book {
+        margin-bottom: 30px;
+        border-top: 2px solid #007bff;
+        padding-top: 15px;
+    }
+    
+    .book h2 {
+        color: #007bff;
+        font-size: 20px;
+        margin-bottom: 15px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid #dee2e6;
+    }
+    
+    .book h3 {
+        color: #495057;
+        font-size: 18px;
+        margin: 20px 0 10px 0;
+        padding-bottom: 5px;
+        border-bottom: 1px solid #e9ecef;
+    }
+    
+    .book-content {
+        font-size: 15px;
+        line-height: 1.6;
+        text-align: justify;
+        contain: layout style;
+    }
+    
+    .book-content br {
+        margin-bottom: 8px;
+    }
+    
+    a {
+        color: #007bff;
+        text-decoration: none;
+    }
+    
+    a:active {
+        color: #0056b3;
+    }
+    
+    .back-to-top {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: #007bff;
+        color: white;
+        padding: 12px 16px;
+        border-radius: 50px;
+        text-decoration: none;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        font-size: 18px;
+        z-index: 1000;
+    }
+    
+    .back-to-top:active {
+        background: #0056b3;
+        transform: scale(0.95);
+    }
+    
+    /* Otimizações para telas pequenas */
+    @media (max-width: 480px) {
+        body {
+            padding: 5px;
+            font-size: 15px;
+        }
+        .header h1 {
+            font-size: 20px;
+        }
+        .book h2 {
+            font-size: 18px;
+        }
+        .book h3 {
+            font-size: 16px;
+        }
+        .book-content {
+            font-size: 14px;
+        }
+        .back-to-top {
+            bottom: 15px;
+            right: 15px;
+            padding: 10px 14px;
+            font-size: 16px;
+        }
+    }
+    
+    /* Estilos para o Painel Retrátil */
+    .tools-toggle-btn {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: #28a745;
+        color: white;
+        border: none;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        cursor: pointer;
+        z-index: 10001;
+        font-size: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.2s;
+    }
+    .tools-toggle-btn:active { transform: scale(0.9); }
+
+    .editing-panel {
+        display: none; 
+        position: fixed;
+        top: 80px;
+        right: 20px;
+        width: 250px;
+        max-height: 80vh;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+        z-index: 10000;
+        overflow-y: auto;
+        padding: 15px;
+        border: 1px solid #ddd;
     }
     .editing-panel.show { display: block; }
 
-    /* Notas e Marcações */
-    .custom-note { 
-        background: #fff3cd; border-left: 4px solid #ffeaa7; padding: 8px; 
-        margin: 10px 0; font-size: 13px; border-radius: 4px; color: #856404; 
-    }
-    .note-content { display: none; } /* Escondido por padrão */
-    
-    .search-match { background-color: rgba(0, 0, 255, 0.2) !important; border-bottom: 2px dashed blue !important; }
-    .current-search-match { background-color: #ff4500 !important; color: white !important; }
-    
+    .selected-text { background: rgba(0, 123, 255, 0.2); border-radius: 3px; }
     .highlight-yellow { background-color: #ffeb3b !important; }
     .highlight-green { background-color: #4caf50 !important; color: white !important; }
     .text-bold { font-weight: bold !important; }
     .text-italic { font-style: italic !important; }
-    .text-underline { text-decoration: underline !important; }
-
-    @media (max-width: 480px) {
-        body { padding: 5px; font-size: 15px; }
-        .editing-panel { top: 5px; right: 5px; width: 90%; }
+    
+    .custom-note { 
+        background: #fff3cd; 
+        border-left: 4px solid #ffeaa7; 
+        padding: 8px; 
+        margin: 10px 0; 
+        font-size: 13px; 
+        border-radius: 4px; 
+        color: #856404; 
     }
-</style>
+
+    /* NOVAS REGRAS PARA O ÍCONE E CAIXA DE NOTAS */
+    .note-container {
+        position: relative;
+        display: inline-block;
+        margin: 0 4px;
+    }
+    
+    .note-icon {
+        cursor: pointer;
+        font-size: 1.2em;
+    }
+    
+    .note-content {
+        display: none;
+        position: absolute;
+        bottom: 120%;
+        left: -100px;
+        width: 250px;
+        background: #fff3cd;
+        border: 1px solid #ffeaa7;
+        padding: 10px;
+        border-radius: 6px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        z-index: 1000;
+        color: #856404;
+        font-size: 14px;
+        text-align: left;
+    }
+    
+    .note-content.show {
+        display: block;
+ </style>
 
 <style id="visual-tools-css">
         /* Painel de Ferramentas */
@@ -435,8 +659,8 @@
 <h2 id="mateus">Mateus</h2>
 <div class="book-content">
 <h3 id="mateus-cap-1">Capítulo 1</h3><br>
-1 Livro da genealogia de Jesus Cristo, filho de Davi, filho de<span onclick="toggleNote(this)" style="cursor:pointer;">✋</span><div class="custom-note"><strong>Nota:</strong> 111111111111111111</div><span class="highlight-yellow"> Abraão.</span><br>
-2 A Abraão nasceu Isaque; a Isaque nasceu Jacó; a Jacó nasceram Judá e seus<span class="highlight-green"><div class="custom-note"><strong>Nota:</strong> 111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111</div> <span class="text-underline"><span class="text-italic"><span class="text-bold">irmãos</span></span></span>;</span><br>
+1 Livro da genealogia de Jesus Cristo, filho de Davi, filho de<div class="custom-note"><strong>Nota:</strong></div><span class="highlight-yellow"> Abraão.</span><br>
+2 A Abraão nasceu Isaque; a Isaque nasceu Jacó; a Jacó nasceram Judá e seus<span class="highlight-green"><div class="custom-note"><strong>Nota:</strong> </div> <span class="text-underline"><span class="text-italic"><span class="text-bold">irmãos</span></span></span>;</span><br>
 3 a Judá nasceram, de Tamar, Farés e Zará; a Farés nasceu Esrom; a Esrom nasceu Arão;<br>
 4 a Arão nasceu Aminadabe; a Aminadabe nasceu Nasom; a Nasom nasceu Salmom;<br>
 5 a Salmom nasceu, de Raabe, Booz; a Booz nasceu, de Rute, Obede; a Obede nasceu Jessé;<br>
@@ -657,11 +881,15 @@
 </div>
 </div>
 <manus-content-root></manus-content-root>
-   <script>
+
+<script>
     const STORAGE_KEY = 'biblia_editada_seir_v1';
     let selectedColor = 'yellow';
     let historyStack = [];
+    let searchMatches = [];
+    let currentMatchIndex = -1;
 
+    // --- FUNÇÕES DE ESTADO E HISTÓRICO ---
     function saveStateForUndo() {
         const content = document.querySelector('.content').innerHTML;
         if (historyStack.length >= 15) historyStack.shift();
@@ -677,16 +905,51 @@
         }
     }
 
+    // --- FUNÇÕES DE VISIBILIDADE (ÍNDICE E FERRAMENTAS) ---
     function toggleIndex() {
-        const idx = document.querySelector('.general-index');
-        idx.classList.toggle('show');
+        const index = document.querySelector('.general-index');
+        index.classList.toggle('show');
+        const btn = document.querySelector('.index-toggle');
+        if (btn) {
+            btn.innerHTML = index.classList.contains('show') ? '📖 Esconder Índice dos Livros' : '📖 Mostrar Índice dos Livros';
+        }
     }
 
     function toggleTools() {
         const panel = document.querySelector('.editing-panel');
         if (panel) {
             panel.classList.toggle('show');
+        } else {
+            alert("O painel de ferramentas não foi encontrado.");
         }
+    }
+
+    // --- FUNÇÕES DE EDIÇÃO E NOTAS ---
+    function toggleNote(element) {
+        const content = element.nextElementSibling;
+        if (content.style.display === 'none' || content.style.display === '') {
+            document.querySelectorAll('.note-content').forEach(n => n.style.display = 'none');
+            content.style.display = 'block';
+            content.focus();
+        } else {
+            content.style.display = 'none';
+            saveChanges();
+        }
+    }
+
+    function addNote() {
+        const sel = window.getSelection();
+        if (!sel.rangeCount) { alert("Clique no local onde deseja inserir a nota."); return; }
+        saveStateForUndo();
+        const range = sel.getRangeAt(0);
+        const container = document.createElement('span');
+        container.className = 'note-container';
+        container.innerHTML = `
+            <span class="note-icon" style="cursor: pointer; margin: 0 5px;" onmousedown="toggleNote(this)">📝</span>
+            <div class="note-content custom-note" contenteditable="true" onblur="saveChanges()" style="display: none;">Escreva sua nota aqui...</div>
+        `;
+        range.insertNode(container);
+        saveChanges();
     }
 
     function selectColor(color) {
@@ -702,13 +965,7 @@
             const range = sel.getRangeAt(0);
             const span = document.createElement('span');
             span.className = `highlight-${selectedColor}`;
-            try { 
-                range.surroundContents(span); 
-                saveChanges(); 
-            } catch(e) { 
-                historyStack.pop();
-                alert("Seleção muito complexa. Tente um trecho menor."); 
-            }
+            try { range.surroundContents(span); saveChanges(); } catch(e) { historyStack.pop(); alert("Seleção inválida."); }
         }
     }
 
@@ -745,87 +1002,53 @@
         }
     }
 
-    function addNote() {
-        const sel = window.getSelection();
-        if (!sel.rangeCount) {
-            alert("Clique no local exato do texto onde deseja inserir o ícone da nota.");
-            return;
-        }
-        
-        saveStateForUndo();
-        const range = sel.getRangeAt(0);
-        
-        const container = document.createElement('span');
-        container.className = 'note-container';
-        container.contentEditable = 'false';
-        container.style.position = 'relative';
-        container.style.display = 'inline-block';
-        container.style.margin = '0 4px';
-
-        container.innerHTML = `
-            <span class="note-icon" style="cursor: pointer; display: inline-block; padding: 0 2px; user-select: none;" onmousedown="toggleNote(this)">✋</span>
-            <div class="note-content custom-note" contenteditable="true" onblur="saveChanges()" style="display: none;">Escreva sua nota aqui...</div>
-        `;
-        
-        range.insertNode(container);
-        saveChanges();
-    }
-
-    // FUNÇÃO CORRIGIDA PARA ABRIR/FECHAR
-    function toggleNote(element) {
-        const content = element.nextElementSibling;
-        
-        if (content.style.display === 'none' || content.style.display === '') {
-            // Fecha todas as outras notas antes de abrir a nova
-            document.querySelectorAll('.note-content').forEach(n => n.style.display = 'none');
-            content.style.display = 'block';
-            content.focus();
-        } else {
-            content.style.display = 'none';
-            saveChanges();
-        }
-    }
-    
     function removeFormatting() {
         const sel = window.getSelection();
         if (!sel.rangeCount) return;
         let node = sel.anchorNode;
         if (node.nodeType === 3) node = node.parentNode;
-
-        if (node.tagName === 'SPAN' || node.className.includes('custom-note') || node.className.includes('note-container')) {
+        if (node.tagName === 'SPAN' || (node.className && node.className.includes('custom-note'))) {
             saveStateForUndo();
             const parent = node.parentNode;
             while (node.firstChild) parent.insertBefore(node.firstChild, node);
             parent.removeChild(node);
             saveChanges();
         } else {
-            alert("Dica: Selecione exatamente o trecho que está marcado para limpar.");
+            alert("Dica: Selecione exatamente o trecho marcado.");
         }
     }
 
-    function exportChanges() {
-        saveChanges();
-        const content = document.documentElement.outerHTML;
-        const blob = new Blob([content], {type: 'text/html'});
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = 'Novo_Testamento_Editado_Final.html';
-        a.click();
+    // --- FUNÇÕES DE BUSCA ---
+    function executeSearch(searchTerm) {
+        loadSavedChanges();
+        searchMatches = [];
+        currentMatchIndex = -1;
+        if (!searchTerm || searchTerm.trim() === "") return;
+        const contentEl = document.querySelector('.content');
+        const regex = new RegExp(`(${searchTerm.trim()})`, 'gi');
+        contentEl.innerHTML = contentEl.innerHTML.replace(regex, '<span class="search-match">$1</span>');
+        searchMatches = Array.from(document.querySelectorAll('.search-match'));
+        if (searchMatches.length > 0) searchNext();
+        else alert("Nenhum resultado encontrado.");
     }
 
+    function searchNext() {
+        if (searchMatches.length === 0) return;
+        if (currentMatchIndex >= 0) searchMatches[currentMatchIndex].classList.remove('current-search-match');
+        currentMatchIndex = (currentMatchIndex + 1) % searchMatches.length;
+        const activeMatch = searchMatches[currentMatchIndex];
+        activeMatch.classList.add('current-search-match');
+        activeMatch.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    // --- PERSISTÊNCIA E INICIALIZAÇÃO ---
     function saveChanges() {
-        try {
-            const content = document.querySelector('.content').innerHTML;
-            localStorage.setItem(STORAGE_KEY, content);
-        } catch (erro) {
-            alert("ERRO: O texto ultrapassou o limite máximo de memória do navegador (5MB). Não foi possível salvar.");
-        }
+        localStorage.setItem(STORAGE_KEY, document.querySelector('.content').innerHTML);
     }
 
     function loadSavedChanges() {
         const saved = localStorage.getItem(STORAGE_KEY);
-        if (saved) { document.querySelector('.content').innerHTML = saved; }
+        if (saved) document.querySelector('.content').innerHTML = saved;
     }
 
     function clearAllFormatting() {
@@ -833,92 +1056,12 @@
             localStorage.removeItem(STORAGE_KEY);
             location.reload();
         }
-    }   
-    
-    let searchMatches = [];
-    let currentMatchIndex = -1;
-
-    function clearSearch() {
-        document.querySelectorAll('.search-match, .current-search-match').forEach(el => {
-            el.replaceWith(...el.childNodes);
-        });
-        searchMatches = [];
-        currentMatchIndex = -1;
-    }
-
-    function searchNext() {
-        if (searchMatches.length === 0) return;
-        if (currentMatchIndex >= 0) {
-            searchMatches[currentMatchIndex].classList.remove('current-search-match');
-        }
-        currentMatchIndex = (currentMatchIndex + 1) % searchMatches.length;
-        const activeMatch = searchMatches[currentMatchIndex];
-        activeMatch.classList.add('current-search-match');
-        activeMatch.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }
-
-    function searchPrevious() {
-        if (searchMatches.length === 0) return;
-        if (currentMatchIndex >= 0) {
-            searchMatches[currentMatchIndex].classList.remove('current-search-match');
-        }
-        currentMatchIndex = (currentMatchIndex - 1 + searchMatches.length) % searchMatches.length;
-        const activeMatch = searchMatches[currentMatchIndex];
-        activeMatch.classList.add('current-search-match');
-        activeMatch.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }
-
-    function executeSearch(searchTerm) {
-        const saved = localStorage.getItem(STORAGE_KEY);
-        if (saved) { 
-            document.querySelector('.content').innerHTML = saved; 
-        } else {
-            document.querySelectorAll('.search-match').forEach(el => el.replaceWith(...el.childNodes));
-        }
-
-        searchMatches = [];
-        currentMatchIndex = -1;
-
-        if (!searchTerm || searchTerm.trim() === "") return;
-
-        const contentEl = document.querySelector('.content');
-        const regex = new RegExp(`(?![^<>]*>)(${searchTerm.trim()})`, 'gi');
-        
-        contentEl.innerHTML = contentEl.innerHTML.replace(regex, '<span class="search-match">$1</span>');
-        searchMatches = Array.from(document.querySelectorAll('.search-match'));
-
-        if (searchMatches.length > 0) {
-            searchNext();
-        } else {
-            alert("Nenhum resultado encontrado.");
-        }
     }
 
     window.onload = loadSavedChanges;
 </script>
-    // Alternar visibilidade do índice
-    function toggleIndex() {
-        const index = document.querySelector('.general-index');
-        index.classList.toggle('show');
-        
-        const btn = document.querySelector('.index-toggle');
-        if (index.classList.contains('show')) {
-            btn.innerHTML = '📖 Esconder Índice dos Livros';
-        } else {
-            btn.innerHTML = '📖 Mostrar Índice dos Livros';
-        }
-    }
 
-    // Alternar visibilidade do painel de ferramentas
-    function toggleTools() {
-        const panel = document.querySelector('.editing-panel');
-        if (panel) {
-            panel.classList.toggle('show');
-        } else {
-            alert("O HTML do painel de ferramentas (.editing-panel) ainda não foi adicionado ao código.");
-        }
-    }
-</script>
+
 
 
 </body></html>
