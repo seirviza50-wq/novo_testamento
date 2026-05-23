@@ -267,38 +267,49 @@
         border-radius: 4px; 
         color: #856404; 
     }
+/* --- CONFIGURAÇÃO DAS NOTAS --- */
 
-    /* NOVAS REGRAS PARA O ÍCONE E CAIXA DE NOTAS */
+    /* Container que prende o ícone e a caixa de texto */
     .note-container {
-        position: relative;
+        position: relative; /* Isso é o "âncora" para a nota */
         display: inline-block;
+        vertical-align: middle;
         margin: 0 4px;
     }
-    
+
+    /* O ícone 📝 */
     .note-icon {
         cursor: pointer;
-        font-size: 1.2em;
+        font-size: 20px;
     }
-    
-    .note-content {
-        display: none;
+
+    /* A caixa de nota (textarea redimensionável e posicionada abaixo) */
+    .custom-note.note-content {
+        display: none; /* Começa escondida */
         position: absolute;
-        bottom: 120%;
-        left: -100px;
+        top: 25px; /* Força a caixa a ficar exatamente abaixo do ícone */
+        left: 0;
         width: 250px;
+        height: 120px;
         background: #fff3cd;
-        border: 1px solid #ffeaa7;
+        border: 1px solid #ccc;
         padding: 10px;
-        border-radius: 6px;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-        z-index: 1000;
-        color: #856404;
+        z-index: 999;
+        
+        /* Permite que você redimensione o quadro */
+        resize: both; 
+        overflow: auto;
+        
+        /* Estilo do texto */
+        font-family: sans-serif;
         font-size: 14px;
-        text-align: left;
-    }
+        color: #856404;
+        box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+        border-radius: 4px;
     
-    .note-content.show {
-        display: block;
+    }
+
+ 
  </style>
 
 <style id="visual-tools-css">
@@ -659,8 +670,8 @@
 <h2 id="mateus">Mateus</h2>
 <div class="book-content">
 <h3 id="mateus-cap-1">Capítulo 1</h3><br>
-1 Livro da genealogia de Jesus Cristo, filho de Davi, filho de<div class="custom-note"><strong>Nota:</strong></div><span class="highlight-yellow"> Abraão.</span><br>
-2 A Abraão nasceu Isaque; a Isaque nasceu Jacó; a Jacó nasceram Judá e seus<span class="highlight-green"><div class="custom-note"><strong>Nota:</strong> </div> <span class="text-underline"><span class="text-italic"><span class="text-bold">irmãos</span></span></span>;</span><br>
+1 Livro da genealogia de Jesus Cristo, filho de Davi, filho de<div class="custom-note"><strong>Nota:</strong> 111111111111111111</div><span class="highlight-yellow"> Abraão.</span><br>
+2 A Abraão nasceu Isaque; a Isaque nasceu Jacó; a Jacó nasceram Judá e seus<span class="highlight-green"><div class="custom-note"><strong>Nota:</strong> 111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111</div> <span class="text-underline"><span class="text-italic"><span class="text-bold">irmãos</span></span></span>;</span><br>
 3 a Judá nasceram, de Tamar, Farés e Zará; a Farés nasceu Esrom; a Esrom nasceu Arão;<br>
 4 a Arão nasceu Aminadabe; a Aminadabe nasceu Nasom; a Nasom nasceu Salmom;<br>
 5 a Salmom nasceu, de Raabe, Booz; a Booz nasceu, de Rute, Obede; a Obede nasceu Jessé;<br>
@@ -881,7 +892,6 @@
 </div>
 </div>
 <manus-content-root></manus-content-root>
-
 <script>
     const STORAGE_KEY = 'biblia_editada_seir_v1';
     let selectedColor = 'yellow';
@@ -924,7 +934,7 @@
         }
     }
 
-    // --- FUNÇÕES DE EDIÇÃO E NOTAS ---
+    // --- FUNÇÕES DE EDIÇÃO E NOTAS (MÃOZINHA) ---
     function toggleNote(element) {
         const content = element.nextElementSibling;
         if (content.style.display === 'none' || content.style.display === '') {
@@ -939,18 +949,28 @@
 
     function addNote() {
         const sel = window.getSelection();
-        if (!sel.rangeCount) { alert("Clique no local onde deseja inserir a nota."); return; }
-        saveStateForUndo();
+        // Verifica se há uma seleção válida no texto
+        if (!sel.rangeCount || sel.isCollapsed) {
+            alert("Selecione um trecho do texto ou clique onde deseja inserir a nota."); 
+            return; 
+        }
+        
+        saveStateForUndo(); // Preserva o histórico para o botão Desfazer
         const range = sel.getRangeAt(0);
+        
         const container = document.createElement('span');
         container.className = 'note-container';
+        
+        // Estrutura atualizada com o ícone 📝 e a textarea redimensionável
         container.innerHTML = `
-            <span class="note-icon" style="cursor: pointer; margin: 0 5px;" onmousedown="toggleNote(this)">📝</span>
-            <div class="note-content custom-note" contenteditable="true" onblur="saveChanges()" style="display: none;">Escreva sua nota aqui...</div>
+            <span class="note-icon" style="cursor: pointer; margin: 0 4px;" onclick="toggleNote(this)">📝</span>
+            <textarea class="custom-note note-content" placeholder="Escreva sua anotação aqui..." onblur="saveChanges()"></textarea>
         `;
-        range.insertNode(container);
-        saveChanges();
+        
+        range.insertNode(container); // Insere no ponto exato do cursor
+        saveChanges(); // Salva no localStorage
     }
+    
 
     function selectColor(color) {
         selectedColor = color;
@@ -1007,14 +1027,12 @@
         if (!sel.rangeCount) return;
         let node = sel.anchorNode;
         if (node.nodeType === 3) node = node.parentNode;
-        if (node.tagName === 'SPAN' || (node.className && node.className.includes('custom-note'))) {
+        if (node.tagName === 'SPAN' || node.className.includes('custom-note')) {
             saveStateForUndo();
             const parent = node.parentNode;
             while (node.firstChild) parent.insertBefore(node.firstChild, node);
             parent.removeChild(node);
             saveChanges();
-        } else {
-            alert("Dica: Selecione exatamente o trecho marcado.");
         }
     }
 
