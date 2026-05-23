@@ -855,7 +855,7 @@
     <button onclick="executeSearch(document.getElementById('searchInput').value)" style="padding: 6px 10px; cursor: pointer;">Buscar</button>
     <button onclick="searchPrevious()" style="padding: 6px 10px; cursor: pointer;">◀</button>
     <button onclick="searchNext()" style="padding: 6px 10px; cursor: pointer;">▶</button>
-    <button onclick="clearSearch(); document.getElementById('searchInput').value='';" style="padding: 6px 10px; cursor: pointer; background-color: #ff4d4d; color: white; border: none; border-radius: 4px;">✖ Limpar</button>
+    <button onclick="clearSearchTraces(); document.getElementById('searchInput').value='';" style="padding: 6px 10px; cursor: pointer; background-color: #ff4d4d; color: white; border: none; border-radius: 4px;">✖ Limpar</button>
 </div>
 <div class="tool-section">
 <h4>🎨 Cores de Destaque</h4>
@@ -1075,7 +1075,16 @@
             location.reload();
         }
     }
-
+// Cole este bloco dentro da sua tag <script>
+    function clearSearchTraces() {
+        const matches = document.querySelectorAll('.search-match, .current-search-match');
+        matches.forEach(el => {
+            const parent = el.parentNode;
+            while (el.firstChild) parent.insertBefore(el.firstChild, el);
+            parent.removeChild(el);
+        });
+        saveChanges(); // Isso é fundamental para salvar a página limpa
+    }
     window.onload = loadSavedChanges;
 </script>
 
