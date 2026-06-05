@@ -275,6 +275,8 @@
         display: inline-block;
         vertical-align: middle;
         margin: 0 4px;
+        background: transparent;
+        opacity: 1;
     }
 
     /* O ícone da nota */
@@ -577,6 +579,25 @@
 .text-bold { font-weight: bold !important; }
 .text-italic { font-style: italic !important; }
 .custom-note { background: #fff3cd; border-left: 4px solid #ffeaa7; padding: 8px; margin: 10px 0; font-size: 13px; border-radius: 4px; color: #856404; }
+
+.custom-note.note-content {
+    resize: both !important;
+    overflow: auto !important;
+    min-width: 180px;
+    min-height: 80px;
+    background-color: #fff3cd !important;
+    opacity: 1 !important;
+    position: absolute !important;
+    z-index: 10050 !important;
+    pointer-events: auto !important;
+    user-select: text;
+}
+
+.text-editing-active {
+    outline: 2px dashed #28a745;
+    outline-offset: 6px;
+    background: #fbfff9;
+}
 
 </style>
 </head>
@@ -902,8 +923,10 @@
 <h4>Ações</h4>
 <div class="action-buttons">
 <button class="action-btn" onclick="undoAction()">Desfazer</button>
-<button class="action-btn" onclick="addNote()">Adicionar Nota</button>
+<button class="action-btn" onmousedown="event.preventDefault()" onclick="addNote()">Adicionar Nota</button>
 <button class="action-btn" onclick="deleteSelectedNote()">Excluir Nota</button>
+<button class="action-btn" onclick="enableTextEditing()">Editar Texto</button>
+<button class="action-btn" onclick="disableTextEditing()">Bloquear Texto</button>
 <button class="action-btn" onclick="removeFormatting()">Limpar Seleção</button>
 <button class="action-btn" onclick="saveChanges(); alert('Alterações salvas com sucesso!')">Salvar Alterações</button>
 <button class="action-btn" onclick="exportChanges()">Exportar HTML</button>
@@ -935,6 +958,57 @@
         } else {
             alert("Não há ações recentes para desfazer.");
         }
+    }
+
+    function enableTextEditing() {
+        const content = document.querySelector('.content');
+        const indicator = document.querySelector('.editing-mode');
+        saveStateForUndo();
+        protectNotesFromTextEditing();
+        content.setAttribute('contenteditable', 'true');
+        content.classList.add('text-editing-active');
+        if (indicator) {
+            indicator.textContent = 'Edição de texto ativa - clique no texto para alterar';
+            indicator.classList.add('show');
+        }
+        content.focus();
+    }
+
+    function disableTextEditing() {
+        const content = document.querySelector('.content');
+        const indicator = document.querySelector('.editing-mode');
+        content.removeAttribute('contenteditable');
+        content.classList.remove('text-editing-active');
+        if (indicator) indicator.classList.remove('show');
+        saveChanges();
+        alert('Texto bloqueado e alterações salvas.');
+    }
+
+    function stopTextEditingSilently() {
+        const content = document.querySelector('.content');
+        const indicator = document.querySelector('.editing-mode');
+        content.removeAttribute('contenteditable');
+        content.classList.remove('text-editing-active');
+        if (indicator) indicator.classList.remove('show');
+        saveChanges();
+    }
+
+    function protectNotesFromTextEditing() {
+        document.querySelectorAll('.note-container').forEach(container => {
+            container.setAttribute('contenteditable', 'false');
+            container.style.opacity = '1';
+            container.style.background = 'transparent';
+
+            const noteContent = container.querySelector('.note-content');
+            if (!noteContent) return;
+
+            noteContent.setAttribute('contenteditable', 'false');
+            noteContent.style.backgroundColor = '#fff3cd';
+            noteContent.style.opacity = '1';
+            noteContent.style.resize = 'both';
+            noteContent.style.overflow = 'auto';
+            noteContent.style.pointerEvents = 'auto';
+        });
     }
 
     // --- FUNÇÕES DE VISIBILIDADE (ÍNDICE E FERRAMENTAS) ---
@@ -986,25 +1060,49 @@
 
     function addNote() {
         const sel = window.getSelection();
-        // Verifica se há uma seleção válida no texto
-        if (!sel.rangeCount || sel.isCollapsed) {
+        // Aceita tanto um trecho selecionado quanto apenas o cursor posicionado.
+        if (!sel.rangeCount) {
             alert("Selecione um trecho do texto ou clique onde deseja inserir a nota."); 
             return; 
         }
         
         saveStateForUndo(); // Preserva o histórico para o botão Desfazer
-        const range = sel.getRangeAt(0);
+        const content = document.querySelector('.content');
+        const wasTextEditing = content.isContentEditable;
+        const range = sel.getRangeAt(0).cloneRange();
+
+        if (wasTextEditing) {
+            stopTextEditingSilently();
+            sel.removeAllRanges();
+            sel.addRange(range);
+        }
         
         const container = document.createElement('span');
         container.className = 'note-container';
+        container.setAttribute('contenteditable', 'false');
         
         // Estrutura da anotação com ícone e textarea redimensionável
         container.innerHTML = `
             <span class="note-icon" style="cursor: pointer; margin: 0 4px;" onclick="toggleNote(this)">📝</span>
-            <textarea class="custom-note note-content" placeholder="Escreva sua anotação aqui..." onblur="saveChanges()"></textarea>
+            <textarea class="custom-note note-content" contenteditable="false" placeholder="Escreva sua anotação aqui..." onblur="saveChanges()"></textarea>
         `;
         
         range.insertNode(container); // Insere no ponto exato do cursor
+        protectNotesFromTextEditing();
+        range.setStartAfter(container);
+        range.setEndAfter(container);
+        sel.removeAllRanges();
+        sel.addRange(range);
+        if (wasTextEditing) {
+            content.setAttribute('contenteditable', 'true');
+            content.classList.add('text-editing-active');
+            const indicator = document.querySelector('.editing-mode');
+            if (indicator) {
+                indicator.textContent = 'Edição de texto ativa - clique no texto para alterar';
+                indicator.classList.add('show');
+            }
+            protectNotesFromTextEditing();
+        }
         saveChanges(); // Salva no localStorage
     }
     
@@ -1195,6 +1293,8 @@
         document.querySelectorAll('.note-container').forEach(container => {
             const noteContent = container.querySelector('.note-content');
             if (!noteContent) return;
+            container.setAttribute('contenteditable', 'false');
+            noteContent.setAttribute('contenteditable', 'false');
 
             const wasOpen = noteContent.style.display === 'block' || container.querySelector('.note-popup')?.style.display === 'block';
             if (noteContent.parentElement !== container) {
@@ -1210,6 +1310,7 @@
         });
 
         if (changed) saveChanges();
+        protectNotesFromTextEditing();
     }
 
     function repairMarcosAnchors() {
