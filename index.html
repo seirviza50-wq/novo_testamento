@@ -593,6 +593,19 @@
     user-select: text;
 }
 
+.note-container.note-block {
+    display: block;
+    width: fit-content;
+    margin: 8px 0;
+}
+
+.note-container.note-block .note-content {
+    position: static !important;
+    display: none;
+    margin-top: 4px;
+    z-index: auto !important;
+}
+
 .text-editing-active {
     outline: 2px dashed #28a745;
     outline-offset: 6px;
@@ -1070,6 +1083,7 @@
         const content = document.querySelector('.content');
         const wasTextEditing = content.isContentEditable;
         const range = sel.getRangeAt(0).cloneRange();
+        const insertAsBlock = range.collapsed;
 
         if (wasTextEditing) {
             stopTextEditingSilently();
@@ -1079,12 +1093,13 @@
         
         const container = document.createElement('span');
         container.className = 'note-container';
+        if (insertAsBlock) container.classList.add('note-block');
         container.setAttribute('contenteditable', 'false');
         
         // Estrutura da anotação com ícone e textarea redimensionável
         container.innerHTML = `
             <span class="note-icon" style="cursor: pointer; margin: 0 4px;" onclick="toggleNote(this)">📝</span>
-            <textarea class="custom-note note-content" contenteditable="false" placeholder="Escreva sua anotação aqui..." onblur="saveChanges()"></textarea>
+            <textarea class="custom-note note-content" contenteditable="false" placeholder="Escreva sua anotação aqui..." oninput="syncSingleNote(this)" onblur="saveChanges()"></textarea>
         `;
         
         range.insertNode(container); // Insere no ponto exato do cursor
@@ -1284,7 +1299,19 @@
     }
 
     // --- PERSISTÊNCIA E INICIALIZAÇÃO ---
+    function syncSingleNote(note) {
+        note.textContent = note.value;
+        note.defaultValue = note.value;
+    }
+
+    function syncNoteTextareas() {
+        document.querySelectorAll('textarea.note-content').forEach(note => {
+            syncSingleNote(note);
+        });
+    }
+
     function saveChanges() {
+        syncNoteTextareas();
         localStorage.setItem(STORAGE_KEY, document.querySelector('.content').innerHTML);
     }
 
@@ -1295,6 +1322,8 @@
             if (!noteContent) return;
             container.setAttribute('contenteditable', 'false');
             noteContent.setAttribute('contenteditable', 'false');
+            noteContent.setAttribute('oninput', 'syncSingleNote(this)');
+            noteContent.setAttribute('onblur', 'saveChanges()');
 
             const wasOpen = noteContent.style.display === 'block' || container.querySelector('.note-popup')?.style.display === 'block';
             if (noteContent.parentElement !== container) {
