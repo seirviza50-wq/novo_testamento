@@ -1315,6 +1315,44 @@
         localStorage.setItem(STORAGE_KEY, document.querySelector('.content').innerHTML);
     }
 
+    function exportChanges() {
+        syncNoteTextareas();
+        saveChanges();
+
+        const clonedDocument = document.documentElement.cloneNode(true);
+        const clonedContent = clonedDocument.querySelector('.content');
+        if (clonedContent) {
+            clonedContent.removeAttribute('contenteditable');
+            clonedContent.classList.remove('text-editing-active');
+        }
+
+        const clonedIndicator = clonedDocument.querySelector('.editing-mode');
+        if (clonedIndicator) clonedIndicator.classList.remove('show');
+
+        clonedDocument.querySelectorAll('.search-match, .current-search-match').forEach(el => {
+            const parent = el.parentNode;
+            while (el.firstChild) parent.insertBefore(el.firstChild, el);
+            parent.removeChild(el);
+        });
+
+        clonedDocument.querySelectorAll('textarea.note-content').forEach(note => {
+            note.textContent = note.value || note.textContent || '';
+            note.setAttribute('contenteditable', 'false');
+            note.setAttribute('oninput', 'syncSingleNote(this)');
+            note.setAttribute('onblur', 'saveChanges()');
+        });
+
+        const html = '<!DOCTYPE html>\n' + clonedDocument.outerHTML;
+        const blob = new Blob([html], { type: 'text/html;charset=utf-8' });
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = 'index.html';
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+        URL.revokeObjectURL(link.href);
+    }
+
     function upgradeSavedNotes() {
         let changed = false;
         document.querySelectorAll('.note-container').forEach(container => {
